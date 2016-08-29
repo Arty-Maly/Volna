@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5510626A1D5E3439008D10F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551062691D5E3439008D10F6 /* AppDelegate.swift */; };
+		5510626C1D5E3439008D10F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510626B1D5E3439008D10F6 /* ViewController.swift */; };
+		5510626F1D5E3439008D10F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5510626D1D5E3439008D10F6 /* Main.storyboard */; };
+		551062711D5E3439008D10F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551062701D5E3439008D10F6 /* Assets.xcassets */; };
+		551062741D5E3439008D10F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551062721D5E3439008D10F6 /* LaunchScreen.storyboard */; };
+		5510627F1D5E3439008D10F6 /* VolnaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510627E1D5E3439008D10F6 /* VolnaTests.swift */; };
+		5510628A1D5E3439008D10F6 /* VolnaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551062891D5E3439008D10F6 /* VolnaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5510627B1D5E3439008D10F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5510625E1D5E3439008D10F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 551062651D5E3439008D10F6;
+			remoteInfo = Volna;
+		};
+		551062861D5E3439008D10F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5510625E1D5E3439008D10F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 551062651D5E3439008D10F6;
+			remoteInfo = Volna;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		551062661D5E3439008D10F6 /* Volna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Volna.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		551062691D5E3439008D10F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5510626B1D5E3439008D10F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5510626E1D5E3439008D10F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		551062701D5E3439008D10F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		551062731D5E3439008D10F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		551062751D5E3439008D10F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5510627A1D5E3439008D10F6 /* VolnaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VolnaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5510627E1D5E3439008D10F6 /* VolnaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolnaTests.swift; sourceTree = "<group>"; };
+		551062801D5E3439008D10F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		551062851D5E3439008D10F6 /* VolnaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VolnaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		551062891D5E3439008D10F6 /* VolnaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolnaUITests.swift; sourceTree = "<group>"; };
+		5510628B1D5E3439008D10F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		551062631D5E3439008D10F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551062771D5E3439008D10F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551062821D5E3439008D10F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5510625D1D5E3439008D10F6 = {
+			isa = PBXGroup;
+			children = (
+				551062681D5E3439008D10F6 /* Volna */,
+				5510627D1D5E3439008D10F6 /* VolnaTests */,
+				551062881D5E3439008D10F6 /* VolnaUITests */,
+				551062671D5E3439008D10F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		551062671D5E3439008D10F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				551062661D5E3439008D10F6 /* Volna.app */,
+				5510627A1D5E3439008D10F6 /* VolnaTests.xctest */,
+				551062851D5E3439008D10F6 /* VolnaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		551062681D5E3439008D10F6 /* Volna */ = {
+			isa = PBXGroup;
+			children = (
+				551062691D5E3439008D10F6 /* AppDelegate.swift */,
+				5510626B1D5E3439008D10F6 /* ViewController.swift */,
+				5510626D1D5E3439008D10F6 /* Main.storyboard */,
+				551062701D5E3439008D10F6 /* Assets.xcassets */,
+				551062721D5E3439008D10F6 /* LaunchScreen.storyboard */,
+				551062751D5E3439008D10F6 /* Info.plist */,
+			);
+			path = Volna;
+			sourceTree = "<group>";
+		};
+		5510627D1D5E3439008D10F6 /* VolnaTests */ = {
+			isa = PBXGroup;
+			children = (
+				5510627E1D5E3439008D10F6 /* VolnaTests.swift */,
+				551062801D5E3439008D10F6 /* Info.plist */,
+			);
+			path = VolnaTests;
+			sourceTree = "<group>";
+		};
+		551062881D5E3439008D10F6 /* VolnaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				551062891D5E3439008D10F6 /* VolnaUITests.swift */,
+				5510628B1D5E3439008D10F6 /* Info.plist */,
+			);
+			path = VolnaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		551062651D5E3439008D10F6 /* Volna */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5510628E1D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "Volna" */;
+			buildPhases = (
+				551062621D5E3439008D10F6 /* Sources */,
+				551062631D5E3439008D10F6 /* Frameworks */,
+				551062641D5E3439008D10F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Volna;
+			productName = Volna;
+			productReference = 551062661D5E3439008D10F6 /* Volna.app */;
+			productType = "com.apple.product-type.application";
+		};
+		551062791D5E3439008D10F6 /* VolnaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 551062911D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "VolnaTests" */;
+			buildPhases = (
+				551062761D5E3439008D10F6 /* Sources */,
+				551062771D5E3439008D10F6 /* Frameworks */,
+				551062781D5E3439008D10F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5510627C1D5E3439008D10F6 /* PBXTargetDependency */,
+			);
+			name = VolnaTests;
+			productName = VolnaTests;
+			productReference = 5510627A1D5E3439008D10F6 /* VolnaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		551062841D5E3439008D10F6 /* VolnaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 551062941D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "VolnaUITests" */;
+			buildPhases = (
+				551062811D5E3439008D10F6 /* Sources */,
+				551062821D5E3439008D10F6 /* Frameworks */,
+				551062831D5E3439008D10F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				551062871D5E3439008D10F6 /* PBXTargetDependency */,
+			);
+			name = VolnaUITests;
+			productName = VolnaUITests;
+			productReference = 551062851D5E3439008D10F6 /* VolnaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5510625E1D5E3439008D10F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Artem Malyshev";
+				TargetAttributes = {
+					551062651D5E3439008D10F6 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = GBJ2RBF453;
+					};
+					551062791D5E3439008D10F6 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 551062651D5E3439008D10F6;
+					};
+					551062841D5E3439008D10F6 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 551062651D5E3439008D10F6;
+					};
+				};
+			};
+			buildConfigurationList = 551062611D5E3439008D10F6 /* Build configuration list for PBXProject "Volna" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5510625D1D5E3439008D10F6;
+			productRefGroup = 551062671D5E3439008D10F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				551062651D5E3439008D10F6 /* Volna */,
+				551062791D5E3439008D10F6 /* VolnaTests */,
+				551062841D5E3439008D10F6 /* VolnaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		551062641D5E3439008D10F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				551062741D5E3439008D10F6 /* LaunchScreen.storyboard in Resources */,
+				551062711D5E3439008D10F6 /* Assets.xcassets in Resources */,
+				5510626F1D5E3439008D10F6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551062781D5E3439008D10F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551062831D5E3439008D10F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		551062621D5E3439008D10F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5510626C1D5E3439008D10F6 /* ViewController.swift in Sources */,
+				5510626A1D5E3439008D10F6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551062761D5E3439008D10F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5510627F1D5E3439008D10F6 /* VolnaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551062811D5E3439008D10F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5510628A1D5E3439008D10F6 /* VolnaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5510627C1D5E3439008D10F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 551062651D5E3439008D10F6 /* Volna */;
+			targetProxy = 5510627B1D5E3439008D10F6 /* PBXContainerItemProxy */;
+		};
+		551062871D5E3439008D10F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 551062651D5E3439008D10F6 /* Volna */;
+			targetProxy = 551062861D5E3439008D10F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5510626D1D5E3439008D10F6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5510626E1D5E3439008D10F6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		551062721D5E3439008D10F6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				551062731D5E3439008D10F6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5510628C1D5E3439008D10F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5510628D1D5E3439008D10F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5510628F1D5E3439008D10F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Volna/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = artem.Volna;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		551062901D5E3439008D10F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Volna/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = artem.Volna;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		551062921D5E3439008D10F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VolnaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = artem.VolnaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Volna.app/Volna";
+			};
+			name = Debug;
+		};
+		551062931D5E3439008D10F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VolnaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = artem.VolnaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Volna.app/Volna";
+			};
+			name = Release;
+		};
+		551062951D5E3439008D10F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VolnaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = artem.VolnaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Volna;
+			};
+			name = Debug;
+		};
+		551062961D5E3439008D10F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VolnaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = artem.VolnaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Volna;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		551062611D5E3439008D10F6 /* Build configuration list for PBXProject "Volna" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5510628C1D5E3439008D10F6 /* Debug */,
+				5510628D1D5E3439008D10F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5510628E1D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "Volna" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5510628F1D5E3439008D10F6 /* Debug */,
+				551062901D5E3439008D10F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		551062911D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "VolnaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				551062921D5E3439008D10F6 /* Debug */,
+				551062931D5E3439008D10F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		551062941D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "VolnaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				551062951D5E3439008D10F6 /* Debug */,
+				551062961D5E3439008D10F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5510625E1D5E3439008D10F6 /* Project object */;
+}
