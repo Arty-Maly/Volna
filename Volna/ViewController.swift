@@ -26,7 +26,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         print(radioStations["Relax FM"])
         player.volume = 1.0
-//        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+        } catch let error as NSError {
+            print(error.description)
+        }
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         print("end")
         player.replaceCurrentItemWithPlayerItem(radioStations["Relax FM"])
         player.play()
