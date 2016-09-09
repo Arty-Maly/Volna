@@ -14,6 +14,9 @@
 		551062741D5E3439008D10F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551062721D5E3439008D10F6 /* LaunchScreen.storyboard */; };
 		5510627F1D5E3439008D10F6 /* VolnaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510627E1D5E3439008D10F6 /* VolnaTests.swift */; };
 		5510628A1D5E3439008D10F6 /* VolnaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551062891D5E3439008D10F6 /* VolnaUITests.swift */; };
+		558661441D8304440005285B /* RadioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558661431D8304440005285B /* RadioModel.swift */; };
+		558661491D8340240005285B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661451D833A540005285B /* MediaPlayer.framework */; };
+		5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661471D833ACD0005285B /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		551062851D5E3439008D10F6 /* VolnaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VolnaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		551062891D5E3439008D10F6 /* VolnaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolnaUITests.swift; sourceTree = "<group>"; };
 		5510628B1D5E3439008D10F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		558661431D8304440005285B /* RadioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioModel.swift; sourceTree = "<group>"; };
+		558661451D833A540005285B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		558661471D833ACD0005285B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */,
+				558661491D8340240005285B /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +85,8 @@
 		5510625D1D5E3439008D10F6 = {
 			isa = PBXGroup;
 			children = (
+				558661471D833ACD0005285B /* AVFoundation.framework */,
+				558661451D833A540005285B /* MediaPlayer.framework */,
 				551062681D5E3439008D10F6 /* Volna */,
 				5510627D1D5E3439008D10F6 /* VolnaTests */,
 				551062881D5E3439008D10F6 /* VolnaUITests */,
@@ -99,10 +109,9 @@
 			children = (
 				551062691D5E3439008D10F6 /* AppDelegate.swift */,
 				5510626B1D5E3439008D10F6 /* ViewController.swift */,
+				558661431D8304440005285B /* RadioModel.swift */,
 				5510626D1D5E3439008D10F6 /* Main.storyboard */,
-				551062701D5E3439008D10F6 /* Assets.xcassets */,
-				551062721D5E3439008D10F6 /* LaunchScreen.storyboard */,
-				551062751D5E3439008D10F6 /* Info.plist */,
+				558661421D8303F80005285B /* Supporting Files */,
 			);
 			path = Volna;
 			sourceTree = "<group>";
@@ -123,6 +132,16 @@
 				5510628B1D5E3439008D10F6 /* Info.plist */,
 			);
 			path = VolnaUITests;
+			sourceTree = "<group>";
+		};
+		558661421D8303F80005285B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				551062701D5E3439008D10F6 /* Assets.xcassets */,
+				551062721D5E3439008D10F6 /* LaunchScreen.storyboard */,
+				551062751D5E3439008D10F6 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +278,7 @@
 			files = (
 				5510626C1D5E3439008D10F6 /* ViewController.swift in Sources */,
 				5510626A1D5E3439008D10F6 /* AppDelegate.swift in Sources */,
+				558661441D8304440005285B /* RadioModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +511,7 @@
 				551062901D5E3439008D10F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		551062911D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "VolnaTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +520,7 @@
 				551062931D5E3439008D10F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		551062941D5E3439008D10F6 /* Build configuration list for PBXNativeTarget "VolnaUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +529,7 @@
 				551062961D5E3439008D10F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,40 +8,49 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 class ViewController: UIViewController {
-    var player:AVPlayer!
+    
+    private var player = AVPlayer()
+    private var currentStation = ""
+    private var radioStations = [
+        "Echo FM" : AVPlayerItem( URL:NSURL( string:"http://streaming211.radionomy.com:80/MRJazz" )!),
+        "Business FM" : AVPlayerItem( URL:NSURL( string:"http://streaming211.radionomy.com:80/MRJazz" )!),
+        "Relax FM" : AVPlayerItem( URL:NSURL( string:"http://streaming211.radionomy.com:80/MRJazz" )!)
+        
+    ]
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = "http://streaming211.radionomy.com:80/MRJazz"
-        let url_item = AVPlayerItem( URL:NSURL( string:url )!)
-        player = AVPlayer(playerItem:url_item)
-//        player.rate = 1.0
-//        player.play()
+        print(radioStations["Relax FM"])
+        player.volume = 1.0
+//        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        print("end")
+        player.replaceCurrentItemWithPlayerItem(radioStations["Relax FM"])
+        player.play()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    @IBAction func press() {
+    @IBAction func playStation() {
+        print("play")
+        print(player.volume)
         if (player.rate != 0) {
             player.pause()
         } else {
             player.play()
+            print(player.currentItem)
+            print(player.rate)
+        }
+        
+    }
+    @IBAction func setStation(sender: UIButton) {
+        print("set")
+        if radioStations.keys.contains(sender.currentTitle!) {
+            player.replaceCurrentItemWithPlayerItem(radioStations[sender.currentTitle!])
+//            playStation()
         }
     }
-    @IBOutlet weak var bottom: UIView!
-//
-//    @IBAction func buttonPress(sender: AnyObject) {
-//        if (player.rate != 0) {
-//            player.pause()
-//        } else {
-//            player.play()
-//        }
-//    }
-    @IBAction func jiesButton() {
-    }
-
+    
 }
 
