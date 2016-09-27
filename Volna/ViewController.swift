@@ -11,51 +11,32 @@ import AVFoundation
 import MediaPlayer
 
 class ViewController: UIViewController {
+    private var player: RadioModel
     
-    private var player = AVPlayer()
-    private var currentStation = ""
-    private var radioStations = [
-        "Echo FM" : AVPlayerItem( URL:NSURL( string:"http://streaming211.radionomy.com:80/MRJazz" )!),
-        "Business FM" : AVPlayerItem( URL:NSURL( string:"http://streaming211.radionomy.com:80/MRJazz" )!),
-        "Relax FM" : AVPlayerItem( URL:NSURL( string:"http://streaming211.radionomy.com:80/MRJazz" )!)
+    required init(coder aDecoder: NSCoder) {
+        player = RadioModel()
+        super.init(coder: aDecoder)!
         
-    ]
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print(radioStations["Relax FM"])
-        player.volume = 1.0
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayback)
         } catch let error as NSError {
             print(error.description)
         }
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
-        print("end")
-        player.replaceCurrentItemWithPlayerItem(radioStations["Relax FM"])
-        player.play()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     @IBAction func playStation() {
-        print("play")
-        print(player.volume)
-        if (player.rate != 0) {
-            player.pause()
-        } else {
-            player.play()
-            print(player.currentItem)
-            print(player.rate)
-        }
+        player.play()
         
     }
-    @IBAction func setStation(sender: UIButton) {
-        print("set")
-        if radioStations.keys.contains(sender.currentTitle!) {
-            player.replaceCurrentItemWithPlayerItem(radioStations[sender.currentTitle!])
-//            playStation()
-        }
+    
+    @IBAction func setStation(_ sender: UIButton) {
+        player.setStation(sender.currentTitle!)
     }
     
 }
