@@ -11,36 +11,45 @@ import AVFoundation
 
 class RadioModel {
     private var player: AVPlayer
-    private var radioStations: Dictionary<String,AVPlayerItem>
+    private var radioStations: Dictionary<String,String>
+    private var currentStation: String?
     
     init() {
         player = AVPlayer()
         radioStations = [
-            "Echo FM" : AVPlayerItem( url:URL( string:"http://stream05.media.rambler.ru/echo.mp3" )!),
-            "Business FM" : AVPlayerItem( url:URL( string:"http://stream02.media.rambler.ru:80/bizmsk128.mp3" )!),
-            "Relax FM" : AVPlayerItem( url:URL( string:"http://stream01.media.rambler.ru:80/relax128.mp3" )!)
+            "Echo FM" : "http://stream05.media.rambler.ru/echo.mp3",
+            "Business FM" : "http://78.110.61.92:8000/fma",
+            "Relax FM" : "http://stream01.media.rambler.ru:80/relax128.mp3"
             
         ]
     }
-    
    
     func setStation(_ station: String) {
         if radioStations.keys.contains(station) {
-            player.replaceCurrentItem(with: radioStations[station])
+            player.replaceCurrentItem(with: AVPlayerItem( url:URL( string:radioStations[station]!)!))
+            currentStation = station
             if isPaused() { play() }
         }
     }
+    
     private func isPaused() -> Bool {
         return player.rate == 0
     }
-    
+    private func isPlayBackBufferFull() -> Bool {
+        return player.currentItem!.isPlaybackBufferFull
+    }
     func play() {
         if isPaused() {
             player.play()
         } else {
             player.pause()
         }
-        
+        print(isPaused())
+        print(player.volume)
+        print(player.rate)
+        if isPlayBackBufferFull() {
+            setStation(currentStation!)
+        }
     }
     
 }
