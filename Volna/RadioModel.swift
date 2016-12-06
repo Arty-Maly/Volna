@@ -18,7 +18,7 @@ class RadioModel {
         player = AVPlayer()
         radioStations = [
             "Echo FM" : "http://stream05.media.rambler.ru/echo.mp3",
-            "Business FM" : "http://78.110.61.92:8000/fma",
+            "Business FM" : "www",
             "Relax FM" : "http://stream01.media.rambler.ru:80/relax128.mp3"
             
         ]

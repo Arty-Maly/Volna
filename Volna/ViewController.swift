@@ -13,6 +13,7 @@ import MediaPlayer
 class ViewController: UIViewController {
     private var player: RadioModel
     
+    @IBOutlet weak var scrollView: UIScrollView!
     required init(coder aDecoder: NSCoder) {
         player = RadioModel()
         super.init(coder: aDecoder)!
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
     
     @IBAction func playStation() {
         player.play()
+        
         
     }
     

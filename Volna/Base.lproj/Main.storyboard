@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,83 +19,110 @@
                         <viewControllerLayoutGuide type="bottom" id="SDP-US-asz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rMY-UR-bUb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="xS4-ba-DCZ">
-                                <rect key="frame" x="20" y="25" width="560" height="567"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csO-uM-Cvn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PVF-PY-b3l">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="89"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="xS4-ba-DCZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C44-Zt-GIn">
-                                                <rect key="frame" x="0.0" y="0.0" width="180" height="89"/>
-                                                <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Echo FM"/>
-                                                <connections>
-                                                    <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mWF-25-tFo"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN3-iz-rcS">
-                                                <rect key="frame" x="190" y="0.0" width="180" height="89"/>
-                                                <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Business FM"/>
-                                                <connections>
-                                                    <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQb-8A-RX2"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiV-yE-Q9q">
-                                                <rect key="frame" x="380" y="0.0" width="180" height="89"/>
-                                                <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Relax FM"/>
-                                                <connections>
-                                                    <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ny-iy-7Ul"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PVF-PY-b3l">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C44-Zt-GIn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="98"/>
+                                                        <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Echo FM"/>
+                                                        <connections>
+                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mWF-25-tFo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN3-iz-rcS">
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="98"/>
+                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Business FM"/>
+                                                        <connections>
+                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQb-8A-RX2"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiV-yE-Q9q">
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="98"/>
+                                                        <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Relax FM"/>
+                                                        <connections>
+                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ny-iy-7Ul"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2PF-b3-GBp">
+                                                <rect key="frame" x="0.0" y="129" width="375" height="98"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8zx-f4-GzB">
+                                                <rect key="frame" x="0.0" y="258" width="375" height="97.5"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Sx-TV-fXh">
+                                                <rect key="frame" x="0.0" y="386.5" width="375" height="98"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4fw-ph-PD8">
+                                                <rect key="frame" x="0.0" y="515.5" width="375" height="98"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ajL-sR-PAE">
+                                                <rect key="frame" x="0.0" y="644.5" width="375" height="98"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-b2-2sW">
+                                                <rect key="frame" x="0.0" y="773.5" width="375" height="97.5"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AiP-CC-p3Y">
+                                                <rect key="frame" x="0.0" y="902" width="375" height="98"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-w4-s9R">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
+                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Play/Pause"/>
+                                                        <connections>
+                                                            <action selector="playStation" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8a-V6-hPC"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.44220514059999999" green="0.71294175390000003" blue="0.55566419020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2PF-b3-GBp">
-                                        <rect key="frame" x="0.0" y="120" width="560" height="88"/>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8zx-f4-GzB">
-                                        <rect key="frame" x="0.0" y="239" width="560" height="89"/>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-b2-2sW">
-                                        <rect key="frame" x="0.0" y="359" width="560" height="88"/>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AiP-CC-p3Y">
-                                        <rect key="frame" x="0.0" y="478" width="560" height="89"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-w4-s9R">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="89"/>
-                                                <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Play/Pause"/>
-                                                <connections>
-                                                    <action selector="playStation" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8a-V6-hPC"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.44220514059999999" green="0.71294175390000003" blue="0.55566419020000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="elu-WA-EBM"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="xS4-ba-DCZ" firstAttribute="leading" secondItem="csO-uM-Cvn" secondAttribute="leading" id="9RI-FK-DPf"/>
+                                    <constraint firstAttribute="trailing" secondItem="xS4-ba-DCZ" secondAttribute="trailing" id="JYh-um-7OC"/>
+                                    <constraint firstAttribute="bottom" secondItem="xS4-ba-DCZ" secondAttribute="bottom" id="dSu-ue-CRW"/>
+                                    <constraint firstItem="xS4-ba-DCZ" firstAttribute="width" secondItem="csO-uM-Cvn" secondAttribute="width" id="ely-sm-n1p"/>
+                                    <constraint firstItem="xS4-ba-DCZ" firstAttribute="top" secondItem="csO-uM-Cvn" secondAttribute="top" id="iy8-vW-R2N"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xS4-ba-DCZ" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" id="MyK-Ib-g08"/>
-                            <constraint firstItem="xS4-ba-DCZ" firstAttribute="top" secondItem="X2q-ln-itN" secondAttribute="bottom" constant="5" id="WYt-Ol-tDv"/>
-                            <constraint firstItem="xS4-ba-DCZ" firstAttribute="trailing" secondItem="rMY-UR-bUb" secondAttribute="trailingMargin" id="qcT-Bu-wzz"/>
-                            <constraint firstItem="SDP-US-asz" firstAttribute="top" secondItem="xS4-ba-DCZ" secondAttribute="bottom" constant="8" symbolic="YES" id="vLM-o1-i74"/>
+                            <constraint firstItem="csO-uM-Cvn" firstAttribute="top" secondItem="X2q-ln-itN" secondAttribute="bottom" constant="-20" id="NZW-Xv-MON"/>
+                            <constraint firstItem="SDP-US-asz" firstAttribute="top" secondItem="csO-uM-Cvn" secondAttribute="bottom" id="OIk-Bb-Hj1"/>
+                            <constraint firstItem="csO-uM-Cvn" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" constant="-16" id="m2b-Tp-adO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="csO-uM-Cvn" secondAttribute="trailing" constant="-16" id="oa4-cI-neM"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="152" y="422"/>
+            <point key="canvasLocation" x="151.19999999999999" y="421.43928035982015"/>
         </scene>
     </scenes>
 </document>
