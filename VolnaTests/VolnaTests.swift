@@ -1,11 +1,3 @@
-//
-//  VolnaTests.swift
-//  VolnaTests
-//
-//  Created by Artem Malyshev on 8/12/16.
-//  Copyright © 2016 Artem Malyshev. All rights reserved.
-//
-
 import XCTest
 @testable import Volna
 
