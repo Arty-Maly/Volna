@@ -9,24 +9,23 @@ class RadioModel {
   init() {
     player = AVPlayer()
     radioStations = [
-      "Echo FM" : "http://stream05.media.rambler.ru/echo.mp3",
-      "Business FM" : "www",
       "Relax FM" : "http://stream01.media.rambler.ru:80/relax128.mp3"
-      
     ]
   }
   
   func setStation(_ station: String) {
-    if radioStations.keys.contains(station) {
+    if let stationAddress = self.radioStations[station] {
       currentStation = station
       DispatchQueue.global(qos: .userInitiated).async {
-        let stationPlayerItem = AVPlayerItem( url:URL( string:self.radioStations[station]!)!)
-        DispatchQueue.main.async {
-          if self.currentStation! == station {
-            self.player.replaceCurrentItem(with: stationPlayerItem)
-            if self.isPaused() { self.play() }
-          } else {
-            print("ignored request, current station is different")
+        if let stationUrl = (URL( string:stationAddress)) {
+          let stationPlayerItem = AVPlayerItem(url:stationUrl)
+          DispatchQueue.main.async {
+            if self.currentStation! == station {
+              self.player.replaceCurrentItem(with: stationPlayerItem)
+              if self.isPaused() { self.play() }
+            } else {
+              print("ignored request, current station is different")
+            }
           }
         }
       }

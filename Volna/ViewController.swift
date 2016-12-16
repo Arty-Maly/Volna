@@ -4,8 +4,8 @@ import MediaPlayer
 
 class ViewController: UIViewController {
   private var player: RadioModel
+  @IBOutlet weak var stationTitle: UILabel!
   
-  @IBOutlet weak var scrollView: UIScrollView!
   required init(coder aDecoder: NSCoder) {
     player = RadioModel()
     super.init(coder: aDecoder)!
@@ -13,16 +13,21 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    do {
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+      try AVAudioSession.sharedInstance().setActive(true)
+    } catch {
+      print(error)
+    }
   }
   
   @IBAction func playStation() {
     player.play()
-    
-    
   }
   
   @IBAction func setStation(_ sender: UIButton) {
     player.setStation(sender.currentTitle!)
+    stationTitle.text = sender.currentTitle!
   }
   
 }
