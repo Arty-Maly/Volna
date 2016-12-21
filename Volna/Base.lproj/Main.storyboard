@@ -45,13 +45,13 @@
                                 <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xS4-ba-DCZ" userLabel="StationsStack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PVF-PY-b3l">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C44-Zt-GIn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Echo FM"/>
                                                         <connections>
@@ -59,7 +59,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN3-iz-rcS">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Business FM"/>
                                                         <connections>
@@ -67,7 +67,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiV-yE-Q9q">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Relax FM"/>
                                                         <connections>
@@ -77,10 +77,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7ST-RL-FZf">
-                                                <rect key="frame" x="0.0" y="67.5" width="375" height="53"/>
+                                                <rect key="frame" x="0.0" y="94.5" width="375" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-8Z-rIB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Руссое Радио"/>
                                                         <connections>
@@ -88,7 +88,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZA6-Fk-eic">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="53"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Record"/>
                                                         <connections>
@@ -96,7 +96,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcS-UO-jf9">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Дача"/>
                                                         <connections>
@@ -106,10 +106,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BS9-cI-tNs">
-                                                <rect key="frame" x="0.0" y="135.5" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="189.5" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrT-S9-TSE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Наше"/>
                                                         <connections>
@@ -117,7 +117,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHb-uv-Z8G">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Dfm"/>
                                                         <connections>
@@ -125,7 +125,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7B-pb-4vz">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Ultra"/>
                                                         <connections>
@@ -135,10 +135,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f5X-i0-xbf">
-                                                <rect key="frame" x="0.0" y="203" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="284" width="375" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvf-JD-vXq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Best FM"/>
                                                         <connections>
@@ -146,7 +146,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnV-uL-kMW">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Шансон"/>
                                                         <connections>
@@ -154,7 +154,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrx-rY-V0j">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Зенит"/>
                                                         <connections>
@@ -164,10 +164,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-if-QnS">
-                                                <rect key="frame" x="0.0" y="270.5" width="375" height="53"/>
+                                                <rect key="frame" x="0.0" y="379" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mJ-yW-EdD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Эльдорадио"/>
                                                         <connections>
@@ -175,7 +175,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngl-8f-rnF">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="53"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="L Radio"/>
                                                         <connections>
@@ -183,7 +183,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrD-w2-dyJ">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Кекс"/>
                                                         <connections>
@@ -193,10 +193,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sRk-Hn-OSq">
-                                                <rect key="frame" x="0.0" y="338.5" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="473.5" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHs-zR-lZz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Радио Спорт"/>
                                                         <connections>
@@ -204,7 +204,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhR-cn-7WZ">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Пионер"/>
                                                         <connections>
@@ -212,7 +212,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHD-YB-Z7J">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Джаз"/>
                                                         <connections>
@@ -222,10 +222,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mZe-N0-yfc">
-                                                <rect key="frame" x="0.0" y="406" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="568" width="375" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOV-Ee-0BN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Юнитон"/>
                                                         <connections>
@@ -233,7 +233,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Po5-nY-Bpi">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Орфей"/>
                                                         <connections>
@@ -241,7 +241,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-Rb-Lrc">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Шоколад"/>
                                                         <connections>
@@ -251,10 +251,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tuc-mz-4Lz">
-                                                <rect key="frame" x="0.0" y="473.5" width="375" height="53"/>
+                                                <rect key="frame" x="0.0" y="663" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAN-bN-dm3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Говорит Москва"/>
                                                         <connections>
@@ -262,7 +262,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nna-8l-Qjd">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="53"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Русский Хит"/>
                                                         <connections>
@@ -270,7 +270,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YB-IS-jId">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Comedy"/>
                                                         <connections>
@@ -280,10 +280,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="joO-mm-7l2">
-                                                <rect key="frame" x="0.0" y="541.5" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="757.5" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-YM-Koy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Rock FM"/>
                                                         <connections>
@@ -291,7 +291,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6a-MV-cYs">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Звезда"/>
                                                         <connections>
@@ -299,7 +299,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLo-2h-btO">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="АвтоРадио"/>
                                                         <connections>
@@ -309,10 +309,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wjQ-AT-eWp">
-                                                <rect key="frame" x="0.0" y="609" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="852" width="375" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-gy-0tD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Радио России"/>
                                                         <connections>
@@ -320,7 +320,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grL-SY-P2R">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Радио Свобода"/>
                                                         <connections>
@@ -328,7 +328,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn0-a0-LBI">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Юмор"/>
                                                         <connections>
@@ -338,10 +338,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bEp-5s-Ola">
-                                                <rect key="frame" x="0.0" y="676.5" width="375" height="53"/>
+                                                <rect key="frame" x="0.0" y="947" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWc-FM-T4R">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="NRJ"/>
                                                         <connections>
@@ -349,7 +349,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWm-Z2-rQ0">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="53"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="МСМ Иркутск"/>
                                                         <connections>
@@ -357,7 +357,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twc-Rn-BYJ">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Милицейская Волна"/>
                                                         <connections>
@@ -367,10 +367,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aIn-3f-6hd">
-                                                <rect key="frame" x="0.0" y="744.5" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="1041.5" width="375" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9v-tS-Bp7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Комсомольская Правда"/>
                                                         <connections>
@@ -378,7 +378,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbz-Js-A25">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Город"/>
                                                         <connections>
@@ -386,7 +386,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSH-e6-MDL">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Романтика"/>
                                                         <connections>
@@ -396,10 +396,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zqJ-3b-oW9">
-                                                <rect key="frame" x="0.0" y="812" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="1136.5" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOG-Vm-BZo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Мегаполис"/>
                                                         <connections>
@@ -407,7 +407,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdL-aN-fNk">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Радио ОК"/>
                                                         <connections>
@@ -415,7 +415,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-aC-YA7">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Alex-M"/>
                                                         <connections>
@@ -425,10 +425,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jTc-ZC-iff">
-                                                <rect key="frame" x="0.0" y="879.5" width="375" height="53"/>
+                                                <rect key="frame" x="0.0" y="1231" width="375" height="79.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRo-sF-7Af">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Большое Радио"/>
                                                         <connections>
@@ -436,7 +436,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPE-CW-2dG">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="53"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Радио 107"/>
                                                         <connections>
@@ -444,7 +444,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5c1-QL-nvq">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="53"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Борнео"/>
                                                         <connections>
@@ -454,10 +454,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZC3-tl-ZqE">
-                                                <rect key="frame" x="0.0" y="947.5" width="375" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="1325.5" width="375" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VO6-AE-bhc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Курс"/>
                                                         <connections>
@@ -465,7 +465,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clS-df-lhG">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="52.5"/>
+                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Коммерсант"/>
                                                         <connections>
@@ -473,7 +473,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3h-N8-Xb1">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="52.5"/>
+                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                         <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Рус Новости"/>
                                                         <connections>
@@ -482,9 +482,12 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BvE-OZ-OMI">
+                                                <rect key="frame" x="0.0" y="1420.5" width="375" height="79.5"/>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1000" id="elu-WA-EBM"/>
+                                            <constraint firstAttribute="height" constant="1500" id="elu-WA-EBM"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -496,46 +499,45 @@
                                     <constraint firstItem="xS4-ba-DCZ" firstAttribute="top" secondItem="csO-uM-Cvn" secondAttribute="top" id="iy8-vW-R2N"/>
                                 </constraints>
                             </scrollView>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AiP-CC-p3Y">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW2-Yx-Vpt">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-w4-s9R">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                        <color key="backgroundColor" white="0.67059151785714288" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Play/Pause"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-w4-s9R">
+                                        <rect key="frame" x="155" y="8" width="65" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="MUK-at-mnC"/>
+                                        </constraints>
+                                        <state key="normal" image="play_button"/>
                                         <connections>
                                             <action selector="playStation" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8a-V6-hPC"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.34902198240393462" green="0.38208722203118545" blue="0.38271183162020728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
+                                <color key="backgroundColor" white="0.88373325889999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="VQo-w4-s9R" firstAttribute="centerY" secondItem="AiP-CC-p3Y" secondAttribute="centerY" id="17R-PW-UOE"/>
-                                    <constraint firstAttribute="trailing" secondItem="VQo-w4-s9R" secondAttribute="trailing" id="Aad-cV-nMG"/>
-                                    <constraint firstAttribute="bottom" secondItem="VQo-w4-s9R" secondAttribute="bottom" id="BdD-fa-10i"/>
-                                    <constraint firstItem="VQo-w4-s9R" firstAttribute="centerX" secondItem="AiP-CC-p3Y" secondAttribute="centerX" id="GNg-5S-hG1"/>
-                                    <constraint firstItem="VQo-w4-s9R" firstAttribute="leading" secondItem="AiP-CC-p3Y" secondAttribute="leading" id="Mky-6G-V2s"/>
-                                    <constraint firstItem="VQo-w4-s9R" firstAttribute="top" secondItem="AiP-CC-p3Y" secondAttribute="top" id="cOu-Nc-Hwy"/>
-                                    <constraint firstAttribute="height" constant="80" id="mSP-zc-Mtp"/>
+                                    <constraint firstItem="VQo-w4-s9R" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="bottomMargin" id="FVO-vO-SoA"/>
+                                    <constraint firstItem="VQo-w4-s9R" firstAttribute="centerX" secondItem="WW2-Yx-Vpt" secondAttribute="centerX" id="fUD-TC-LYs"/>
+                                    <constraint firstAttribute="height" constant="80" id="qcE-9v-EWA"/>
+                                    <constraint firstItem="VQo-w4-s9R" firstAttribute="top" secondItem="WW2-Yx-Vpt" secondAttribute="topMargin" id="qsU-9e-KUk"/>
                                 </constraints>
-                            </stackView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6NI-Fr-aU1" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" constant="-16" id="7GO-d5-xTu"/>
-                            <constraint firstItem="SDP-US-asz" firstAttribute="top" secondItem="AiP-CC-p3Y" secondAttribute="bottom" id="F4B-1r-zFo"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="AiP-CC-p3Y" secondAttribute="leading" constant="16" id="GhY-mZ-Zru"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="AiP-CC-p3Y" secondAttribute="trailing" constant="-16" id="Gos-v8-5Uq"/>
                             <constraint firstItem="6NI-Fr-aU1" firstAttribute="top" secondItem="X2q-ln-itN" secondAttribute="bottom" id="KEl-Et-YeD"/>
                             <constraint firstItem="SDP-US-asz" firstAttribute="top" secondItem="csO-uM-Cvn" secondAttribute="bottom" id="OIk-Bb-Hj1"/>
+                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="leading" secondItem="csO-uM-Cvn" secondAttribute="leading" id="SE7-zg-DOD"/>
+                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="trailing" secondItem="csO-uM-Cvn" secondAttribute="trailing" id="bqA-VY-PuQ"/>
                             <constraint firstItem="csO-uM-Cvn" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" constant="-16" id="m2b-Tp-adO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6NI-Fr-aU1" secondAttribute="trailing" constant="-16" id="nX3-bi-fsv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="csO-uM-Cvn" secondAttribute="trailing" constant="-16" id="oa4-cI-neM"/>
+                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="bottom" secondItem="SDP-US-asz" secondAttribute="top" id="ofD-oz-VFF"/>
                             <constraint firstItem="csO-uM-Cvn" firstAttribute="top" secondItem="6NI-Fr-aU1" secondAttribute="bottom" id="sgf-2G-GC3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="VQo-w4-s9R" id="maG-7N-Ygr"/>
                         <outlet property="stationTitle" destination="ezN-Hk-BTt" id="mL8-K3-v6y"/>
                     </connections>
                 </viewController>
@@ -544,4 +546,7 @@
             <point key="canvasLocation" x="151.19999999999999" y="421.43928035982015"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play_button" width="100" height="100"/>
+    </resources>
 </document>

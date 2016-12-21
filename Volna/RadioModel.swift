@@ -9,8 +9,8 @@ class RadioModel {
   init() {
     player = AVPlayer()
     radioStations = [
-      "Relax FM" : "http://stream01.media.rambler.ru:80/relax128.mp3"
-    ]
+      "Relax FM" : "http://stream01.media.rambler.ru:80/relax128.mp3",
+      ]
   }
   
   func setStation(_ station: String) {
@@ -32,13 +32,21 @@ class RadioModel {
     }
   }
   
-  private func isPaused() -> Bool {
+  func isPaused() -> Bool {
     return player.rate == 0
   }
   private func isPlayBackBufferFull() -> Bool {
-    return player.currentItem!.isPlaybackBufferFull
+    if let playerItem = player.currentItem {
+      return playerItem.isPlaybackBufferFull
+    } else {
+      return false
+    }
   }
+  
   func play() {
+    if currentStation == nil {
+      return
+    }
     if isPaused() {
       player.play()
     } else {
