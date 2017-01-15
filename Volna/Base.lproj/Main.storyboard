@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,15 +10,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Radio View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Volna" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RadioViewController" customModule="Volna" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X2q-ln-itN"/>
                         <viewControllerLayoutGuide type="bottom" id="SDP-US-asz"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rMY-UR-bUb">
+                    <view key="view" contentMode="scaleToFill" id="rMY-UR-bUb" customClass="radioview">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -41,465 +41,7 @@
                                     <constraint firstItem="ezN-Hk-BTt" firstAttribute="centerY" secondItem="6NI-Fr-aU1" secondAttribute="centerY" id="r8u-VV-1DO"/>
                                 </constraints>
                             </stackView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csO-uM-Cvn">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xS4-ba-DCZ" userLabel="StationsStack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PVF-PY-b3l">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C44-Zt-GIn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Echo FM"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mWF-25-tFo"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN3-iz-rcS">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Business FM"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQb-8A-RX2"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiV-yE-Q9q">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.7579573136422707" green="0.82755235602094235" blue="0.59263988568052117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Relax FM"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ny-iy-7Ul"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7ST-RL-FZf">
-                                                <rect key="frame" x="0.0" y="94.5" width="375" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-8Z-rIB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Руссое Радио"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kN2-2d-VyE"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZA6-Fk-eic">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Record"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NH7-fO-8bY"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcS-UO-jf9">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Дача"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QV4-QZ-WjK"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BS9-cI-tNs">
-                                                <rect key="frame" x="0.0" y="189.5" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrT-S9-TSE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Наше"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QlF-CV-Da4"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHb-uv-Z8G">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Dfm"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Isq-4C-xMs"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7B-pb-4vz">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Ultra"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PnS-qr-ulQ"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f5X-i0-xbf">
-                                                <rect key="frame" x="0.0" y="284" width="375" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvf-JD-vXq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Best FM"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h2z-Pf-2Rm"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnV-uL-kMW">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Шансон"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Btu-qr-owL"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrx-rY-V0j">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Зенит"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vpc-gc-Ttn"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-if-QnS">
-                                                <rect key="frame" x="0.0" y="379" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mJ-yW-EdD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Эльдорадио"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fua-dP-f24"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngl-8f-rnF">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="L Radio"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gPv-bS-n64"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrD-w2-dyJ">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Кекс"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hqZ-DM-gtT"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sRk-Hn-OSq">
-                                                <rect key="frame" x="0.0" y="473.5" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHs-zR-lZz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Радио Спорт"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V7c-Yq-tlN"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhR-cn-7WZ">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Пионер"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TLW-wH-tnm"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHD-YB-Z7J">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Джаз"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qzg-Wy-03T"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mZe-N0-yfc">
-                                                <rect key="frame" x="0.0" y="568" width="375" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOV-Ee-0BN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Юнитон"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mEp-Ld-NIb"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Po5-nY-Bpi">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Орфей"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EOy-hF-TC1"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-Rb-Lrc">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Шоколад"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="giP-TF-RFy"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tuc-mz-4Lz">
-                                                <rect key="frame" x="0.0" y="663" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAN-bN-dm3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Говорит Москва"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bgw-TZ-wxR"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nna-8l-Qjd">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Русский Хит"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ddt-Bs-1sd"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YB-IS-jId">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Comedy"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1kN-i6-9HZ"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="joO-mm-7l2">
-                                                <rect key="frame" x="0.0" y="757.5" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-YM-Koy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Rock FM"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DGH-JE-IxB"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6a-MV-cYs">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Звезда"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dVQ-U4-oGd"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLo-2h-btO">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="АвтоРадио"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aV0-Qq-CsN"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wjQ-AT-eWp">
-                                                <rect key="frame" x="0.0" y="852" width="375" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-gy-0tD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Радио России"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qng-5Z-A9x"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grL-SY-P2R">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Радио Свобода"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TkM-U8-omC"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn0-a0-LBI">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Юмор"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UXb-6W-KIm"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bEp-5s-Ola">
-                                                <rect key="frame" x="0.0" y="947" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWc-FM-T4R">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="NRJ"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WkZ-60-Kzn"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWm-Z2-rQ0">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="МСМ Иркутск"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WUB-1c-C1U"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twc-Rn-BYJ">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Милицейская Волна"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YlR-UC-U9g"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aIn-3f-6hd">
-                                                <rect key="frame" x="0.0" y="1041.5" width="375" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9v-tS-Bp7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Комсомольская Правда"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AaR-ho-Lzd"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbz-Js-A25">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Город"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Evb-UQ-L1Y"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSH-e6-MDL">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Романтика"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hyO-Kq-ktm"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zqJ-3b-oW9">
-                                                <rect key="frame" x="0.0" y="1136.5" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOG-Vm-BZo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Мегаполис"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="82N-Dh-v4q"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdL-aN-fNk">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Радио ОК"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y0q-tg-ift"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-aC-YA7">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Alex-M"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RVj-9R-dfu"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jTc-ZC-iff">
-                                                <rect key="frame" x="0.0" y="1231" width="375" height="79.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRo-sF-7Af">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Большое Радио"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="550-Ho-aGp"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPE-CW-2dG">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Радио 107"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3xi-nm-4v6"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5c1-QL-nvq">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="79.5"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Борнео"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LCQ-Dd-feN"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZC3-tl-ZqE">
-                                                <rect key="frame" x="0.0" y="1325.5" width="375" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VO6-AE-bhc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Курс"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wFS-2M-7BJ"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clS-df-lhG">
-                                                        <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Коммерсант"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c8h-1e-Xrd"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3h-N8-Xb1">
-                                                        <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
-                                                        <color key="backgroundColor" red="0.75795731359999996" green="0.82755235599999999" blue="0.59263988570000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Рус Новости"/>
-                                                        <connections>
-                                                            <action selector="setStation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0OM-Nt-a4B"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BvE-OZ-OMI">
-                                                <rect key="frame" x="0.0" y="1420.5" width="375" height="79.5"/>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1500" id="elu-WA-EBM"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="xS4-ba-DCZ" firstAttribute="leading" secondItem="csO-uM-Cvn" secondAttribute="leading" id="9RI-FK-DPf"/>
-                                    <constraint firstAttribute="trailing" secondItem="xS4-ba-DCZ" secondAttribute="trailing" id="JYh-um-7OC"/>
-                                    <constraint firstAttribute="bottom" secondItem="xS4-ba-DCZ" secondAttribute="bottom" id="dSu-ue-CRW"/>
-                                    <constraint firstItem="xS4-ba-DCZ" firstAttribute="width" secondItem="csO-uM-Cvn" secondAttribute="width" id="ely-sm-n1p"/>
-                                    <constraint firstItem="xS4-ba-DCZ" firstAttribute="top" secondItem="csO-uM-Cvn" secondAttribute="top" id="iy8-vW-R2N"/>
-                                </constraints>
-                            </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW2-Yx-Vpt">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW2-Yx-Vpt" userLabel="Bottom Bar">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-w4-s9R">
@@ -521,29 +63,72 @@
                                     <constraint firstItem="VQo-w4-s9R" firstAttribute="top" secondItem="WW2-Yx-Vpt" secondAttribute="topMargin" id="qsU-9e-KUk"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eT9-kI-uaZ">
+                                <rect key="frame" x="3" y="60" width="369" height="527"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="baD-Dm-zbc">
+                                    <size key="itemSize" width="118" height="79"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stationCell" id="TLr-3o-zrK" customClass="StationCollectionViewCell" customModule="Volna" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="79"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="118" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.050000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-2L-8px">
+                                                    <rect key="frame" x="28" y="18" width="61" height="42"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.44315043587525504" green="1" blue="0.27538320128755522" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="NSg-2L-8px" firstAttribute="centerY" secondItem="TLr-3o-zrK" secondAttribute="centerY" id="OL1-jZ-ZSP"/>
+                                            <constraint firstItem="NSg-2L-8px" firstAttribute="centerX" secondItem="TLr-3o-zrK" secondAttribute="centerX" id="gLI-jV-Buy"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="stationName" destination="NSg-2L-8px" id="6mB-JF-xNS"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="RJs-EM-B0b"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="EUW-iC-P2f"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="eT9-kI-uaZ" firstAttribute="top" secondItem="6NI-Fr-aU1" secondAttribute="bottom" id="1GB-i7-4kb"/>
                             <constraint firstItem="6NI-Fr-aU1" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" constant="-16" id="7GO-d5-xTu"/>
+                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" constant="-16" id="Cai-Dm-QFm"/>
+                            <constraint firstItem="SDP-US-asz" firstAttribute="top" secondItem="WW2-Yx-Vpt" secondAttribute="bottom" id="Gyc-vW-jhP"/>
                             <constraint firstItem="6NI-Fr-aU1" firstAttribute="top" secondItem="X2q-ln-itN" secondAttribute="bottom" id="KEl-Et-YeD"/>
-                            <constraint firstItem="SDP-US-asz" firstAttribute="top" secondItem="csO-uM-Cvn" secondAttribute="bottom" id="OIk-Bb-Hj1"/>
-                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="leading" secondItem="csO-uM-Cvn" secondAttribute="leading" id="SE7-zg-DOD"/>
-                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="trailing" secondItem="csO-uM-Cvn" secondAttribute="trailing" id="bqA-VY-PuQ"/>
-                            <constraint firstItem="csO-uM-Cvn" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" constant="-16" id="m2b-Tp-adO"/>
+                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="width" secondItem="rMY-UR-bUb" secondAttribute="width" id="LPq-Xe-Rx3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WW2-Yx-Vpt" secondAttribute="trailing" constant="-16" id="M9W-TV-GWb"/>
+                            <constraint firstItem="eT9-kI-uaZ" firstAttribute="leading" secondItem="rMY-UR-bUb" secondAttribute="leadingMargin" constant="-13" id="dKD-Cl-jdV"/>
+                            <constraint firstItem="eT9-kI-uaZ" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="top" id="dg6-Ug-unj"/>
+                            <constraint firstItem="eT9-kI-uaZ" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="dsd-6n-VMJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eT9-kI-uaZ" secondAttribute="trailing" constant="-13" id="hWy-uW-Xod"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6NI-Fr-aU1" secondAttribute="trailing" constant="-16" id="nX3-bi-fsv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="csO-uM-Cvn" secondAttribute="trailing" constant="-16" id="oa4-cI-neM"/>
-                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="bottom" secondItem="SDP-US-asz" secondAttribute="top" id="ofD-oz-VFF"/>
-                            <constraint firstItem="csO-uM-Cvn" firstAttribute="top" secondItem="6NI-Fr-aU1" secondAttribute="bottom" id="sgf-2G-GC3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="playButton" destination="VQo-w4-s9R" id="maG-7N-Ygr"/>
+                        <outlet property="stationCollection" destination="eT9-kI-uaZ" id="3to-uG-LmS"/>
                         <outlet property="stationTitle" destination="ezN-Hk-BTt" id="mL8-K3-v6y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151.19999999999999" y="421.43928035982015"/>
+            <point key="canvasLocation" x="1445.5999999999999" y="-120.08995502248877"/>
         </scene>
     </scenes>
     <resources>

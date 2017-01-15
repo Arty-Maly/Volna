@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5510626A1D5E3439008D10F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551062691D5E3439008D10F6 /* AppDelegate.swift */; };
-		5510626C1D5E3439008D10F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510626B1D5E3439008D10F6 /* ViewController.swift */; };
+		5510626C1D5E3439008D10F6 /* RadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510626B1D5E3439008D10F6 /* RadioViewController.swift */; };
 		5510626F1D5E3439008D10F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5510626D1D5E3439008D10F6 /* Main.storyboard */; };
 		551062711D5E3439008D10F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551062701D5E3439008D10F6 /* Assets.xcassets */; };
 		551062741D5E3439008D10F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551062721D5E3439008D10F6 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,7 @@
 		558661491D8340240005285B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661451D833A540005285B /* MediaPlayer.framework */; };
 		5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661471D833ACD0005285B /* AVFoundation.framework */; };
 		AA56777A1D99D77A0084EBCE /* RadioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5677791D99D77A0084EBCE /* RadioModel.swift */; };
+		AAA977E31E2ACF9100B918C2 /* StationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA977E21E2ACF9100B918C2 /* StationCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 /* Begin PBXFileReference section */
 		551062661D5E3439008D10F6 /* Volna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Volna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		551062691D5E3439008D10F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5510626B1D5E3439008D10F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5510626B1D5E3439008D10F6 /* RadioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioViewController.swift; sourceTree = "<group>"; };
 		5510626E1D5E3439008D10F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		551062701D5E3439008D10F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551062731D5E3439008D10F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		558661451D833A540005285B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		558661471D833ACD0005285B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AA5677791D99D77A0084EBCE /* RadioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioModel.swift; sourceTree = "<group>"; };
+		AAA977E21E2ACF9100B918C2 /* StationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,8 @@
 			children = (
 				AA5677791D99D77A0084EBCE /* RadioModel.swift */,
 				551062691D5E3439008D10F6 /* AppDelegate.swift */,
-				5510626B1D5E3439008D10F6 /* ViewController.swift */,
+				5510626B1D5E3439008D10F6 /* RadioViewController.swift */,
+				AAA977E21E2ACF9100B918C2 /* StationCollectionViewCell.swift */,
 				5510626D1D5E3439008D10F6 /* Main.storyboard */,
 				558661421D8303F80005285B /* Supporting Files */,
 			);
@@ -279,9 +282,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5510626C1D5E3439008D10F6 /* ViewController.swift in Sources */,
+				5510626C1D5E3439008D10F6 /* RadioViewController.swift in Sources */,
 				5510626A1D5E3439008D10F6 /* AppDelegate.swift in Sources */,
 				AA56777A1D99D77A0084EBCE /* RadioModel.swift in Sources */,
+				AAA977E31E2ACF9100B918C2 /* StationCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

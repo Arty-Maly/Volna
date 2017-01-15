@@ -9,14 +9,14 @@ class RadioModel {
   init() {
     player = AVPlayer()
     radioStations = [
-      "Relax FM" : "http://stream01.media.rambler.ru:80/relax128.mp3",
+      "Relax FM" : "http://stream01.media.rambler.ru:80/relax128.mp3"
       ]
   }
   
   func setStation(_ station: String) {
     if let stationAddress = self.radioStations[station] {
       currentStation = station
-      DispatchQueue.global(qos: .userInitiated).async {
+      DispatchQueue.global(qos: .userInitiated).async { 
         if let stationUrl = (URL( string:stationAddress)) {
           let stationPlayerItem = AVPlayerItem(url:stationUrl)
           DispatchQueue.main.async {
@@ -43,17 +43,27 @@ class RadioModel {
     }
   }
   
+  
+  func getStationNameByPosition(position: Int) -> String {
+    return radioStations.keys.sorted()[position]
+  }
+  
+  func numberOfStations() -> Int {
+    return radioStations.count
+  }
+  
   func play() {
-    if currentStation == nil {
-      return
-    }
-    if isPaused() {
-      player.play()
+    if let station = currentStation {
+      if isPaused() {
+        player.play()
+      } else {
+        player.pause()
+      }
+      if isPlayBackBufferFull() {
+        setStation(station)
+      }
     } else {
-      player.pause()
-    }
-    if isPlayBackBufferFull() {
-      setStation(currentStation!)
+      return
     }
   }
   
