@@ -9,7 +9,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   private let numberOfItemsPerRow: Int
   @IBOutlet weak var stationTitle: UILabel!
   @IBOutlet weak var playButton: UIButton!
-  let reuseIdentifier = "stationCell"
+  private let reuseIdentifier = "stationCell"
   @IBOutlet weak var stationCollection: UICollectionView!
   
   required init(coder aDecoder: NSCoder) {
@@ -23,9 +23,6 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    print("view did load")
-    
     do {
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
       try AVAudioSession.sharedInstance().setActive(true)
@@ -33,7 +30,6 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
       print(error)
     }
   }
-  
   @IBAction func playStation() {
     player.play()
     togglePlaybackButton()
@@ -67,7 +63,6 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        print("flow")
     flowLayout.minimumLineSpacing = 10
     flowLayout.minimumInteritemSpacing = 10
     let totalSpace = flowLayout.sectionInset.left
