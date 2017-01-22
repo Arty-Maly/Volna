@@ -9,7 +9,7 @@
 import UIKit
 
 class StationCollectionViewCell: UICollectionViewCell {
-    
+  var stationUrl: String?
   @IBOutlet weak var stationName: UILabel!
-
+  
 }

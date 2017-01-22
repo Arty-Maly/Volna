@@ -1,12 +1,14 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
+import CoreData
 
 class RadioViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-  private var player: RadioModel
+  private var player: RadioPlayer
   private var playImage: UIImage
   private var pauseImage: UIImage
   private let numberOfItemsPerRow: Int
+  private var managedObjectContext: NSManagedObjectContext?
   @IBOutlet weak var stationTitle: UILabel!
   @IBOutlet weak var playButton: UIButton!
   private let reuseIdentifier = "stationCell"
@@ -14,7 +16,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   required init(coder aDecoder: NSCoder) {
     numberOfItemsPerRow = 3
-    player = RadioModel()
+    player = RadioPlayer()
     playImage = UIImage(named: "play_button.png")!
     pauseImage = UIImage(named: "pause_button.png")!
     
@@ -23,6 +25,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
     do {
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
       try AVAudioSession.sharedInstance().setActive(true)
@@ -35,8 +38,8 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
     togglePlaybackButton()
   }
   
-  private func setStation(stationName: String) {
-    player.setStation(stationName)
+  private func setStation(stationName: String, stationUrl: String) {
+    player.setStation(stationUrl)
     stationTitle.text = stationName
     togglePauseButton()
   }
@@ -58,7 +61,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return player.numberOfStations()
+    return RadioStation.getStationCount(inManagedContext: managedObjectContext!)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -74,14 +77,16 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! StationCollectionViewCell
-    cell.stationName.text = player.getStationNameByPosition(position: indexPath.item)
+    let station = RadioStation.getStationByPosition(position: (indexPath.item+1), inManagedContext: managedObjectContext!)
+    cell.stationName.text = station.name
     cell.backgroundColor = UIColor.cyan
+    cell.stationUrl = station.url
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
-    setStation(stationName: cell.stationName.text!)
+    setStation(stationName: cell.stationName.text!, stationUrl: cell.stationUrl!)
   }
 }
 

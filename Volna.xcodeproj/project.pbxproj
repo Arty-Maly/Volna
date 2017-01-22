@@ -16,8 +16,13 @@
 		5510628A1D5E3439008D10F6 /* VolnaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551062891D5E3439008D10F6 /* VolnaUITests.swift */; };
 		558661491D8340240005285B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661451D833A540005285B /* MediaPlayer.framework */; };
 		5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661471D833ACD0005285B /* AVFoundation.framework */; };
-		AA56777A1D99D77A0084EBCE /* RadioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5677791D99D77A0084EBCE /* RadioModel.swift */; };
+		AA56777A1D99D77A0084EBCE /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5677791D99D77A0084EBCE /* RadioPlayer.swift */; };
 		AAA977E31E2ACF9100B918C2 /* StationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA977E21E2ACF9100B918C2 /* StationCollectionViewCell.swift */; };
+		AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */; };
+		AAD40F2A1E2DA9D300FFA58E /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F261E2DA9D300FFA58E /* RadioStation.swift */; };
+		AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */; };
+		AAD40F2C1E2DA9D300FFA58E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F281E2DA9D300FFA58E /* User.swift */; };
+		AAD40F2D1E2DA9D300FFA58E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F291E2DA9D300FFA58E /* User+CoreDataProperties.swift */; };
 		AAF2319C1E2D5EF500564178 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF2319B1E2D5EF500564178 /* SplashViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +59,13 @@
 		5510628B1D5E3439008D10F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		558661451D833A540005285B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		558661471D833ACD0005285B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		AA5677791D99D77A0084EBCE /* RadioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioModel.swift; sourceTree = "<group>"; };
+		AA5677791D99D77A0084EBCE /* RadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		AAA977E21E2ACF9100B918C2 /* StationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionViewCell.swift; sourceTree = "<group>"; };
+		AAD40F141E2DA5B800FFA58E /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
+		AAD40F261E2DA9D300FFA58E /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
+		AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RadioStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AAD40F281E2DA9D300FFA58E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AAD40F291E2DA9D300FFA58E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AAF2319B1E2D5EF500564178 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,8 +121,9 @@
 		551062681D5E3439008D10F6 /* Volna */ = {
 			isa = PBXGroup;
 			children = (
+				AAD40F2E1E2DAA0900FFA58E /* Core Data */,
 				AAF2319B1E2D5EF500564178 /* SplashViewController.swift */,
-				AA5677791D99D77A0084EBCE /* RadioModel.swift */,
+				AA5677791D99D77A0084EBCE /* RadioPlayer.swift */,
 				551062691D5E3439008D10F6 /* AppDelegate.swift */,
 				5510626B1D5E3439008D10F6 /* RadioViewController.swift */,
 				AAA977E21E2ACF9100B918C2 /* StationCollectionViewCell.swift */,
@@ -148,6 +159,18 @@
 				551062751D5E3439008D10F6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAD40F2E1E2DAA0900FFA58E /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				AAD40F261E2DA9D300FFA58E /* RadioStation.swift */,
+				AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */,
+				AAD40F281E2DA9D300FFA58E /* User.swift */,
+				AAD40F291E2DA9D300FFA58E /* User+CoreDataProperties.swift */,
+				AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,8 +310,13 @@
 			files = (
 				5510626C1D5E3439008D10F6 /* RadioViewController.swift in Sources */,
 				5510626A1D5E3439008D10F6 /* AppDelegate.swift in Sources */,
-				AA56777A1D99D77A0084EBCE /* RadioModel.swift in Sources */,
+				AAD40F2A1E2DA9D300FFA58E /* RadioStation.swift in Sources */,
+				AA56777A1D99D77A0084EBCE /* RadioPlayer.swift in Sources */,
+				AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */,
+				AAD40F2C1E2DA9D300FFA58E /* User.swift in Sources */,
 				AAA977E31E2ACF9100B918C2 /* StationCollectionViewCell.swift in Sources */,
+				AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */,
+				AAD40F2D1E2DA9D300FFA58E /* User+CoreDataProperties.swift in Sources */,
 				AAF2319C1E2D5EF500564178 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,6 +582,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AAD40F141E2DA5B800FFA58E /* Schema.xcdatamodel */,
+			);
+			currentVersion = AAD40F141E2DA5B800FFA58E /* Schema.xcdatamodel */;
+			path = Schema.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5510625E1D5E3439008D10F6 /* Project object */;
 }
