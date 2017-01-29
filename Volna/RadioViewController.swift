@@ -7,6 +7,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   private var player: RadioPlayer
   private var playImage: UIImage
   private var pauseImage: UIImage
+
   private let numberOfItemsPerRow: Int
   private var managedObjectContext: NSManagedObjectContext?
   @IBOutlet weak var stationTitle: UILabel!
@@ -19,7 +20,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
     player = RadioPlayer()
     playImage = UIImage(named: "play_button.png")!
     pauseImage = UIImage(named: "pause_button.png")!
-    
+        
     super.init(coder: aDecoder)!
   }
   
@@ -77,10 +78,9 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! StationCollectionViewCell
-    let station = RadioStation.getStationByPosition(position: (indexPath.item+1), inManagedContext: managedObjectContext!)
-    cell.stationName.text = station.name
-    cell.backgroundColor = UIColor.cyan
-    cell.stationUrl = station.url
+    let station = RadioStation.getStationByPosition(position: (indexPath.item), inManagedContext: managedObjectContext!)
+    cell.prepareCellForDisplay(station)
+    
     return cell
   }
   

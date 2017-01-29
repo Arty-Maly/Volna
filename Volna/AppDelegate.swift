@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fatalError("Unresolved error \(error), \(error.userInfo)")
       }
     })
-    print("\(self.applicationDocumentsDirectory)")
+//    print("\(self.applicationDocumentsDirectory)")
     return container
   }()
   // MARK: - Core Data Saving support

@@ -15,15 +15,13 @@ public class RadioStation: NSManagedObject {
   class func saveStation(stationInfo: NSDictionary, inManagedContext context: NSManagedObjectContext) -> Bool {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
     request.predicate = NSPredicate(format: "name = %@", stationInfo["name"] as! String)
-    
     if let station = (try? context.fetch(request))?.first as? RadioStation {
       return true
-    } else if let station = NSEntityDescription.insertNewObject(forEntityName: "RadioStation", into: context) as? RadioStation{
-      print("in else")
+    } else if let station = NSEntityDescription.insertNewObject(forEntityName: "RadioStation", into: context) as? RadioStation {
       station.name = stationInfo["name"] as! String
       station.url = stationInfo["url"] as! String
-//      print(stationInfo["position"]!)
       station.position = Int32(stationInfo["position"] as! Int)
+      station.image = stationInfo["image"] as! String
       return true
     }
     

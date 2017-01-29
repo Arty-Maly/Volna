@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,19 +80,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.050000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-2L-8px">
-                                                    <rect key="frame" x="44.5" y="32.5" width="28.5" height="13.5"/>
+                                                    <rect key="frame" x="44.5" y="62.5" width="28.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nb4-Jl-qts">
+                                                    <rect key="frame" x="-61" y="-25" width="240" height="128"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.44315043587525504" green="1" blue="0.27538320128755522" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="NSg-2L-8px" firstAttribute="centerY" secondItem="TLr-3o-zrK" secondAttribute="centerY" id="aIg-za-y4h"/>
+                                            <constraint firstItem="nb4-Jl-qts" firstAttribute="width" secondItem="TLr-3o-zrK" secondAttribute="width" constant="122" id="EwV-CQ-atE"/>
+                                            <constraint firstItem="nb4-Jl-qts" firstAttribute="centerX" secondItem="TLr-3o-zrK" secondAttribute="centerX" id="F3t-hk-vzM"/>
+                                            <constraint firstItem="nb4-Jl-qts" firstAttribute="height" secondItem="TLr-3o-zrK" secondAttribute="height" constant="49" id="M9Q-ZF-7Hm"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="NSg-2L-8px" secondAttribute="bottom" constant="-5" id="e4K-GJ-roj"/>
+                                            <constraint firstItem="nb4-Jl-qts" firstAttribute="centerY" secondItem="TLr-3o-zrK" secondAttribute="centerY" id="mwK-Hv-eHJ"/>
                                             <constraint firstItem="NSg-2L-8px" firstAttribute="centerX" secondItem="TLr-3o-zrK" secondAttribute="centerX" id="rcg-Tr-ap5"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="imageView" destination="nb4-Jl-qts" id="425-68-bas"/>
                                             <outlet property="stationName" destination="NSg-2L-8px" id="6mB-JF-xNS"/>
                                         </connections>
                                     </collectionViewCell>
@@ -128,24 +135,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1522" y="-440"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="a5H-qp-Ifg">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LbK-fS-mMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="C5D-Zz-oM5" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="76B-KA-wYS"/>
-                        <viewControllerLayoutGuide type="bottom" id="zfK-mG-lDx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yzu-83-jVz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-1553" y="292"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="zK9-mu-Y05">

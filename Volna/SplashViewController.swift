@@ -19,18 +19,7 @@ class SplashViewController: UIViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    let url = NSURL(string: "")
-    let task = URLSession.shared.dataTask(with: url! as URL) {[weak self] (data, response, error) in
-      if let stations = self?.parseResponse(data: data!) {
-        print("in update")
-        self?.updateDatabase(stations as! Array<NSDictionary>)
-      }
-      DispatchQueue.main.async(){
-//        self?.printDatabaseStat()
-        self?.performSegue(withIdentifier: "transitionToRadio", sender:nil)
-      }
-    }
-    task.resume()
+    getListOfRadioStations()
   }
   
   
@@ -64,6 +53,21 @@ class SplashViewController: UIViewController {
     }
   }
   
+  private func getListOfRadioStations() {
+    let baseUrl = ""
+    let uuid = User.getUserUuid(inManagedContext: managedObjectContext!)
+    let url = NSURL(string: baseUrl + uuid)
+    let task = URLSession.shared.dataTask(with: url! as URL) {[weak self] (data, response, error) in
+      if let stations = self?.parseResponse(data: data!) {
+        self?.updateDatabase(stations as! Array<NSDictionary>)
+      }
+      DispatchQueue.main.async(){
+        self?.performSegue(withIdentifier: "transitionToRadio", sender:nil)
+      }
+    }
+    task.resume()
+  }
+  
   private func printDatabaseStat() {
     managedObjectContext?.perform {
       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
@@ -71,7 +75,6 @@ class SplashViewController: UIViewController {
 
       if let results = try? self.managedObjectContext!.fetch(request) {
         let a = results.first as! RadioStation
-        print(a.url)
       }
       
     }
