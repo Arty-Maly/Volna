@@ -18,13 +18,14 @@ class StationCollectionViewCell: UICollectionViewCell {
     placeholderImage = UIImage(named: "placeholder.png")!
     placeholderImage = placeholderImage.resizeImage(newWidth: CGFloat(90))
     super.init(coder: aDecoder)!
+    self.layer.cornerRadius = 20
   }
   
   func prepareCellForDisplay(_ station: RadioStation) {
     self.imageView.image = placeholderImage
     self.stationName.text = station.name
     self.stationName.layer.zPosition = 1
-    self.backgroundColor = UIColor.white
+    self.backgroundColor = UIColor.clear
     self.stationUrl = station.url
     let url = URL(string: station.image!)!
     setImage(url)
@@ -37,6 +38,7 @@ class StationCollectionViewCell: UICollectionViewCell {
       let image = UIImage(data: data!)!
       DispatchQueue.main.async { [weak self] in
         self?.imageView.image = image.resizeImage(newWidth: CGFloat(90))
+      
       }
     }
   }

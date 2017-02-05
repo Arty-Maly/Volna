@@ -7,6 +7,9 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   private var player: RadioPlayer
   private var playImage: UIImage
   private var pauseImage: UIImage
+  private var previousCell: StationCollectionViewCell?
+  private var currentStationPosition: Int?
+  private let infoCenter: MPNowPlayingInfoCenter
 
   private let numberOfItemsPerRow: Int
   private var managedObjectContext: NSManagedObjectContext?
@@ -20,13 +23,18 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
     player = RadioPlayer()
     playImage = UIImage(named: "play_button.png")!
     pauseImage = UIImage(named: "pause_button.png")!
-        
+    infoCenter = MPNowPlayingInfoCenter.default()
     super.init(coder: aDecoder)!
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
+    setRemoteCommandCenter()
+    setAvAudioSession()
+      }
+  
+  private func setAvAudioSession() {
     do {
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
       try AVAudioSession.sharedInstance().setActive(true)
@@ -34,13 +42,51 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
       print(error)
     }
   }
+  
+  private func setRemoteCommandCenter() {
+    let commandCenter = MPRemoteCommandCenter.shared()
+    commandCenter.playCommand.isEnabled = true
+    commandCenter.pauseCommand.isEnabled = true
+    commandCenter.nextTrackCommand.isEnabled =  true
+    commandCenter.previousTrackCommand.isEnabled =  true
+    commandCenter.playCommand.addTarget(self, action: #selector(playStation))
+    commandCenter.pauseCommand.addTarget(self, action: #selector(playStation))
+    
+    commandCenter.nextTrackCommand.addTarget(self, action: #selector(nextStation))
+    commandCenter.previousTrackCommand.addTarget(self, action: #selector(prevStation))
+  }
+  
   @IBAction func playStation() {
     player.play()
     togglePlaybackButton()
   }
   
-  private func setStation(stationName: String, stationUrl: String) {
+  @objc private func nextStation() {
+    let nextPosition = calcNextPosition(1)
+    let station = RadioStation.getStationByPosition(position: nextPosition, inManagedContext: managedObjectContext!)
+    setStation(stationName: station.name!, stationUrl: station.url!, position: nextPosition)
+  }
+  
+  @objc private func prevStation() {
+    let nextPosition = calcNextPosition(-1)
+    let station = RadioStation.getStationByPosition(position: nextPosition, inManagedContext: managedObjectContext!)
+    setStation(stationName: station.name!, stationUrl: station.url!, position: nextPosition)
+  }
+  
+  private func calcNextPosition(_ increment: Int) -> Int {
+    var  nextPosition = currentStationPosition! + increment
+    let stationCount = RadioStation.getStationCount(inManagedContext: managedObjectContext!)
+    if nextPosition > stationCount {
+      nextPosition = 0
+    } else if nextPosition < 0 {
+      nextPosition = stationCount - 1
+    }
+    return nextPosition
+  }
+  
+  private func setStation(stationName: String, stationUrl: String, position: Int) {
     player.setStation(stationUrl)
+    currentStationPosition = position
     stationTitle.text = stationName
     togglePauseButton()
   }
@@ -86,7 +132,17 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
-    setStation(stationName: cell.stationName.text!, stationUrl: cell.stationUrl!)
+    setStation(stationName: cell.stationName.text!, stationUrl: cell.stationUrl!, position: indexPath.item)
+    let albumArtWork = MPMediaItemArtwork(image: cell.imageView.image!)
+    infoCenter.nowPlayingInfo = [
+      MPMediaItemPropertyArtwork:albumArtWork
+    ]
+  }
+  func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
+    previousCell?.backgroundColor = UIColor.clear
+    cell.backgroundColor = UIColor(red:0.84, green:0.86, blue:0.88, alpha:0.85)
+    previousCell = cell
   }
 }
 
