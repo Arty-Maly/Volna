@@ -11,6 +11,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   private var currentStationPosition: Int?
   private let infoCenter: MPNowPlayingInfoCenter
 
+  @IBOutlet weak var bottomBar: UIView!
   private let numberOfItemsPerRow: Int
   private var managedObjectContext: NSManagedObjectContext?
   @IBOutlet weak var stationTitle: UILabel!
@@ -28,11 +29,12 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   }
   
   override func viewDidLoad() {
+    print("after")
     super.viewDidLoad()
     self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
     setRemoteCommandCenter()
     setAvAudioSession()
-      }
+  }
   
   private func setAvAudioSession() {
     do {

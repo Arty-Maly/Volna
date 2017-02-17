@@ -19,27 +19,33 @@ class StationCollectionViewCell: UICollectionViewCell {
     placeholderImage = placeholderImage.resizeImage(newWidth: CGFloat(90))
     super.init(coder: aDecoder)!
     self.layer.cornerRadius = 20
+    self.layer.masksToBounds = false
   }
   
   func prepareCellForDisplay(_ station: RadioStation) {
     self.imageView.image = placeholderImage
-    self.stationName.text = station.name
+    self.stationName.text = parseName(station.name!)
     self.stationName.layer.zPosition = 1
     self.backgroundColor = UIColor.clear
     self.stationUrl = station.url
-    let url = URL(string: station.image!)!
-    setImage(url)
+    setImage(station.image!)
   }
   
   
-  private func setImage(_ url: URL) {
-    DispatchQueue.global(qos: .userInitiated).async {
-      let data = try? Data(contentsOf: url)
-      let image = UIImage(data: data!)!
-      DispatchQueue.main.async { [weak self] in
-        self?.imageView.image = image.resizeImage(newWidth: CGFloat(90))
-      
+  private func setImage(_ url: String) {
+    DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+      if let image = ImageCache.shared[url] {
+        DispatchQueue.main.async {
+        self?.imageView.image = image
+        }
       }
     }
+  }
+  
+  private func parseName(_ name: String) -> String {
+    if name.characters.count >= 17 {
+      return name.replace(target: " ", withString: "\n")
+    }
+    return name
   }
 }

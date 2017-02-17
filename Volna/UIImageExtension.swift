@@ -5,8 +5,6 @@
 //  Created by Artem Malyshev on 1/29/17.
 //  Copyright © 2017 Artem Malyshev. All rights reserved.
 //
-
-import Foundation
 import UIKit
 
 extension UIImage {

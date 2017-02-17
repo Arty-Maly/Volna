@@ -12,20 +12,26 @@ import CoreData
 @objc(RadioStation)
 public class RadioStation: NSManagedObject {
   
-  class func saveStation(stationInfo: NSDictionary, inManagedContext context: NSManagedObjectContext) -> Bool {
+  class func saveStation(stationInfo: NSDictionary, inManagedContext context: NSManagedObjectContext) -> RadioStation? {
+    var radioStation: RadioStation?
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
     request.predicate = NSPredicate(format: "name = %@", stationInfo["name"] as! String)
     if let station = (try? context.fetch(request))?.first as? RadioStation {
-      return true
+      radioStation = station
     } else if let station = NSEntityDescription.insertNewObject(forEntityName: "RadioStation", into: context) as? RadioStation {
       station.name = stationInfo["name"] as! String
       station.url = stationInfo["url"] as! String
       station.position = Int32(stationInfo["position"] as! Int)
       station.image = stationInfo["image"] as! String
-      return true
+      radioStation = station
+    }
+    do {
+      try context.save()
+    } catch let error {
+      print(error)
     }
     
-    return true
+    return radioStation
   }
   
   class func getStationCount(inManagedContext context: NSManagedObjectContext) -> Int {
