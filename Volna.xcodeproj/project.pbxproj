@@ -26,6 +26,9 @@
 		AA4DC3071E577F55000A642E /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3031E577F55000A642E /* Thumbnail.swift */; };
 		AA4DC3081E577F55000A642E /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3041E577F55000A642E /* Thumbnail+CoreDataProperties.swift */; };
 		AA4DC30A1E57BEC1000A642E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3091E57BEC1000A642E /* StringExtension.swift */; };
+		AA4DC30E1E58C2DE000A642E /* RequestGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC30D1E58C2DE000A642E /* RequestGenerator.swift */; };
+		AA4DC3111E58C868000A642E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3101E58C868000A642E /* Constants.swift */; };
+		AA4DC3131E58CB6F000A642E /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3121E58CB6F000A642E /* DataHandler.swift */; };
 		AA56777A1D99D77A0084EBCE /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5677791D99D77A0084EBCE /* RadioPlayer.swift */; };
 		AA6FB2DC1E3555F600FE99B4 /* StationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */; };
 		AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */; };
@@ -80,6 +83,9 @@
 		AA4DC3031E577F55000A642E /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		AA4DC3041E577F55000A642E /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA4DC3091E57BEC1000A642E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		AA4DC30D1E58C2DE000A642E /* RequestGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestGenerator.swift; sourceTree = "<group>"; };
+		AA4DC3101E58C868000A642E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AA4DC3121E58CB6F000A642E /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		AA5677791D99D77A0084EBCE /* RadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAD40F141E2DA5B800FFA58E /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
@@ -143,17 +149,19 @@
 		551062681D5E3439008D10F6 /* Volna */ = {
 			isa = PBXGroup;
 			children = (
-				AA4DC2D91E5747AD000A642E /* views */,
+				AA4DC2D91E5747AD000A642E /* Views */,
 				AAD40F2E1E2DAA0900FFA58E /* Core Data */,
 				AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */,
 				AAF2319B1E2D5EF500564178 /* SplashViewController.swift */,
+				AA4DC30F1E58C2F7000A642E /* Services */,
 				AA5677791D99D77A0084EBCE /* RadioPlayer.swift */,
 				551062691D5E3439008D10F6 /* AppDelegate.swift */,
 				5510626B1D5E3439008D10F6 /* RadioViewController.swift */,
-				AA4DC2D81E574786000A642E /* extensions */,
+				AA4DC2D81E574786000A642E /* Util */,
 				5510626D1D5E3439008D10F6 /* Main.storyboard */,
 				558661421D8303F80005285B /* Supporting Files */,
 				AA4DC2E41E5758BA000A642E /* Colors.swift */,
+				AA4DC3101E58C868000A642E /* Constants.swift */,
 				AA4DC2E61E577168000A642E /* ImageCache.swift */,
 			);
 			path = Volna;
@@ -186,24 +194,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AA4DC2D81E574786000A642E /* extensions */ = {
+		AA4DC2D81E574786000A642E /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				AAE01CD01E3E69C500153BA9 /* UIImageExtension.swift */,
 				AA4DC2DE1E5753AF000A642E /* CALayerExtension.swift */,
 				AA4DC3091E57BEC1000A642E /* StringExtension.swift */,
 			);
-			name = extensions;
+			name = Util;
 			sourceTree = "<group>";
 		};
-		AA4DC2D91E5747AD000A642E /* views */ = {
+		AA4DC2D91E5747AD000A642E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AA4DC2DA1E574814000A642E /* BarView.swift */,
 				AA4DC2E01E5754A1000A642E /* BottomBar.swift */,
 				AA4DC2E21E5757B1000A642E /* TopBar.swift */,
 			);
-			name = views;
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AA4DC30F1E58C2F7000A642E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AA4DC30D1E58C2DE000A642E /* RequestGenerator.swift */,
+				AA4DC3121E58CB6F000A642E /* DataHandler.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		AAD40F2E1E2DAA0900FFA58E /* Core Data */ = {
@@ -365,6 +382,7 @@
 				AA4DC3051E577F55000A642E /* FullResImage.swift in Sources */,
 				AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */,
 				AAD40F2C1E2DA9D300FFA58E /* User.swift in Sources */,
+				AA4DC30E1E58C2DE000A642E /* RequestGenerator.swift in Sources */,
 				AA4DC2DF1E5753AF000A642E /* CALayerExtension.swift in Sources */,
 				AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */,
 				AA4DC3081E577F55000A642E /* Thumbnail+CoreDataProperties.swift in Sources */,
@@ -378,6 +396,8 @@
 				AAE01CD11E3E69C500153BA9 /* UIImageExtension.swift in Sources */,
 				AA4DC30A1E57BEC1000A642E /* StringExtension.swift in Sources */,
 				AAF2319C1E2D5EF500564178 /* SplashViewController.swift in Sources */,
+				AA4DC3111E58C868000A642E /* Constants.swift in Sources */,
+				AA4DC3131E58CB6F000A642E /* DataHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

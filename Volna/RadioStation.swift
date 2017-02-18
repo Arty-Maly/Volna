@@ -12,17 +12,17 @@ import CoreData
 @objc(RadioStation)
 public class RadioStation: NSManagedObject {
   
-  class func saveStation(stationInfo: NSDictionary, inManagedContext context: NSManagedObjectContext) -> RadioStation? {
+  class func saveStation(stationInfo: [String: String], inManagedContext context: NSManagedObjectContext) -> RadioStation? {
     var radioStation: RadioStation?
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
-    request.predicate = NSPredicate(format: "name = %@", stationInfo["name"] as! String)
+    request.predicate = NSPredicate(format: "name = %@", stationInfo["name"]!)
     if let station = (try? context.fetch(request))?.first as? RadioStation {
       radioStation = station
     } else if let station = NSEntityDescription.insertNewObject(forEntityName: "RadioStation", into: context) as? RadioStation {
-      station.name = stationInfo["name"] as! String
-      station.url = stationInfo["url"] as! String
-      station.position = Int32(stationInfo["position"] as! Int)
-      station.image = stationInfo["image"] as! String
+      station.name = stationInfo["name"]
+      station.url = stationInfo["url"]
+      station.position = Int32(stationInfo["position"]!)!
+      station.image = stationInfo["image"]
       radioStation = station
     }
     do {
@@ -30,7 +30,6 @@ public class RadioStation: NSManagedObject {
     } catch let error {
       print(error)
     }
-    
     return radioStation
   }
   
@@ -51,5 +50,14 @@ public class RadioStation: NSManagedObject {
     let station = (try? context.fetch(request))?.first as! RadioStation
 
     return station
+  }
+  
+  func toHash() -> [String: String] {
+    let dict =  [ "name": self.name! as String,
+                  "url" : self.url! as String,
+                  "position": String(self.position),
+                  "image": self.image! as String
+                ]
+    return dict
   }
 }

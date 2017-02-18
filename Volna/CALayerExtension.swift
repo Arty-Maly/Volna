@@ -31,7 +31,6 @@ extension CALayer {
     }
     
     border.backgroundColor = color.cgColor;
-    print(self)
     self.addSublayer(border)
   }
   

@@ -23,11 +23,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSz-VW-WLj" userLabel="Top Bar" customClass="TopBar" customModule="Volna">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezN-Hk-BTt">
-                                        <rect key="frame" x="0.0" y="15.5" width="375" height="19.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="33.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -35,9 +35,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ezN-Hk-BTt" secondAttribute="trailing" id="Htg-wL-4R0"/>
-                                    <constraint firstItem="ezN-Hk-BTt" firstAttribute="centerY" secondItem="nSz-VW-WLj" secondAttribute="centerY" id="IQY-TT-r8f"/>
+                                    <constraint firstItem="ezN-Hk-BTt" firstAttribute="centerY" secondItem="nSz-VW-WLj" secondAttribute="centerY" constant="7" id="IQY-TT-r8f"/>
                                     <constraint firstItem="ezN-Hk-BTt" firstAttribute="centerX" secondItem="nSz-VW-WLj" secondAttribute="centerX" id="bw2-de-ISg"/>
-                                    <constraint firstAttribute="height" constant="50" id="eYc-De-6cu"/>
+                                    <constraint firstAttribute="height" constant="70" id="eYc-De-6cu"/>
                                     <constraint firstItem="ezN-Hk-BTt" firstAttribute="leading" secondItem="nSz-VW-WLj" secondAttribute="leading" id="x4k-e3-WlR"/>
                                 </constraints>
                             </view>
@@ -124,7 +124,7 @@
                             <constraint firstItem="eT9-kI-uaZ" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="dsd-6n-VMJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eT9-kI-uaZ" secondAttribute="trailing" constant="-16" id="hWy-uW-Xod"/>
                             <constraint firstItem="nSz-VW-WLj" firstAttribute="bottom" secondItem="eT9-kI-uaZ" secondAttribute="top" id="ngW-pO-aF1"/>
-                            <constraint firstItem="nSz-VW-WLj" firstAttribute="top" secondItem="X2q-ln-itN" secondAttribute="bottom" id="ty0-H3-FWM"/>
+                            <constraint firstItem="nSz-VW-WLj" firstAttribute="top" secondItem="X2q-ln-itN" secondAttribute="bottom" constant="-20" id="ty0-H3-FWM"/>
                         </constraints>
                     </view>
                     <connections>

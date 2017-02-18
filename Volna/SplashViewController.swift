@@ -47,7 +47,7 @@ class SplashViewController: UIViewController {
     return parsedData
   }
   
-  private func updateDatabase(_ stations: Array<NSDictionary>) {
+  private func updateDatabase(_ stations: Array<[String: String]>) {
     managedObjectContext?.perform {
       for station in stations {
         if let model = RadioStation.saveStation(stationInfo: station, inManagedContext: self.managedObjectContext!) {
@@ -98,9 +98,6 @@ class SplashViewController: UIViewController {
       do {
         let fetchResult = try moc.fetch(fetchRequest)
         if fetchResult.count > 0 {
-//          DispatchQueue.main.async(){
-//            self.performSegue(withIdentifier: "transitionToRadio", sender:nil)
-//          }
           return
         }
       } catch {
@@ -125,20 +122,22 @@ class SplashViewController: UIViewController {
       }
       
 //      moc.refreshAllObjects()
-      print ("right before")
     }
   }
   
   private func getListOfRadioStations() {
-    let baseUrl = ""
-    let uuid = User.getUserUuid(inManagedContext: managedObjectContext!)
-    let url = NSURL(string: baseUrl + uuid)
-    let task = URLSession.shared.dataTask(with: url! as URL) {[weak self] (data, response, error) in
-      if let stations = self?.parseResponse(data: data!) {
-        self?.updateDatabase(stations as! Array<NSDictionary>)
-      }
-    }
-    task.resume()
+//    let baseUrl = Constants.apiBaseURL
+//    let uuid = User.getUserUuid(inManagedContext: managedObjectContext!)
+//    let url = NSURL(string: baseUrl + uuid)
+//    let task = URLSession.shared.dataTask(with: url! as URL) {[weak self] (data, response, error) in
+//      if let stations = self?.parseResponse(data: data!) {
+//        self?.updateDatabase(stations as! Array<NSDictionary>)
+//      }
+//    }
+//    task.resume()
+    let dataHandler = DataHandler.shared
+    dataHandler.syncRadioStations()
+    
   }
   
   private func printDatabaseStat() {
