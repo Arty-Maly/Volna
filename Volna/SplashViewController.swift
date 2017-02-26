@@ -17,14 +17,19 @@ class SplashViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
     self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
-//    imagePickerSetup()
-//    coreDataSetup()
-    
+    NotificationCenter.default.addObserver(self,
+                                            selector: #selector(self.segueToMainView),
+                                            name: NSNotification.Name(Constants.myNotificationKey),
+                                            object: nil)
 
   }
   
+  @objc private func segueToMainView() {
+    DispatchQueue.main.async(){
+      self.performSegue(withIdentifier: "transitionToRadio", sender:nil)
+    }
+  }
   override func viewDidAppear(_ animated: Bool) {
     getListOfRadioStations()
   }
@@ -51,9 +56,9 @@ class SplashViewController: UIViewController {
     managedObjectContext?.perform {
       for station in stations {
         if let model = RadioStation.saveStation(stationInfo: station, inManagedContext: self.managedObjectContext!) {
-          let data = try? Data(contentsOf:  URL(string: model.image!)!)
+          let data = try? Data(contentsOf:  URL(string: model.image)!)
           let image = UIImage(data: data!)!
-          self.prepareImageForSaving(image: image, url: model.image!)
+          self.prepareImageForSaving(image: image, url: model.image)
         }
         
       }
@@ -109,7 +114,6 @@ class SplashViewController: UIViewController {
       }
       
       fullRes.imageData = imageData
-//      fullRes.url = url
       
       thumbnail.imageData = thumbnailData
       thumbnail.id = date as NSNumber
@@ -121,7 +125,7 @@ class SplashViewController: UIViewController {
         fatalError("Failure to save context: \(error)")
       }
       
-//      moc.refreshAllObjects()
+      moc.refreshAllObjects()
     }
   }
   
@@ -146,7 +150,7 @@ class SplashViewController: UIViewController {
       request.predicate = NSPredicate(format: "name = %@", "NRJ")
 
       if let results = try? self.managedObjectContext!.fetch(request) {
-        let a = results.first as! RadioStation
+        let _ = results.first as! RadioStation
       }
       
     }

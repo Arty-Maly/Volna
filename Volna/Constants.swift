@@ -8,6 +8,6 @@
 
 struct Constants {
   static let apiBaseURL = ""
-  
+  static let myNotificationKey = "Data Handler Channel"
 }
 

@@ -19,14 +19,15 @@ public class RadioStation: NSManagedObject {
     if let station = (try? context.fetch(request))?.first as? RadioStation {
       radioStation = station
     } else if let station = NSEntityDescription.insertNewObject(forEntityName: "RadioStation", into: context) as? RadioStation {
-      station.name = stationInfo["name"]
-      station.url = stationInfo["url"]
+      station.name = stationInfo["name"]!
+      station.url = stationInfo["url"]!
       station.position = Int32(stationInfo["position"]!)!
-      station.image = stationInfo["image"]
+      station.image = stationInfo["image"]!
       radioStation = station
     }
     do {
-      try context.save()
+      try context.save()      
+    
     } catch let error {
       print(error)
     }
@@ -53,11 +54,23 @@ public class RadioStation: NSManagedObject {
   }
   
   func toHash() -> [String: String] {
-    let dict =  [ "name": self.name! as String,
-                  "url" : self.url! as String,
+    let dict =  [ "name": self.name as String,
+                  "url" : self.url as String,
                   "position": String(self.position),
-                  "image": self.image! as String
+                  "image": self.image as String
                 ]
     return dict
+  }
+  
+  func update(attributes: [String: String]) {
+    self.image = attributes["image"]!
+    self.name = attributes["name"]!
+    self.position = Int32(attributes["position"]!)!
+    self.url = attributes["url"]!
+//    do {
+//      try self.managedObjectContext?.save()
+//    } catch let error {
+//      print(error)
+//    }
   }
 }

@@ -24,17 +24,17 @@ class StationCollectionViewCell: UICollectionViewCell {
   
   func prepareCellForDisplay(_ station: RadioStation) {
     self.imageView.image = placeholderImage
-    self.stationName.text = parseName(station.name!)
+    self.stationName.text = parseName(station.name)
     self.stationName.layer.zPosition = 1
     self.backgroundColor = UIColor.clear
     self.stationUrl = station.url
-    setImage(station.image!)
+    setImage(station.image)
   }
   
   
   private func setImage(_ url: String) {
     DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-      if let image = ImageCache.shared[url] {
+      if let image = ImageCache.shared[url, "SD"] {
         DispatchQueue.main.async {
         self?.imageView.image = image
         }

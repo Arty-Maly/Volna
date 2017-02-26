@@ -2,6 +2,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 import CoreData
+import GoogleMobileAds
 
 class RadioViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   private var player: RadioPlayer
@@ -11,6 +12,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   private var currentStationPosition: Int?
   private let infoCenter: MPNowPlayingInfoCenter
 
+  @IBOutlet weak var bannerView: GADBannerView!
   @IBOutlet weak var bottomBar: UIView!
   private let numberOfItemsPerRow: Int
   private var managedObjectContext: NSManagedObjectContext?
@@ -29,8 +31,12 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   }
   
   override func viewDidLoad() {
-    print("after")
     super.viewDidLoad()
+    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+    bannerView.rootViewController = self
+    bannerView.load(GADRequest())
+    print("view did load")
+    
     self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
     setRemoteCommandCenter()
     setAvAudioSession()
@@ -60,19 +66,20 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   @IBAction func playStation() {
     player.play()
+    
     togglePlaybackButton()
   }
   
   @objc private func nextStation() {
     let nextPosition = calcNextPosition(1)
     let station = RadioStation.getStationByPosition(position: nextPosition, inManagedContext: managedObjectContext!)
-    setStation(stationName: station.name!, stationUrl: station.url!, position: nextPosition)
+    setStation(stationName: station.name, stationUrl: station.url, position: nextPosition)
   }
   
   @objc private func prevStation() {
     let nextPosition = calcNextPosition(-1)
     let station = RadioStation.getStationByPosition(position: nextPosition, inManagedContext: managedObjectContext!)
-    setStation(stationName: station.name!, stationUrl: station.url!, position: nextPosition)
+    setStation(stationName: station.name, stationUrl: station.url, position: nextPosition)
   }
   
   private func calcNextPosition(_ increment: Int) -> Int {
@@ -89,8 +96,14 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   private func setStation(stationName: String, stationUrl: String, position: Int) {
     player.setStation(stationUrl)
     currentStationPosition = position
+    let station = RadioStation.getStationByPosition(position: currentStationPosition!, inManagedContext: managedObjectContext!)
+    let image = ImageCache.shared[station.image, "HD"]
     stationTitle.text = stationName
     togglePauseButton()
+    let albumArtWork = MPMediaItemArtwork(image: image!)
+    infoCenter.nowPlayingInfo = [
+      MPMediaItemPropertyArtwork:albumArtWork
+    ]
   }
   
   private func togglePlayButton() {
@@ -135,15 +148,8 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
     setStation(stationName: cell.stationName.text!, stationUrl: cell.stationUrl!, position: indexPath.item)
-    let albumArtWork = MPMediaItemArtwork(image: cell.imageView.image!)
-    infoCenter.nowPlayingInfo = [
-      MPMediaItemPropertyArtwork:albumArtWork
-    ]
-  }
-  func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-    let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
     previousCell?.backgroundColor = UIColor.clear
-    cell.backgroundColor = UIColor(red:0.84, green:0.86, blue:0.88, alpha:0.85)
+    cell.backgroundColor = Colors.highlightColor
     previousCell = cell
   }
 }
