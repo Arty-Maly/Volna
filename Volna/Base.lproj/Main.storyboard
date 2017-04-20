@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7R8-hB-aXW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7R8-hB-aXW">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,13 +41,13 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eT9-kI-uaZ">
-                                <rect key="frame" x="0.0" y="70" width="414" height="627"/>
+                                <rect key="frame" x="0.0" y="70" width="414" height="616"/>
                                 <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="baD-Dm-zbc">
                                     <size key="itemSize" width="118" height="79"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="55"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stationCell" id="TLr-3o-zrK" customClass="StationCollectionViewCell" customModule="Volna" customModuleProvider="target">
@@ -90,7 +90,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0x-OB-Wtw" customClass="GADBannerView">
-                                <rect key="frame" x="47" y="647" width="320" height="50"/>
+                                <rect key="frame" x="47" y="636" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="H9p-yE-fab"/>
@@ -98,10 +98,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW2-Yx-Vpt" userLabel="Bottom Bar" customClass="BottomBar" customModule="Volna">
-                                <rect key="frame" x="0.0" y="697" width="414" height="39"/>
+                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-w4-s9R">
-                                        <rect key="frame" x="185" y="8" width="45" height="23"/>
+                                        <rect key="frame" x="185" y="8" width="45" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="CGw-sP-bIr"/>
                                         </constraints>
@@ -114,6 +114,7 @@
                                 <constraints>
                                     <constraint firstItem="VQo-w4-s9R" firstAttribute="centerX" secondItem="WW2-Yx-Vpt" secondAttribute="centerX" id="djv-T9-cgK"/>
                                     <constraint firstItem="VQo-w4-s9R" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="bottomMargin" id="qo8-yW-5M5"/>
+                                    <constraint firstAttribute="height" constant="50" id="qxB-gf-SZA"/>
                                     <constraint firstItem="VQo-w4-s9R" firstAttribute="top" secondItem="WW2-Yx-Vpt" secondAttribute="topMargin" id="sUf-Qc-FKl"/>
                                 </constraints>
                             </view>
@@ -158,21 +159,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqD-Gb-hgo">
-                                <rect key="frame" x="71" y="252" width="233" height="163"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="jgt-YX-1la">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Загружаю" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjd-cV-CT3">
+                                <rect key="frame" x="0.0" y="329" width="414" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jgt-YX-1la">
-                                <rect key="frame" x="177" y="362" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.38431372549999998" green="0.65490196079999996" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="YqD-Gb-hgo" firstAttribute="centerX" secondItem="YLM-3j-O1n" secondAttribute="centerX" id="XId-h9-n4s"/>
-                            <constraint firstItem="YqD-Gb-hgo" firstAttribute="centerY" secondItem="YLM-3j-O1n" secondAttribute="centerY" id="pKZ-Df-7OC"/>
+                            <constraint firstAttribute="trailing" secondItem="Jjd-cV-CT3" secondAttribute="trailing" id="2qG-BP-FLh"/>
+                            <constraint firstItem="jgt-YX-1la" firstAttribute="centerY" secondItem="YLM-3j-O1n" secondAttribute="centerY" id="3Zs-5S-m8D"/>
+                            <constraint firstItem="Jjd-cV-CT3" firstAttribute="leading" secondItem="YLM-3j-O1n" secondAttribute="leading" id="G8C-h8-rsl"/>
+                            <constraint firstItem="Jjd-cV-CT3" firstAttribute="centerX" secondItem="jgt-YX-1la" secondAttribute="centerX" id="Nqa-jp-9He"/>
+                            <constraint firstItem="jgt-YX-1la" firstAttribute="top" secondItem="Jjd-cV-CT3" secondAttribute="bottom" constant="8" symbolic="YES" id="OYH-3I-ZEw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lhb-yJ-RYh"/>
@@ -182,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ki-lH-1UY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559.2" y="-440.32983508245883"/>
+            <point key="canvasLocation" x="1557.9710144927537" y="-441.03260869565219"/>
         </scene>
     </scenes>
     <resources>

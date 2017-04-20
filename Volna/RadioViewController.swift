@@ -32,10 +32,9 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-    bannerView.rootViewController = self
-    bannerView.load(GADRequest())
-    print("view did load")
+    //bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+  //  bannerView.rootViewController = self
+//    bannerView.load(GADRequest())
     
     self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
     setRemoteCommandCenter()
@@ -141,15 +140,18 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! StationCollectionViewCell
     let station = RadioStation.getStationByPosition(position: (indexPath.item), inManagedContext: managedObjectContext!)
     cell.prepareCellForDisplay(station)
-    
+    if station.name == stationTitle.text { cell.backgroundColor = Colors.highlightColor }
+    previousCell?.backgroundColor = UIColor.clear
+
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
     setStation(stationName: cell.stationName.text!, stationUrl: cell.stationUrl!, position: indexPath.item)
-    previousCell?.backgroundColor = UIColor.clear
     cell.backgroundColor = Colors.highlightColor
+    previousCell?.backgroundColor = UIColor.clear
+    
     previousCell = cell
   }
 }

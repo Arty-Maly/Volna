@@ -31,6 +31,7 @@
 		AA4DC30E1E58C2DE000A642E /* RequestMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC30D1E58C2DE000A642E /* RequestMaker.swift */; };
 		AA4DC3111E58C868000A642E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3101E58C868000A642E /* Constants.swift */; };
 		AA4DC3131E58CB6F000A642E /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3121E58CB6F000A642E /* DataHandler.swift */; };
+		AA5095911E8ED59E00391B40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5095901E8ED59E00391B40 /* LaunchScreen.storyboard */; };
 		AA56777A1D99D77A0084EBCE /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5677791D99D77A0084EBCE /* RadioPlayer.swift */; };
 		AA6FB2DC1E3555F600FE99B4 /* StationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */; };
 		AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */; };
@@ -99,8 +100,10 @@
 		AA4DC30D1E58C2DE000A642E /* RequestMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaker.swift; sourceTree = "<group>"; };
 		AA4DC3101E58C868000A642E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA4DC3121E58CB6F000A642E /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		AA5095901E8ED59E00391B40 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA5677791D99D77A0084EBCE /* RadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
 		AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionViewCell.swift; sourceTree = "<group>"; };
+		AAB1F8D21E8DE26A007149BE /* Volna.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Volna.entitlements; sourceTree = "<group>"; };
 		AAD40F141E2DA5B800FFA58E /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
 		AAD40F261E2DA9D300FFA58E /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
 		AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RadioStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 				5510626B1D5E3439008D10F6 /* RadioViewController.swift */,
 				AA4DC2D81E574786000A642E /* Util */,
 				5510626D1D5E3439008D10F6 /* Main.storyboard */,
+				AA5095901E8ED59E00391B40 /* LaunchScreen.storyboard */,
 				558661421D8303F80005285B /* Supporting Files */,
 				AA4DC2E41E5758BA000A642E /* Colors.swift */,
 				AA4DC3101E58C868000A642E /* Constants.swift */,
@@ -207,6 +211,7 @@
 		558661421D8303F80005285B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AAB1F8D21E8DE26A007149BE /* Volna.entitlements */,
 				551062701D5E3439008D10F6 /* Assets.xcassets */,
 				AA26733C1E635F94000C6DA5 /* GoogleService-Info.plist */,
 				551062751D5E3439008D10F6 /* Info.plist */,
@@ -359,8 +364,13 @@
 				TargetAttributes = {
 					551062651D5E3439008D10F6 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = GBJ2RBF453;
+						DevelopmentTeam = FGCTCY7236;
 						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					551062791D5E3439008D10F6 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -400,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551062711D5E3439008D10F6 /* Assets.xcassets in Resources */,
+				AA5095911E8ED59E00391B40 /* LaunchScreen.storyboard in Resources */,
 				5510626F1D5E3439008D10F6 /* Main.storyboard in Resources */,
 				AA26733D1E635F94000C6DA5 /* GoogleService-Info.plist in Resources */,
 			);
@@ -679,7 +690,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -720,7 +731,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -731,16 +742,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Volna/Volna.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FGCTCY7236;
 				INFOPLIST_FILE = Volna/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = artem.Volna;
+				PRODUCT_BUNDLE_IDENTIFIER = art.Volna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Volna/Volna-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -750,15 +764,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Volna/Volna.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FGCTCY7236;
 				INFOPLIST_FILE = Volna/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = artem.Volna;
+				PRODUCT_BUNDLE_IDENTIFIER = art.Volna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Volna/Volna-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -40,7 +40,7 @@ final class ImageCache {
       let result = try managedObjectContext.fetch(fetchRequest)
       if let imageData = result.first {
         let sdImage = UIImage(data: imageData.imageData as Data)!
-        let hdImage = UIImage(data: imageData.fullResImage.imageData as! Data)!
+        let hdImage = UIImage(data: imageData.fullResImage.imageData! as Data)!
         cache[url+"SD"] = sdImage
         cache[url+"HD"] = hdImage
       }
