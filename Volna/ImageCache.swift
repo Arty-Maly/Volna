@@ -43,6 +43,9 @@ final class ImageCache {
         let hdImage = UIImage(data: imageData.fullResImage.imageData! as Data)!
         cache[url+"SD"] = sdImage
         cache[url+"HD"] = hdImage
+      } else {
+        cache[url+"SD"] = UIImage(named: "placeholder.png")!
+        cache[url+"HD"] = UIImage(named: "placeholder.png")!
       }
     } catch let error as NSError {
       print("Error: \(error.localizedDescription)")

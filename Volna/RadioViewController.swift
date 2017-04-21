@@ -8,7 +8,7 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   private var player: RadioPlayer
   private var playImage: UIImage
   private var pauseImage: UIImage
-  private var previousCell: StationCollectionViewCell?
+  private var previousStationPosition: Int?
   private var currentStationPosition: Int?
   private let infoCenter: MPNowPlayingInfoCenter
 
@@ -94,10 +94,12 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   private func setStation(stationName: String, stationUrl: String, position: Int) {
     player.setStation(stationUrl)
+    stationTitle.text = stationName
+    previousStationPosition = currentStationPosition
+    
     currentStationPosition = position
     let station = RadioStation.getStationByPosition(position: currentStationPosition!, inManagedContext: managedObjectContext!)
     let image = ImageCache.shared[station.image, "HD"]
-    stationTitle.text = stationName
     togglePauseButton()
     let albumArtWork = MPMediaItemArtwork(image: image!)
     infoCenter.nowPlayingInfo = [
@@ -141,7 +143,6 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
     let station = RadioStation.getStationByPosition(position: (indexPath.item), inManagedContext: managedObjectContext!)
     cell.prepareCellForDisplay(station)
     if station.name == stationTitle.text { cell.backgroundColor = Colors.highlightColor }
-    previousCell?.backgroundColor = UIColor.clear
 
     return cell
   }
@@ -149,10 +150,11 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
     setStation(stationName: cell.stationName.text!, stationUrl: cell.stationUrl!, position: indexPath.item)
+    if let previousPosition = previousStationPosition {
+      let previousCell = collectionView.cellForItem(at: IndexPath(row: previousPosition, section: 0))
+      previousCell?.backgroundColor = UIColor.clear
+    }
     cell.backgroundColor = Colors.highlightColor
-    previousCell?.backgroundColor = UIColor.clear
-    
-    previousCell = cell
   }
 }
 
