@@ -39,12 +39,40 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
     self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
     setRemoteCommandCenter()
     setAvAudioSession()
+    
+    let theSession = AVAudioSession.sharedInstance()
+    NotificationCenter.default.addObserver(self,
+                                                     selector: #selector(self.playInterrupt),
+                                                     name: NSNotification.Name.AVAudioSessionInterruption,
+                                                     object: theSession)
+  }
+  
+  func playInterrupt(notification: NSNotification) {
+    if notification.name == NSNotification.Name.AVAudioSessionInterruption
+      && notification.userInfo != nil {
+      
+      var info = notification.userInfo!
+      var intValue: UInt = 0
+      (info[AVAudioSessionInterruptionTypeKey] as! NSValue).getValue(&intValue)
+      if let type = AVAudioSessionInterruptionType(rawValue: intValue) {
+        switch type {
+          case .began:
+            player.pause()
+          
+          case .ended:
+            _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.resumeNow), userInfo: nil, repeats: false)
+        }
+      }
+    }
+  }
+  func resumeNow(timer : Timer) {
+    player.play()
   }
   
   private func setAvAudioSession() {
     do {
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-      try AVAudioSession.sharedInstance().setActive(true)
+      try AVAudioSession.sharedInstance().setActive(true, with: .notifyOthersOnDeactivation)
     } catch {
       print(error)
     }

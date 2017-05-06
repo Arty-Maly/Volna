@@ -52,4 +52,8 @@ class RadioPlayer {
     }
   }
   
+  func pause() {
+    player.pause()
+  }
+  
 }
