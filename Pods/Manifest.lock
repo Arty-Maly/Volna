@@ -1,4 +1,15 @@
 PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FBSDKCoreKit (4.22.0):
+    - Bolts (~> 1.7)
   - Firebase/AdMob (3.16.0):
     - Firebase/Core
     - Google-Mobile-Ads-SDK (= 7.19.1)
@@ -19,10 +30,14 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
 
 DEPENDENCIES:
+  - FacebookCore
   - Firebase/AdMob
   - Firebase/Core
 
 SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
   Firebase: 21bf4a89d3f01bfbe11adc3a5d934a4a3d3a5fd6
   FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -30,6 +45,6 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 43ac87810e4961f5093024d3525bfe022f956da3
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
 
-PODFILE CHECKSUM: d2d068878a29c0cc41d42d7bff1999dc94dfcfb7
+PODFILE CHECKSUM: 3a31c53962cfea6e6927414c966989181fa68ffc
 
 COCOAPODS: 1.2.0

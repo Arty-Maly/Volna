@@ -57,15 +57,20 @@ class RadioViewController: UIViewController, UICollectionViewDataSource, UIColle
       if let type = AVAudioSessionInterruptionType(rawValue: intValue) {
         switch type {
           case .began:
+            print("began")
             player.pause()
           
           case .ended:
-            _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.resumeNow), userInfo: nil, repeats: false)
+            print("ended")
+            resumeNow()
         }
       }
     }
   }
-  func resumeNow(timer : Timer) {
+  func resumeNow() {
+    player = RadioPlayer()
+    let station = RadioStation.getStationByPosition(position: currentStationPosition!, inManagedContext: managedObjectContext!)
+    setStation(stationName: station.name, stationUrl: station.url, position: currentStationPosition!)
     player.play()
   }
   

@@ -7,7 +7,7 @@
 //
 
 struct Constants {
-  static let apiBaseURL = ""
+  static let apiBaseURL = "http://rusradio.plus/api/radiostations?uuid="
   static let myNotificationKey = "Data Handler Channel"
 }
 
