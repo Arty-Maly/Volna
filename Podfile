@@ -19,5 +19,5 @@ target 'Volna' do
   
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'
-  pod 'FacebookCore'
+  pod 'Firebase/Crash'
 end

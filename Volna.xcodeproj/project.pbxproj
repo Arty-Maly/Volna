@@ -16,7 +16,9 @@
 		558661491D8340240005285B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661451D833A540005285B /* MediaPlayer.framework */; };
 		5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661471D833ACD0005285B /* AVFoundation.framework */; };
 		8EFA1376D7DBE032AFD25C8C /* Pods_VolnaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2526A7B5837291F45AB73302 /* Pods_VolnaTests.framework */; };
-		AA26733D1E635F94000C6DA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA26733C1E635F94000C6DA5 /* GoogleService-Info.plist */; };
+		AA20F29A1EEE1A5700F2F760 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA20F2991EEE1A5700F2F760 /* GoogleService-Info.plist */; };
+		AA20F29D1EEE22D000F2F760 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20F29C1EEE22D000F2F760 /* AdSupport.framework */; };
+		AA20F2A01EEE2C3500F2F760 /* volna-firebase-crashreporting.json in Resources */ = {isa = PBXBuildFile; fileRef = AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */; };
 		AA4DC2DB1E574814000A642E /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC2DA1E574814000A642E /* BarView.swift */; };
 		AA4DC2DF1E5753AF000A642E /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC2DE1E5753AF000A642E /* CALayerExtension.swift */; };
 		AA4DC2E11E5754A1000A642E /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC2E01E5754A1000A642E /* BottomBar.swift */; };
@@ -85,7 +87,9 @@
 		73D25C3D4C24524985841E23 /* Pods-Volna.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Volna.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Volna/Pods-Volna.debug.xcconfig"; sourceTree = "<group>"; };
 		8AFD7E10569DEB8255C89C8A /* Pods-VolnaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolnaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VolnaTests/Pods-VolnaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5CEC27A3CA45CEF3551688A /* Pods-Volna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Volna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Volna/Pods-Volna.release.xcconfig"; sourceTree = "<group>"; };
-		AA26733C1E635F94000C6DA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA20F2991EEE1A5700F2F760 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA20F29C1EEE22D000F2F760 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "volna-firebase-crashreporting.json"; sourceTree = SOURCE_ROOT; };
 		AA4DC2DA1E574814000A642E /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		AA4DC2DE1E5753AF000A642E /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		AA4DC2E01E5754A1000A642E /* BottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA20F29D1EEE22D000F2F760 /* AdSupport.framework in Frameworks */,
 				5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */,
 				558661491D8340240005285B /* MediaPlayer.framework in Frameworks */,
 				C9A0B81456349FA9DE65A4AA /* Pods_Volna.framework in Frameworks */,
@@ -211,9 +216,10 @@
 		558661421D8303F80005285B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA20F2A11EEE2D5F00F2F760 /* secrets */,
 				AAB1F8D21E8DE26A007149BE /* Volna.entitlements */,
 				551062701D5E3439008D10F6 /* Assets.xcassets */,
-				AA26733C1E635F94000C6DA5 /* GoogleService-Info.plist */,
+				AA20F2991EEE1A5700F2F760 /* GoogleService-Info.plist */,
 				551062751D5E3439008D10F6 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -235,11 +241,20 @@
 		A5709F8890B26B4CAE096016 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA20F29C1EEE22D000F2F760 /* AdSupport.framework */,
 				001E909BDAC318FA44846678 /* Pods_Volna.framework */,
 				2526A7B5837291F45AB73302 /* Pods_VolnaTests.framework */,
 				711387E0380F1D0D9141B3C7 /* Pods_VolnaUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA20F2A11EEE2D5F00F2F760 /* secrets */ = {
+			isa = PBXGroup;
+			children = (
+				AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */,
+			);
+			name = secrets;
 			sourceTree = "<group>";
 		};
 		AA4DC2D81E574786000A642E /* Util */ = {
@@ -300,6 +315,7 @@
 				551062641D5E3439008D10F6 /* Resources */,
 				3D84E3BFCC60140A0DC1AFE5 /* [CP] Embed Pods Frameworks */,
 				20B858CCD44E773B3B571FEA /* [CP] Copy Pods Resources */,
+				AA20F29E1EEE2ACB00F2F760 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -410,9 +426,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				551062711D5E3439008D10F6 /* Assets.xcassets in Resources */,
+				AA20F29A1EEE1A5700F2F760 /* GoogleService-Info.plist in Resources */,
 				AA5095911E8ED59E00391B40 /* LaunchScreen.storyboard in Resources */,
+				AA20F2A01EEE2C3500F2F760 /* volna-firebase-crashreporting.json in Resources */,
 				5510626F1D5E3439008D10F6 /* Main.storyboard in Resources */,
-				AA26733D1E635F94000C6DA5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +524,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VolnaTests/Pods-VolnaTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AA20F29E1EEE2ACB00F2F760 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GOOGLE_APP_ID=1:939225680193:ios:d32de9784a1eab56\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"$SRCROOT/volna-firebase-crashreporting.json\"";
 		};
 		CA2EBF6F6320A4DC6FAE4AA5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
