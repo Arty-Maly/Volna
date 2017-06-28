@@ -53,27 +53,6 @@ class SplashViewController: UIViewController {
     return parsedData
   }
   
-  private func updateDatabase(_ stations: Array<[String: String]>) {
-    managedObjectContext?.perform {
-      for station in stations {
-        if let model = RadioStation.saveStation(stationInfo: station, inManagedContext: self.managedObjectContext!) {
-          let data = try? Data(contentsOf:  URL(string: model.image)!)
-          let image = UIImage(data: data!)!
-          self.prepareImageForSaving(image: image, url: model.image)
-        }
-        
-      }
-      do {
-        try self.managedObjectContext?.save()
-      } catch let error {
-        print(error)
-      }
-      DispatchQueue.main.async(){
-        self.performSegue(withIdentifier: "transitionToRadio", sender:nil)
-      }
-    }
-    
-  }
   private func prepareImageForSaving(image: UIImage, url: String) {
     let date : Double = NSDate().timeIntervalSince1970
     

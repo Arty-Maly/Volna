@@ -17,7 +17,6 @@
 		5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661471D833ACD0005285B /* AVFoundation.framework */; };
 		8EFA1376D7DBE032AFD25C8C /* Pods_VolnaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2526A7B5837291F45AB73302 /* Pods_VolnaTests.framework */; };
 		AA20F29A1EEE1A5700F2F760 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA20F2991EEE1A5700F2F760 /* GoogleService-Info.plist */; };
-		AA20F29D1EEE22D000F2F760 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20F29C1EEE22D000F2F760 /* AdSupport.framework */; };
 		AA20F2A01EEE2C3500F2F760 /* volna-firebase-crashreporting.json in Resources */ = {isa = PBXBuildFile; fileRef = AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */; };
 		AA4DC2DB1E574814000A642E /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC2DA1E574814000A642E /* BarView.swift */; };
 		AA4DC2DF1E5753AF000A642E /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC2DE1E5753AF000A642E /* CALayerExtension.swift */; };
@@ -123,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA20F29D1EEE22D000F2F760 /* AdSupport.framework in Frameworks */,
 				5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */,
 				558661491D8340240005285B /* MediaPlayer.framework in Frameworks */,
 				C9A0B81456349FA9DE65A4AA /* Pods_Volna.framework in Frameworks */,
