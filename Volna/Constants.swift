@@ -8,6 +8,8 @@
 
 struct Constants {
   static let apiBaseURL = ""
-  static let myNotificationKey = "Data Handler Channel"
+  static let endOfSyncNotification = "Data Handler Channel"
+  static let stationViewControllerId = "StationsViewController"
+  static let pageViewControllerId = "PageViewController"
 }
 

@@ -46,9 +46,10 @@ class DataHandler {
     for station in localStations {
       if let jsonStation = jsonStations[station.name] {
         if jsonStation != station.toHash() {
-          station.update(attributes: jsonStation)
+          managedObjectContext.delete(station)
+        } else {
+          jsonStations[station.name] = nil
         }
-        jsonStations[station.name] = nil
       } else {
         managedObjectContext.delete(station)
       }
@@ -72,13 +73,11 @@ class DataHandler {
   
   private func saveStations(_ stations: Array<[String: String]>) {
     for station in stations {
-      let imageManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
       let stationManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-      imageManagedObjectContext.parent = self.managedObjectContext
-      stationManagedObjectContext.parent = imageManagedObjectContext
+      stationManagedObjectContext.parent = self.managedObjectContext
       if let radioStation = RadioStation.saveStation(stationInfo: station, inManagedContext: stationManagedObjectContext) {
         DispatchQueue.global(qos: .userInitiated) .async { [weak self] in
-          self?.prepareImageForSaving(radioStationId: radioStation.objectID, inManagedContext: imageManagedObjectContext)
+          self?.prepareImageForSaving(radioStationId: radioStation.objectID)
         }
       }
     }
@@ -92,62 +91,59 @@ class DataHandler {
     }
   }
   
-  private func saveImage(imageData:NSData, thumbnailData:NSData, date: Double, radioStationId: NSManagedObjectID, privateManagedObjectContext: NSManagedObjectContext) {
+  private func saveImage(thumbnailData:NSData, date: Double, radioStationId: NSManagedObjectID) {
     saveQueue.async(group: syncGroup) {
-      let radioStation = privateManagedObjectContext.object(with: radioStationId) as! RadioStation
+      let imageManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+      imageManagedObjectContext.parent = self.managedObjectContext
+      let radioStation = imageManagedObjectContext.object(with: radioStationId) as! RadioStation
       let image_url = radioStation.image
       let fetchRequest = NSFetchRequest<Thumbnail>(entityName: "Thumbnail")
       let predicate = NSPredicate(format: "url == %@", image_url)
       fetchRequest.predicate = predicate
       do {
-        let fetchResult = try privateManagedObjectContext.fetch(fetchRequest)
+        let fetchResult = try imageManagedObjectContext.fetch(fetchRequest)
         if fetchResult.count > 0 {
           return
         }
       } catch {
         fatalError("Failure: \(error)")
       }
-      guard let fullRes = NSEntityDescription.insertNewObject(forEntityName: "FullResImage", into: privateManagedObjectContext) as? FullResImage, let thumbnail = NSEntityDescription.insertNewObject(forEntityName: "Thumbnail", into: privateManagedObjectContext) as? Thumbnail else {
+      guard let thumbnail = NSEntityDescription.insertNewObject(forEntityName: "Thumbnail", into: imageManagedObjectContext) as? Thumbnail else {
         print("managedObjectContext error")
         return
       }
       
-      fullRes.imageData = imageData
       thumbnail.imageData = thumbnailData
       thumbnail.id = date as NSNumber
       thumbnail.url = image_url
-      thumbnail.fullResImage = fullRes
       thumbnail.radioStation = radioStation
       do {
-        try privateManagedObjectContext.save()
+        try imageManagedObjectContext.save()
       } catch {
         fatalError("Failure to save context: \(error)")
       }
     }
   }
   
-  private func prepareImageForSaving(radioStationId: NSManagedObjectID, inManagedContext: NSManagedObjectContext) {
+  private func prepareImageForSaving(radioStationId: NSManagedObjectID) {
     convertQueue.async(group: syncGroup) {
-      let radioStation = inManagedContext.object(with: radioStationId) as! RadioStation
+      let imageManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+      imageManagedObjectContext.parent = self.managedObjectContext
+      let radioStation = imageManagedObjectContext.object(with: radioStationId) as! RadioStation
       let data = try? Data(contentsOf:  URL(string: radioStation.image)!)
       let image = UIImage(data: data!)!
       let date : Double = NSDate().timeIntervalSince1970
-      guard let imageData = UIImagePNGRepresentation(image) else {
+//      let thumbnail = image.resizeImage(newWidth: CGFloat(132))
+      guard let thumbnailData  = UIImagePNGRepresentation(image) else {
         print("png error")
         return
       }
-      
-      let thumbnail = image.resizeImage(newWidth: CGFloat(90))
-      guard let thumbnailData  = UIImagePNGRepresentation(thumbnail) else {
-        print("png error")
-        return
-      }
-      self.saveImage(imageData: imageData as NSData, thumbnailData: thumbnailData as NSData, date: date, radioStationId: radioStation.objectID, privateManagedObjectContext: inManagedContext)
+      self.saveImage(thumbnailData: thumbnailData as NSData, date: date, radioStationId: radioStation.objectID)
     }
     
   }
   
   private func notifyEndOfSync() {
-    NotificationCenter.default.post(name: Notification.Name(Constants.myNotificationKey), object: nil)
+    NotificationCenter.default.post(name: Notification.Name(Constants.endOfSyncNotification), object: nil)
   }
 }

@@ -10,19 +10,16 @@ import UIKit
 import CoreData
 
 class SplashViewController: UIViewController {
-  var managedObjectContext: NSManagedObjectContext?
   let imagePicker = UIImagePickerController()
   let convertQueue = DispatchQueue(label: "convertQueue", attributes: .concurrent)
   let saveQueue = DispatchQueue(label: "saveQueue", attributes: .concurrent)
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
     NotificationCenter.default.addObserver(self,
                                             selector: #selector(self.segueToMainView),
-                                            name: NSNotification.Name(Constants.myNotificationKey),
+                                            name: NSNotification.Name(Constants.endOfSyncNotification),
                                             object: nil)
-
   }
   
   @objc private func segueToMainView() {
@@ -31,10 +28,8 @@ class SplashViewController: UIViewController {
     }
   }
   override func viewDidAppear(_ animated: Bool) {
-    print("appeared")
     getListOfRadioStations()
   }
-  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -52,87 +47,9 @@ class SplashViewController: UIViewController {
     }
     return parsedData
   }
-  
-  private func prepareImageForSaving(image: UIImage, url: String) {
-    let date : Double = NSDate().timeIntervalSince1970
-    
-    convertQueue.async { [weak self] in
-      guard let imageData = UIImagePNGRepresentation(image) else {
-        print("jpg error")
-        return
-      }
-      
-      let thumbnail = image.resizeImage(newWidth: CGFloat(90))
-      guard let thumbnailData  = UIImagePNGRepresentation(thumbnail) else {
-        print("jpg error")
-        return
-      }
-      
-      self?.saveImage(imageData: imageData as NSData, thumbnailData: thumbnailData as NSData, date: date, url: url)
-    }
-  }
 
-  private func saveImage(imageData:NSData, thumbnailData:NSData, date: Double, url: String) {
-    saveQueue.async {
-      guard let moc = self.managedObjectContext else {
-        return
-      }
-      let fetchRequest = NSFetchRequest<Thumbnail>(entityName: "Thumbnail")
-      let predicate = NSPredicate(format: "url == %@", url)
-      fetchRequest.predicate = predicate
-      do {
-        let fetchResult = try moc.fetch(fetchRequest)
-        if fetchResult.count > 0 {
-          return
-        }
-      } catch {
-        fatalError("Failure: \(error)")
-      }
-      guard let fullRes = NSEntityDescription.insertNewObject(forEntityName: "FullResImage", into: moc) as? FullResImage, let thumbnail = NSEntityDescription.insertNewObject(forEntityName: "Thumbnail", into: moc) as? Thumbnail else {
-        print("moc error")
-        return
-      }
-      
-      fullRes.imageData = imageData
-      
-      thumbnail.imageData = thumbnailData
-      thumbnail.id = date as NSNumber
-      thumbnail.url = url
-      thumbnail.fullResImage = fullRes
-      do {
-        try moc.save()
-      } catch {
-        fatalError("Failure to save context: \(error)")
-      }
-      
-      moc.refreshAllObjects()
-    }
-  }
-  
   private func getListOfRadioStations() {
-//    let baseUrl = Constants.apiBaseURL
-//    let uuid = User.getUserUuid(inManagedContext: managedObjectContext!)
-//    let url = NSURL(string: baseUrl + uuid)
-//    let task = URLSession.shared.dataTask(with: url! as URL) {[weak self] (data, response, error) in
-//      if let stations = self?.parseResponse(data: data!) {
-//        self?.updateDatabase(stations as! Array<NSDictionary>)
-//      }
-//    }
-//    task.resume()
     let dataHandler = DataHandler.shared
     dataHandler.syncRadioStations()
-    
-  }
-  
-  private func printDatabaseStat() {
-    managedObjectContext?.perform {
-      let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
-      request.predicate = NSPredicate(format: "name = %@", "NRJ")
-
-      if let results = try? self.managedObjectContext!.fetch(request) {
-        let _ = results.first as! RadioStation
-      }
-      
-    }
   }
 }

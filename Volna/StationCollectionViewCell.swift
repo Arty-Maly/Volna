@@ -13,6 +13,7 @@ class StationCollectionViewCell: UICollectionViewCell {
   private var placeholderImage: UIImage
   @IBOutlet weak var stationName: UILabel!
   @IBOutlet weak var imageView: UIImageView!
+  var radioStation: RadioStation!
   
   required init(coder aDecoder: NSCoder) {
     placeholderImage = UIImage(named: "placeholder.png")!
@@ -23,20 +24,22 @@ class StationCollectionViewCell: UICollectionViewCell {
   }
   
   func prepareCellForDisplay(_ station: RadioStation) {
-    self.imageView.image = placeholderImage
-    self.stationName.text = parseName(station.name)
-    self.stationName.layer.zPosition = 1
-    self.backgroundColor = UIColor.clear
-    self.stationUrl = station.url
+    imageView.image = placeholderImage
+    radioStation = station
+    stationName.text = parseName(station.name)
+    stationName.layer.zPosition = 1
+    backgroundColor = UIColor.clear
+    stationUrl = station.url
+  
     setImage(station.image)
   }
   
   
   private func setImage(_ url: String) {
     DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-      if let image = ImageCache.shared[url, "SD"] {
+      if let image = ImageCache.shared[url] {
         DispatchQueue.main.async {
-        self?.imageView.image = image
+          self?.imageView.image = image
         }
       }
     }

@@ -3,21 +3,21 @@ import AVFoundation
 
 class RadioPlayer {
   private var player: AVPlayer
-  private var currentStation: String?
+  private var currentStation: RadioStation?
   
   init() {
     player = AVPlayer()
   }
   
-  func setStation(_ stationUrl: String) {
-    currentStation = stationUrl
-    if let url = (URL( string:stationUrl)) {
+  func setStation(_ station: RadioStation) {
+    currentStation = station
+    if let url = (URL( string:station.url)) {
       DispatchQueue.global(qos: .userInitiated).async {
         let stationPlayerItem = AVPlayerItem(url: url)
         DispatchQueue.main.async {
-          if self.currentStation! == stationUrl {
+          if self.currentStation! == station {
             self.player.replaceCurrentItem(with: stationPlayerItem)
-            if self.isPaused() { self.play() }
+            self.player.play()
           } else {
             print("ignored request, current station is different")
           }
@@ -26,6 +26,12 @@ class RadioPlayer {
     }
   }
   
+  func resumePlayAfterInterrupt() {
+    if currentStation != nil {
+      setStation(currentStation!)
+    }
+  }
+
   func isPaused() -> Bool {
     return player.rate == 0
   }
@@ -54,6 +60,14 @@ class RadioPlayer {
   
   func pause() {
     player.pause()
+  }
+  
+  func nextStation() {
+    
+  }
+  
+  func prevStation() {
+    
   }
   
 }

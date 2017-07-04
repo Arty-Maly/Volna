@@ -12,13 +12,25 @@ extension UIImage {
   func resizeImage(newWidth: CGFloat) -> UIImage {
     let scale = newWidth / self.size.width
     let newHeight = self.size.height * scale
-    UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, 0)
     self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
     let newImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    
     return newImage!
   }
   
+  
+  func imageWithInsets(insets: UIEdgeInsets) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(
+      CGSize(width: self.size.width + insets.left + insets.right,
+             height: self.size.height + insets.top + insets.bottom), false, 0)
+    let _ = UIGraphicsGetCurrentContext()
+    let origin = CGPoint(x: insets.left, y: insets.top)
+    self.draw(at: origin)
+    let imageWithInsets = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return imageWithInsets!
+  }
 
 }

@@ -19,17 +19,14 @@ final class ImageCache {
     self.managedObjectContext = ((UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext)!
   }
   
-  subscript(key: String, quality: String) -> UIImage? {
+  subscript(key: String) -> UIImage? {
     
     get {
       if cache[key] == nil {
         loadImage(url: key)
       }
-      return cache[key+quality]
+      return cache[key]
     }    
-//    set (newValue) {
-//      cache[key] = newValue
-//    }
   }
   
   private func loadImage(url: String) {
@@ -39,13 +36,10 @@ final class ImageCache {
     do {
       let result = try managedObjectContext.fetch(fetchRequest)
       if let imageData = result.first {
-        let sdImage = UIImage(data: imageData.imageData as Data)!
-        let hdImage = UIImage(data: imageData.fullResImage.imageData! as Data)!
-        cache[url+"SD"] = sdImage
-        cache[url+"HD"] = hdImage
+        let image = UIImage(data: imageData.imageData as Data)!
+        cache[url] = image
       } else {
-        cache[url+"SD"] = UIImage(named: "placeholder.png")!
-        cache[url+"HD"] = UIImage(named: "placeholder.png")!
+        cache[url] = UIImage(named: "placeholder.png")!
       }
     } catch let error as NSError {
       print("Error: \(error.localizedDescription)")

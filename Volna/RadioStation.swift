@@ -53,6 +53,16 @@ public class RadioStation: NSManagedObject {
     return station
   }
   
+  class func getFavouriteStationPosition(station: RadioStation, inManagedContext context: NSManagedObjectContext) -> Int? {
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+    let sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
+    request.sortDescriptors = [sortDescriptor]
+    request.predicate = NSPredicate(format: "favourite == %@", NSNumber(value: true))
+    
+    let stations = (try? context.fetch(request)) as! [RadioStation]
+    return stations.index(of: station)
+  }
+  
   func toHash() -> [String: String] {
     let dict =  [ "name": self.name as String,
                   "url" : self.url as String,
@@ -62,15 +72,42 @@ public class RadioStation: NSManagedObject {
     return dict
   }
   
+  class func getFavourites(inManagedContext context: NSManagedObjectContext) -> Int {
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+    request.predicate = NSPredicate(format: "favourite == %@", NSNumber(value: true))
+    do {
+      let count = try context.count(for: request)
+      return count
+    } catch let error as NSError {
+      print("Error: \(error.localizedDescription)")
+      return 0
+    }
+  }
+  class func getFavouriteStationByPosition(position: Int, inManagedContext: NSManagedObjectContext) -> RadioStation {
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+    let sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
+    request.sortDescriptors = [sortDescriptor]
+    request.predicate = NSPredicate(format: "favourite == %@", NSNumber(value: true))
+    
+    let stations = (try? inManagedContext.fetch(request)) as! [RadioStation]
+    let station = stations[position]
+    return station
+  }
+  
+  func toggleFavourite(context: NSManagedObjectContext) {
+    self.favourite = !self.favourite
+    do {
+      try context.save()
+      
+    } catch let error {
+      print(error)
+    }
+  }
+  
   func update(attributes: [String: String]) {
     self.image = attributes["image"]!
     self.name = attributes["name"]!
     self.position = Int32(attributes["position"]!)!
     self.url = attributes["url"]!
-//    do {
-//      try self.managedObjectContext?.save()
-//    } catch let error {
-//      print(error)
-//    }
   }
 }

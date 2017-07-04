@@ -21,5 +21,6 @@ extension RadioStation {
     @NSManaged public var position: Int32
     @NSManaged public var url: String
     @NSManaged public var thumbnail: Thumbnail?
+    @NSManaged public var favourite: Bool
 
 }

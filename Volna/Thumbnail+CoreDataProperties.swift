@@ -19,7 +19,6 @@ extension Thumbnail {
     @NSManaged public var id: NSNumber
     @NSManaged public var imageData: NSData
     @NSManaged public var url: String
-    @NSManaged public var fullResImage: FullResImage
     @NSManaged public var radioStation: RadioStation
 
 }
