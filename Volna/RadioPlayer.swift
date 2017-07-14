@@ -1,10 +1,11 @@
 import Foundation
 import AVFoundation
+import UIKit
 
 class RadioPlayer {
-  private var player: AVPlayer
-  private var currentStation: RadioStation?
-  
+  private(set) var player: AVPlayer
+  private(set) var currentStation: RadioStation?
+  private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
   init() {
     player = AVPlayer()
   }
@@ -18,6 +19,7 @@ class RadioPlayer {
           if self.currentStation! == station {
             self.player.replaceCurrentItem(with: stationPlayerItem)
             self.player.play()
+            self.registerBackgroundTask()
           } else {
             print("ignored request, current station is different")
           }
@@ -62,12 +64,16 @@ class RadioPlayer {
     player.pause()
   }
   
-  func nextStation() {
-    
+  private func registerBackgroundTask() {
+    backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+      self?.endBackgroundTask()
+    }
+    assert(backgroundTask != UIBackgroundTaskInvalid)
   }
   
-  func prevStation() {
-    
+  private func endBackgroundTask() {
+    print("Background task ended.")
+    UIApplication.shared.endBackgroundTask(backgroundTask)
+    backgroundTask = UIBackgroundTaskInvalid
   }
-  
 }

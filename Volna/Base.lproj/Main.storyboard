@@ -24,15 +24,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSz-VW-WLj" userLabel="Top Bar" customClass="TopBar" customModule="Volna">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Здраствуй, Друг!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezN-Hk-BTt">
-                                        <rect key="frame" x="108.66666666666669" y="30.333333333333336" width="196.66666666666663" height="26.333333333333336"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Все будет Хорошо!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezN-Hk-BTt">
+                                        <rect key="frame" x="102.33333333333334" y="30" width="210.66666666666666" height="26"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Station Title"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-3H-Ye4" userLabel="Heart Button" customClass="FavouriteButton" customModule="Volna" customModuleProvider="target">
-                                        <rect key="frame" x="374" y="32.666666666666664" width="22" height="22"/>
+                                        <rect key="frame" x="374" y="32" width="22" height="22"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Heart"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="La9-Ca-Zte"/>
                                             <constraint firstAttribute="height" constant="22" id="l1f-vc-VoR"/>
@@ -41,9 +43,14 @@
                                             <action selector="favouritedAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xp9-1J-E8f"/>
                                         </connections>
                                     </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-pk-zoW">
+                                        <rect key="frame" x="195" y="44" width="23" height="37"/>
+                                    </pageControl>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Zu6-pk-zoW" firstAttribute="centerX" secondItem="nSz-VW-WLj" secondAttribute="centerX" id="9wC-Un-s7M"/>
                                     <constraint firstAttribute="height" constant="70" id="GBV-FQ-JFf"/>
+                                    <constraint firstItem="Zu6-pk-zoW" firstAttribute="bottom" secondItem="nSz-VW-WLj" secondAttribute="bottom" constant="11" id="KkN-dA-bhU"/>
                                     <constraint firstItem="ezN-Hk-BTt" firstAttribute="centerY" secondItem="nSz-VW-WLj" secondAttribute="centerY" constant="8" id="Wsk-Rt-hcW"/>
                                     <constraint firstItem="Z5w-3H-Ye4" firstAttribute="trailing" secondItem="nSz-VW-WLj" secondAttribute="trailingMargin" constant="-10" id="a1Z-hf-GDG"/>
                                     <constraint firstItem="ezN-Hk-BTt" firstAttribute="centerX" secondItem="nSz-VW-WLj" secondAttribute="centerX" id="zxB-0O-1WF"/>
@@ -57,15 +64,11 @@
                                     <segue destination="CYO-hy-tVE" kind="embed" identifier="pageSegue" id="oXH-s9-5Jg"/>
                                 </connections>
                             </containerView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-pk-zoW">
-                                <rect key="frame" x="195" y="64" width="23" height="37"/>
-                            </pageControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0x-OB-Wtw" customClass="GADBannerView">
-                                <rect key="frame" x="47" y="636" width="320" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxj-T3-ipe" userLabel="adView" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="686" width="414" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="H9p-yE-fab"/>
-                                    <constraint firstAttribute="height" constant="50" id="cun-JB-0pK"/>
+                                    <constraint firstAttribute="height" id="JNd-cm-VSH"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW2-Yx-Vpt" userLabel="Bottom Bar" customClass="BottomBar" customModule="Volna">
@@ -83,9 +86,9 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Zry-Xj-vKP"/>
                                     <constraint firstItem="VQo-w4-s9R" firstAttribute="centerX" secondItem="WW2-Yx-Vpt" secondAttribute="centerX" id="djv-T9-cgK"/>
                                     <constraint firstItem="VQo-w4-s9R" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="bottomMargin" id="qo8-yW-5M5"/>
-                                    <constraint firstAttribute="height" constant="50" id="qxB-gf-SZA"/>
                                     <constraint firstItem="VQo-w4-s9R" firstAttribute="top" secondItem="WW2-Yx-Vpt" secondAttribute="topMargin" id="sUf-Qc-FKl"/>
                                 </constraints>
                             </view>
@@ -93,23 +96,23 @@
                         <color key="backgroundColor" red="0.94525176286697388" green="0.94596821069717407" blue="0.94536274671554565" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WW2-Yx-Vpt" firstAttribute="width" secondItem="rMY-UR-bUb" secondAttribute="width" id="2Dz-gy-Qdq"/>
-                            <constraint firstItem="P0x-OB-Wtw" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="top" id="3H0-hE-13A"/>
+                            <constraint firstItem="Oxj-T3-ipe" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="top" id="9Nk-ag-SFa"/>
+                            <constraint firstItem="rVf-aF-gtd" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="top" id="9pM-9h-ern"/>
                             <constraint firstItem="rVf-aF-gtd" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="A3M-xY-7Yx"/>
                             <constraint firstItem="rVf-aF-gtd" firstAttribute="top" secondItem="nSz-VW-WLj" secondAttribute="bottom" id="FGH-gO-atz"/>
                             <constraint firstItem="WW2-Yx-Vpt" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="Jb9-Hq-m0i"/>
-                            <constraint firstItem="Zu6-pk-zoW" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="Sa8-bV-jVn"/>
-                            <constraint firstItem="rVf-aF-gtd" firstAttribute="bottom" secondItem="WW2-Yx-Vpt" secondAttribute="top" id="Vav-aI-wkw"/>
+                            <constraint firstItem="Oxj-T3-ipe" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="Lbw-Xo-lEJ"/>
+                            <constraint firstItem="SDP-US-asz" firstAttribute="top" secondItem="WW2-Yx-Vpt" secondAttribute="bottom" id="RSf-xj-p6V"/>
                             <constraint firstItem="nSz-VW-WLj" firstAttribute="top" secondItem="rMY-UR-bUb" secondAttribute="top" id="aSn-bn-RjL"/>
-                            <constraint firstItem="Zu6-pk-zoW" firstAttribute="top" secondItem="nSz-VW-WLj" secondAttribute="bottom" constant="-6" id="iMB-ZP-70i"/>
-                            <constraint firstItem="WW2-Yx-Vpt" firstAttribute="bottom" secondItem="SDP-US-asz" secondAttribute="top" id="iNY-Vq-ujT"/>
-                            <constraint firstItem="P0x-OB-Wtw" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="jHj-yh-Lrp"/>
                             <constraint firstItem="rVf-aF-gtd" firstAttribute="width" secondItem="rMY-UR-bUb" secondAttribute="width" id="m2s-DM-ghP"/>
                             <constraint firstItem="nSz-VW-WLj" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="nrs-E5-9Bz"/>
                             <constraint firstItem="nSz-VW-WLj" firstAttribute="width" secondItem="rMY-UR-bUb" secondAttribute="width" id="sAm-g7-ycJ"/>
+                            <constraint firstItem="Oxj-T3-ipe" firstAttribute="width" secondItem="rMY-UR-bUb" secondAttribute="width" id="uQc-wY-7tG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="P0x-OB-Wtw" id="uEm-SP-abp"/>
+                        <outlet property="adView" destination="Oxj-T3-ipe" id="k3R-yx-8fy"/>
+                        <outlet property="adViewHeight" destination="JNd-cm-VSH" id="5rh-uy-Hhr"/>
                         <outlet property="bottomBar" destination="WW2-Yx-Vpt" id="gBH-Uk-9Nt"/>
                         <outlet property="favouriteButton" destination="Z5w-3H-Ye4" id="Ykp-3l-ovP"/>
                         <outlet property="pageControl" destination="Zu6-pk-zoW" id="Hle-Ld-mIj"/>
@@ -158,11 +161,12 @@
                                                 </label>
                                                 <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n0u-Xf-dXi">
                                                     <rect key="frame" x="14" y="14" width="91" height="52"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="n0u-Xf-dXi" firstAttribute="height" secondItem="1VN-kE-ukS" secondAttribute="height" constant="-27" id="CEj-tK-nBE"/>
                                             <constraint firstItem="n0u-Xf-dXi" firstAttribute="centerY" secondItem="1VN-kE-ukS" secondAttribute="centerY" id="cTZ-er-kSE"/>

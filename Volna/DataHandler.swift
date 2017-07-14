@@ -26,8 +26,11 @@ class DataHandler {
   
   func syncRadioStations() {
     let baseUrl = Constants.apiBaseURL
+    let uuidString = Constants.uuidString
+    let countryString = Constants.countryString
+    let country = Constants.country
     let uuid = User.getUserUuid(inManagedContext: managedObjectContext)
-    let url = URL(string: baseUrl + uuid)!
+    let url = URL(string: baseUrl + uuidString + uuid + countryString + country)!
     let request = RequestMaker(url: url)
     request.getStations { [weak self] (data) -> ()  in self?.matchLocalData(with: data) }
   }
@@ -47,14 +50,25 @@ class DataHandler {
       if let jsonStation = jsonStations[station.name] {
         if jsonStation != station.toHash() {
           managedObjectContext.delete(station)
+          do {
+            try self.managedObjectContext.save()
+          } catch {
+            fatalError("Failure: \(error)")
+          }
         } else {
           jsonStations[station.name] = nil
         }
       } else {
         managedObjectContext.delete(station)
+        do {
+          try self.managedObjectContext.save()
+        } catch {
+          fatalError("Failure: \(error)")
+        }
       }
     }
     if jsonStations.count > 0 {
+      print("count greater than")
       saveStations(Array(jsonStations.values))
     } else {
       notifyEndOfSync()
@@ -145,5 +159,19 @@ class DataHandler {
   
   private func notifyEndOfSync() {
     NotificationCenter.default.post(name: Notification.Name(Constants.endOfSyncNotification), object: nil)
+  }
+  
+  private func deleteAllRadioStations() {
+    let appDel = UIApplication.shared.delegate as! AppDelegate
+    let context = appDel.managedObjectContext
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+      try context.execute(deleteRequest)
+    } catch let error as NSError {
+      debugPrint(error)
+    }
   }
 }

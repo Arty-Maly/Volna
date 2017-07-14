@@ -8,5 +8,7 @@
 
 protocol ButtonActionDelegate: class {
   func favouriteButtonPressed()
+  
+  func updateCurrentStation(station: RadioStation)
 }
 

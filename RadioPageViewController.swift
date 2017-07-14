@@ -22,7 +22,7 @@ class RadioPageViewController: UIPageViewController, UIPageViewControllerDataSou
     super.viewDidLoad()
     dataSource = self
     delegate = self
-    buttonDelegate = orderedViewControllers.last as? ButtonActionDelegate
+    buttonDelegate = orderedViewControllers.last
     if let firstViewController = orderedViewControllers.first {
       setViewControllers([firstViewController],
                          direction: .forward,
@@ -40,7 +40,7 @@ class RadioPageViewController: UIPageViewController, UIPageViewControllerDataSou
 
   func pageViewController(_ pageViewController: UIPageViewController,
                           viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+    guard let viewControllerIndex = orderedViewControllers.index(of: viewController as! StationsViewController) else {
       return nil
     }
     
@@ -58,7 +58,7 @@ class RadioPageViewController: UIPageViewController, UIPageViewControllerDataSou
   
   func pageViewController(_ pageViewController: UIPageViewController,
                           viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+    guard let viewControllerIndex = orderedViewControllers.index(of: viewController as! StationsViewController) else {
       return nil
     }
     
@@ -75,7 +75,7 @@ class RadioPageViewController: UIPageViewController, UIPageViewControllerDataSou
     return orderedViewControllers[nextIndex]
   }
   
-  private(set) lazy var orderedViewControllers: [UIViewController] = {
+  private(set) lazy var orderedViewControllers: [StationsViewController] = {
     let radioStationControllers = [self.newRadioStationController(type: ViewControllerType.main),
                                self.newRadioStationController(type: ViewControllerType.favourite)]
     radioStationControllers.first?.stationCollectionDelegate = radioStationControllers.last
@@ -96,5 +96,9 @@ class RadioPageViewController: UIPageViewController, UIPageViewControllerDataSou
   }
   func favouriteButtonPressed() {
     buttonDelegate?.favouriteButtonPressed()
+  }
+  func updateCurrentStation(station: RadioStation) {
+    orderedViewControllers.first?.stationClicked(clickedStation: station)
+    orderedViewControllers.last?.stationClicked(clickedStation: station)
   }
 }

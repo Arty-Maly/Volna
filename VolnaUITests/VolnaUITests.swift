@@ -1,28 +1,54 @@
 import XCTest
 
 class VolnaUITests: XCTestCase {
-        
-    override func setUp() {
-        super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+  var app: XCUIApplication!
+  override func setUp() {
+    super.setUp()
+    continueAfterFailure = false
+    app = XCUIApplication()
+    app.launch()
+  }
+  
+  override func tearDown() {
+    super.tearDown()
+  }
+  
+  func testStationTitleIsCorrectOnSelect() {
+    let stationName = "Business FM"
+    let cellsQuery = app.collectionViews.cells
+    cellsQuery.otherElements.containing(.staticText, identifier: stationName).element.tap()
+    let title = app.staticTexts.element(matching: .any, identifier: "Station Title").label
+    
+    XCTAssertEqual(title, stationName)
+  }
+  
+  func testSelectedStationStaysHighlighted() {
+    let welcomeTitle = XCUIApplication().staticTexts["Здраствуй, Друг!"]
+    XCTAssert(welcomeTitle.exists)
+  }
+  
+  func testHeartAppearsAfterStationSelectInAllView() {
+    let app = XCUIApplication()
+    let heartButton = app.buttons["Heart"]
+    XCTAssertFalse(heartButton.exists)
+    app.collectionViews.cells.otherElements.containing(.staticText, identifier:"Business FM").element.tap()
+    XCTAssertTrue(heartButton.isEnabled)
+    XCTAssertTrue(heartButton.exists)
+  }
+  
+  func testHeartDoesNotExistBeforeStationSelection() {
+    let app = XCUIApplication()
+    let heartButton = app.buttons["Heart"]
+    let cellsQuery = app.collectionViews.cells
+        cellsQuery.otherElements.containing(.staticText, identifier:"Best FM").element.swipeLeft()
+    XCTAssertFalse(heartButton.exists)
+  }
+  
+  private func verifyElementDoesNotExistsWhileWaiting(_ element: XCUIElement) {
+    let elementExistsPredicate = NSPredicate(format: "exists == 0")
+    expectation(for: elementExistsPredicate, evaluatedWith: element, handler: nil)
+    waitForExpectations(timeout: 1, handler: nil)
+    XCTAssertFalse(element.exists)
+  }
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
 }

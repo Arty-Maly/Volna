@@ -18,9 +18,28 @@ extension RadioStation {
 
     @NSManaged public var image: String
     @NSManaged public var name: String
-    @NSManaged public var position: Int32
+    @NSManaged public var position: Int16
     @NSManaged public var url: String
     @NSManaged public var thumbnail: Thumbnail?
     @NSManaged public var favourite: Bool
+  
+    public var favouritePosition: Int16?
+    {
+      get {
+        self.willAccessValue(forKey: "favouritePosition")
+        let value = self.primitiveValue(forKey: "favouritePosition") as? Int
+        self.didAccessValue(forKey: "favouritePosition")
+      
+        return (value != nil) ? Int16(value!) : nil
+      }
+      set {
+        self.willChangeValue(forKey: "favouritePosition")
+      
+        let value : Int? = (newValue != nil) ? Int(newValue!) : nil
+        self.setPrimitiveValue(value, forKey: "favouritePosition")
+      
+        self.didChangeValue(forKey: "favouritePosition")
+      }
+  }
 
 }

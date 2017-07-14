@@ -19,7 +19,6 @@
 		AA20F29A1EEE1A5700F2F760 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AA20F2A01EEE2C3500F2F760 /* volna-firebase-crashreporting.json in Resources */ = {isa = PBXBuildFile; fileRef = AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */; };
 		AA46710D1F0B1ABE00A8922A /* ButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46710C1F0B1ABE00A8922A /* ButtonState.swift */; };
-		AA4A3A811F04A7D2008D49C0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A801F04A7D2008D49C0 /* MainViewController.swift */; };
 		AA4A3A831F04AF2F008D49C0 /* RadioPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A821F04AF2F008D49C0 /* RadioPageViewController.swift */; };
 		AA4A3A861F072859008D49C0 /* StationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A851F072859008D49C0 /* StationViewDelegate.swift */; };
 		AA4A3A8B1F0828EC008D49C0 /* MainViewPageControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A8A1F0828EC008D49C0 /* MainViewPageControlDelegate.swift */; };
@@ -40,12 +39,16 @@
 		AA4DC3131E58CB6F000A642E /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DC3121E58CB6F000A642E /* DataHandler.swift */; };
 		AA5095911E8ED59E00391B40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5095901E8ED59E00391B40 /* LaunchScreen.storyboard */; };
 		AA56777A1D99D77A0084EBCE /* RadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5677791D99D77A0084EBCE /* RadioPlayer.swift */; };
+		AA6F72AE1F11A40500B65A84 /* ReviewPromptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F72AD1F11A40500B65A84 /* ReviewPromptController.swift */; };
+		AA6F72B11F12BEF400B65A84 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F72B01F12BEF400B65A84 /* MainViewController.swift */; };
 		AA6FB2DC1E3555F600FE99B4 /* StationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */; };
 		AA7863E51F0C0CE700C0960B /* StationCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7863E41F0C0CE700C0960B /* StationCollectionDelegate.swift */; };
 		AA953C251F0B23AB00BFE1F4 /* StatefullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA953C241F0B23AB00BFE1F4 /* StatefullButton.swift */; };
 		AA953C271F0C074B00BFE1F4 /* ButtonActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA953C261F0C074B00BFE1F4 /* ButtonActionDelegate.swift */; };
 		AAA663621F09CA8D006D9989 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAA663611F09CA8D006D9989 /* GoogleService-Info.plist */; };
 		AAA663631F09CC82006D9989 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20F29C1EEE22D000F2F760 /* AdSupport.framework */; };
+		AAB79A0A1F184D0C00E8FDBA /* ModelMapping.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = AAB79A091F184D0C00E8FDBA /* ModelMapping.xcmappingmodel */; };
+		AABC38971F185859004B5DB7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABC38961F185859004B5DB7 /* iAd.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */; };
 		AAD40F2A1E2DA9D300FFA58E /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F261E2DA9D300FFA58E /* RadioStation.swift */; };
 		AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */; };
@@ -101,7 +104,6 @@
 		AA20F29C1EEE22D000F2F760 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "volna-firebase-crashreporting.json"; sourceTree = SOURCE_ROOT; };
 		AA46710C1F0B1ABE00A8922A /* ButtonState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonState.swift; path = ../ButtonState.swift; sourceTree = "<group>"; };
-		AA4A3A801F04A7D2008D49C0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 		AA4A3A821F04AF2F008D49C0 /* RadioPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioPageViewController.swift; path = ../RadioPageViewController.swift; sourceTree = "<group>"; };
 		AA4A3A851F072859008D49C0 /* StationViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewDelegate.swift; sourceTree = "<group>"; };
 		AA4A3A8A1F0828EC008D49C0 /* MainViewPageControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewPageControlDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,8 @@
 		AA4DC3121E58CB6F000A642E /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		AA5095901E8ED59E00391B40 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA5677791D99D77A0084EBCE /* RadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioPlayer.swift; sourceTree = "<group>"; };
+		AA6F72AD1F11A40500B65A84 /* ReviewPromptController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewPromptController.swift; path = ../ReviewPromptController.swift; sourceTree = "<group>"; };
+		AA6F72B01F12BEF400B65A84 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionViewCell.swift; sourceTree = "<group>"; };
 		AA7863E41F0C0CE700C0960B /* StationCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionDelegate.swift; sourceTree = "<group>"; };
 		AA953C241F0B23AB00BFE1F4 /* StatefullButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefullButton.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		AAA663601F09C55B006D9989 /* SchemaV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchemaV2.xcdatamodel; sourceTree = "<group>"; };
 		AAA663611F09CA8D006D9989 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AAB1F8D21E8DE26A007149BE /* Volna.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Volna.entitlements; sourceTree = "<group>"; };
+		AAB79A091F184D0C00E8FDBA /* ModelMapping.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = ModelMapping.xcmappingmodel; sourceTree = "<group>"; };
+		AABC38961F185859004B5DB7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		AAD40F141E2DA5B800FFA58E /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
 		AAD40F261E2DA9D300FFA58E /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
 		AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RadioStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABC38971F185859004B5DB7 /* iAd.framework in Frameworks */,
 				AAA663631F09CC82006D9989 /* AdSupport.framework in Frameworks */,
 				5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */,
 				558661491D8340240005285B /* MediaPlayer.framework in Frameworks */,
@@ -198,6 +205,7 @@
 		551062681D5E3439008D10F6 /* Volna */ = {
 			isa = PBXGroup;
 			children = (
+				AA6F72AD1F11A40500B65A84 /* ReviewPromptController.swift */,
 				AA46710C1F0B1ABE00A8922A /* ButtonState.swift */,
 				AA7863E41F0C0CE700C0960B /* StationCollectionDelegate.swift */,
 				AA4DC2D91E5747AD000A642E /* Views */,
@@ -268,6 +276,7 @@
 		A5709F8890B26B4CAE096016 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AABC38961F185859004B5DB7 /* iAd.framework */,
 				AA20F29C1EEE22D000F2F760 /* AdSupport.framework */,
 				001E909BDAC318FA44846678 /* Pods_Volna.framework */,
 				2526A7B5837291F45AB73302 /* Pods_VolnaTests.framework */,
@@ -288,7 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				AA4A3A821F04AF2F008D49C0 /* RadioPageViewController.swift */,
-				AA4A3A801F04A7D2008D49C0 /* MainViewController.swift */,
+				AA6F72B01F12BEF400B65A84 /* MainViewController.swift */,
 				AAF2319B1E2D5EF500564178 /* SplashViewController.swift */,
 				5510626B1D5E3439008D10F6 /* StationsViewController.swift */,
 			);
@@ -346,6 +355,7 @@
 				AAD40F281E2DA9D300FFA58E /* User.swift */,
 				AAD40F291E2DA9D300FFA58E /* User+CoreDataProperties.swift */,
 				AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */,
+				AAB79A091F184D0C00E8FDBA /* ModelMapping.xcmappingmodel */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -657,7 +667,7 @@
 				AA953C251F0B23AB00BFE1F4 /* StatefullButton.swift in Sources */,
 				AA4A3A861F072859008D49C0 /* StationViewDelegate.swift in Sources */,
 				5510626C1D5E3439008D10F6 /* StationsViewController.swift in Sources */,
-				AA4A3A811F04A7D2008D49C0 /* MainViewController.swift in Sources */,
+				AA6F72AE1F11A40500B65A84 /* ReviewPromptController.swift in Sources */,
 				AAD5B5151F0B079E005B8E64 /* FavouriteButton.swift in Sources */,
 				AA6FB2DC1E3555F600FE99B4 /* StationCollectionViewCell.swift in Sources */,
 				AA4DC2E71E577168000A642E /* ImageCache.swift in Sources */,
@@ -671,9 +681,11 @@
 				AA4DC3051E577F55000A642E /* FullResImage.swift in Sources */,
 				AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */,
 				AAD40F2C1E2DA9D300FFA58E /* User.swift in Sources */,
+				AAB79A0A1F184D0C00E8FDBA /* ModelMapping.xcmappingmodel in Sources */,
 				AA953C271F0C074B00BFE1F4 /* ButtonActionDelegate.swift in Sources */,
 				AA4DC30E1E58C2DE000A642E /* RequestMaker.swift in Sources */,
 				AA4DC2DF1E5753AF000A642E /* CALayerExtension.swift in Sources */,
+				AA6F72B11F12BEF400B65A84 /* MainViewController.swift in Sources */,
 				AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */,
 				AA4DC3081E577F55000A642E /* Thumbnail+CoreDataProperties.swift in Sources */,
 				AA4DC3061E577F55000A642E /* FullResImage+CoreDataProperties.swift in Sources */,

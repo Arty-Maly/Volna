@@ -9,7 +9,7 @@ import UIKit
 @IBDesignable
 class FavouriteButton: UIButton {
   private var hearts: [ButtonState:UIImage]?
-  var displayedState: ButtonState
+  private(set) var displayedState: ButtonState
   
   required init(coder aDecoder: NSCoder) {
     displayedState = .inactive
@@ -35,6 +35,7 @@ class FavouriteButton: UIButton {
   }
   
   func switchImage() {
+    
     displayedState.toggleState()
     self.setImage(hearts![displayedState], for: .normal)
   }

@@ -21,7 +21,7 @@ public class RadioStation: NSManagedObject {
     } else if let station = NSEntityDescription.insertNewObject(forEntityName: "RadioStation", into: context) as? RadioStation {
       station.name = stationInfo["name"]!
       station.url = stationInfo["url"]!
-      station.position = Int32(stationInfo["position"]!)!
+      station.position = Int16(stationInfo["position"]!)!
       station.image = stationInfo["image"]!
       radioStation = station
     }
@@ -33,6 +33,7 @@ public class RadioStation: NSManagedObject {
     }
     return radioStation
   }
+  
   
   class func getStationCount(inManagedContext context: NSManagedObjectContext) -> Int {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
@@ -61,6 +62,7 @@ public class RadioStation: NSManagedObject {
     
     let stations = (try? context.fetch(request)) as! [RadioStation]
     return stations.index(of: station)
+    
   }
   
   func toHash() -> [String: String] {
@@ -72,7 +74,7 @@ public class RadioStation: NSManagedObject {
     return dict
   }
   
-  class func getFavourites(inManagedContext context: NSManagedObjectContext) -> Int {
+  class func getFavouritesCount(inManagedContext context: NSManagedObjectContext) -> Int {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
     request.predicate = NSPredicate(format: "favourite == %@", NSNumber(value: true))
     do {
@@ -85,16 +87,24 @@ public class RadioStation: NSManagedObject {
   }
   class func getFavouriteStationByPosition(position: Int, inManagedContext: NSManagedObjectContext) -> RadioStation {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
-    let sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
-    request.sortDescriptors = [sortDescriptor]
-    request.predicate = NSPredicate(format: "favourite == %@", NSNumber(value: true))
+    request.predicate = NSPredicate(format: "favouritePosition = %ld", position)
+    let station = (try? inManagedContext.fetch(request))?.first as! RadioStation
     
-    let stations = (try? inManagedContext.fetch(request)) as! [RadioStation]
-    let station = stations[position]
     return station
   }
   
   func toggleFavourite(context: NSManagedObjectContext) {
+    if self.favourite {
+      let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+      request.predicate = NSPredicate(format: "favouritePosition > %ld", self.favouritePosition!)
+      let stations = (try? context.fetch(request)) as! [RadioStation]
+      for station in stations {
+        station.favouritePosition = station.favouritePosition! - 1
+      }
+      self.favouritePosition = nil
+    } else {
+      self.favouritePosition = Int16(RadioStation.getFavouritesCount(inManagedContext: context))
+    }
     self.favourite = !self.favourite
     do {
       try context.save()
@@ -107,7 +117,7 @@ public class RadioStation: NSManagedObject {
   func update(attributes: [String: String]) {
     self.image = attributes["image"]!
     self.name = attributes["name"]!
-    self.position = Int32(attributes["position"]!)!
+    self.position = Int16(attributes["position"]!)!
     self.url = attributes["url"]!
   }
 }

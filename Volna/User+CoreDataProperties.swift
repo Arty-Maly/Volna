@@ -17,5 +17,7 @@ extension User {
     }
 
     @NSManaged public var uuid: String?
+    @NSManaged public var timesOpened: Int32
+    @NSManaged public var askForReview: Bool
 
 }

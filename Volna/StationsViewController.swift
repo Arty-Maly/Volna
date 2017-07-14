@@ -8,9 +8,10 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
   private var previousIndexPath: IndexPath?
   private var managedObjectContext: NSManagedObjectContext?
   private let numberOfItemsPerRow: Int
+  private var currentStation: RadioStation?
   private let reuseIdentifier = "stationCell"
   var type: ViewControllerType?
-  @IBOutlet weak var stationCollection: UICollectionView!
+  @IBOutlet weak var stationCollection: UICollectionView?
   weak var stationViewDelegate: StationViewDelegate?
   weak var stationCollectionDelegate: StationCollectionDelegate?
 
@@ -38,8 +39,8 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-    flowLayout.minimumLineSpacing = 10
-    flowLayout.minimumInteritemSpacing = 10
+    flowLayout.minimumLineSpacing = 3
+    flowLayout.minimumInteritemSpacing = 3
     let totalSpace = flowLayout.sectionInset.left
                    + flowLayout.sectionInset.right
                    + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
@@ -51,7 +52,7 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! StationCollectionViewCell
     let station =  getStation(indexPathItem: indexPath.item)
     cell.prepareCellForDisplay(station)
-    if indexPath == previousIndexPath {
+    if currentStation == cell.radioStation {
       cell.backgroundColor = Colors.highlightColor
     }
     return cell
@@ -60,21 +61,26 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
     stationViewDelegate?.change(station: cell.radioStation)
-    if let previousPosition = previousIndexPath {
-      let previousCell = collectionView.cellForItem(at: previousPosition)
-      previousCell?.backgroundColor = UIColor.clear
-    }
+    clearPreviousCellBackground()
     previousIndexPath = indexPath
+    currentStation = cell.radioStation
     cell.backgroundColor = Colors.highlightColor
     stationCollectionDelegate?.stationClicked(clickedStation: cell.radioStation)
   }
   
+  private func clearPreviousCellBackground() {
+    if let previousStation = currentStation {
+      let previousPosition = type == .main ? Int(previousStation.position) : Int(previousStation.favouritePosition!)
+      let previousCell = stationCollection?.cellForItem(at: IndexPath(row: previousPosition, section: 0))
+      previousCell?.backgroundColor = UIColor.white
+    }
+  }
   private func getCellCountForType() -> Int {
     switch type! {
     case .main:
       return RadioStation.getStationCount(inManagedContext: managedObjectContext!)
     case .favourite:
-      return RadioStation.getFavourites(inManagedContext: managedObjectContext!)
+      return RadioStation.getFavouritesCount(inManagedContext: managedObjectContext!)
     }
   }
   
@@ -88,23 +94,19 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
   }
   
   func favouriteButtonPressed() {
-    stationCollection.reloadData()
+    previousIndexPath = nil
+    stationCollection?.reloadData()
   }
   
   func stationClicked(clickedStation: RadioStation) {
-    switch type! {
-    case .main:
-      previousIndexPath = IndexPath(item: Int(clickedStation.position), section: 0)
-    case .favourite:
-      if let position = RadioStation.getFavouriteStationPosition(station: clickedStation, inManagedContext: managedObjectContext!) {
-        previousIndexPath = IndexPath(item: position, section: 0)
-      } else {
-        previousIndexPath = nil
-      }
-    }
+    currentStation = clickedStation
     if let path = stationCollection?.indexPathsForVisibleItems {
       stationCollection?.reloadItems(at: path)
     }
+  }
+  
+  func updateCurrentStation(station: RadioStation) {
+  
   }
 }
 

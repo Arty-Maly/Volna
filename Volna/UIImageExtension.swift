@@ -32,5 +32,16 @@ extension UIImage {
     
     return imageWithInsets!
   }
+  
+  func toSquare() -> UIImage {
+    let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+    view.image = self
+    view.contentMode = .scaleAspectFit
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
+    view.layer.render(in: UIGraphicsGetCurrentContext()!)
+    let img = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return img!
+  }
 
 }
