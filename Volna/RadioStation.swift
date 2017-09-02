@@ -50,8 +50,24 @@ public class RadioStation: NSManagedObject {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
     request.predicate = NSPredicate(format: "position = %ld", position)
     let station = (try? context.fetch(request))?.first as! RadioStation
-
     return station
+  }
+  
+  class func getStationByFavouritePositionInRange(range: CountableClosedRange<Int>, inManagedContext context: NSManagedObjectContext) -> [RadioStation] {
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+    request.predicate = NSPredicate(format: "favouritePosition >= %ld AND favouritePosition <= %ld", range.lowerBound, range.upperBound)
+    let stations = (try? context.fetch(request)) as! [RadioStation]
+    
+    return stations
+  }
+
+  
+  class func getStationByPositionInRange(range: CountableClosedRange<Int>, inManagedContext context: NSManagedObjectContext) -> [RadioStation] {
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+    request.predicate = NSPredicate(format: "position >= %ld AND position <= %ld", range.lowerBound, range.upperBound)
+    let stations = (try? context.fetch(request)) as! [RadioStation]
+    
+    return stations
   }
   
   class func getFavouriteStationPosition(station: RadioStation, inManagedContext context: NSManagedObjectContext) -> Int? {
@@ -68,7 +84,6 @@ public class RadioStation: NSManagedObject {
   func toHash() -> [String: String] {
     let dict =  [ "name": self.name as String,
                   "url" : self.url as String,
-                  "position": String(self.position),
                   "image": self.image as String
                 ]
     return dict

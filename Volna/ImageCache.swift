@@ -39,6 +39,7 @@ final class ImageCache {
         let image = UIImage(data: imageData.imageData as Data)!
         cache[url] = image
       } else {
+        print("else")
         cache[url] = UIImage(named: "placeholder.png")!
       }
     } catch let error as NSError {

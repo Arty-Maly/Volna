@@ -19,11 +19,18 @@ class ReviewPromptController {
     oneAction = UIAlertAction(title: Constants.agreeToReview, style: .default) { _ in
       User.setAskForReviewToFalse()
       if let url = URL(string: Constants.appLink),
-      UIApplication.shared.canOpenURL(url){
-      UIApplication.shared.openURL(url)
-      }}
-    twoAction = UIAlertAction(title: Constants.askLater, style: .default) { _ in }
-    cancelAction = UIAlertAction(title: Constants.doNotAskAgain, style: .cancel) { _ in User.setAskForReviewToFalse() }
+      UIApplication.shared.canOpenURL(url) {
+        Logger.logAcceptedReview()
+        UIApplication.shared.openURL(url)
+      }
+    }
+    twoAction = UIAlertAction(title: Constants.askLater, style: .default) { _ in
+      Logger.logRequestLater()
+    }
+    cancelAction = UIAlertAction(title: Constants.doNotAskAgain, style: .cancel) { _ in
+      User.setAskForReviewToFalse()
+      Logger.logRequestNever()
+    }
     
     alertController.addAction(oneAction)
     alertController.addAction(twoAction)

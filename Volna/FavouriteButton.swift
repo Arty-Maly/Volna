@@ -30,8 +30,8 @@ class FavouriteButton: UIButton {
   
   private func initImages() {
     let bundle = Bundle(for: self.classForCoder)
-    hearts = [.inactive : UIImage(named: "heart-empty.png", in: bundle, compatibleWith: self.traitCollection)!,
-              .active : UIImage(named: "heart-fav.png", in: bundle, compatibleWith: self.traitCollection)!]
+    hearts = [.inactive : UIImage(named: "heart-empty", in: bundle, compatibleWith: self.traitCollection)!,
+              .active : UIImage(named: "heart-fav", in: bundle, compatibleWith: self.traitCollection)!]
   }
   
   func switchImage() {

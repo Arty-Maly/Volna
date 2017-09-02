@@ -47,7 +47,8 @@ class DataHandler {
       return
     }
     for station in localStations {
-      if let jsonStation = jsonStations[station.name] {
+      if var jsonStation = jsonStations[station.name] {
+        jsonStation.removeValue(forKey: "position")
         if jsonStation != station.toHash() {
           managedObjectContext.delete(station)
           do {
@@ -147,7 +148,6 @@ class DataHandler {
       let data = try? Data(contentsOf:  URL(string: radioStation.image)!)
       let image = UIImage(data: data!)!
       let date : Double = NSDate().timeIntervalSince1970
-//      let thumbnail = image.resizeImage(newWidth: CGFloat(132))
       guard let thumbnailData  = UIImagePNGRepresentation(image) else {
         print("png error")
         return

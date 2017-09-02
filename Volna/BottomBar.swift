@@ -13,7 +13,7 @@ class BottomBar: BarView {
   }
   
   func setupLayers() {
-    self.layer.addBorder(edge: UIRectEdge.top, color: Colors.borderColor, thickness: 1)
+//    self.layer.addBorder(edge: UIRectEdge.top, color: Colors.borderColor, thickness: 1)
     let gradient = Colors.bottomGradient()
     gradient.frame = self.bounds
     self.layer.insertSublayer(gradient, at: UInt32(0))

@@ -8,8 +8,10 @@ import AVFoundation
 import MediaPlayer
 import CoreData
 import GoogleMobileAds
+import ESTMusicIndicator
+import SCLAlertView
 
-class MainViewController: UIViewController, MainViewPageControlDelegate, GADBannerViewDelegate {
+class MainViewController: UIViewController, MainViewPageControlDelegate, GADNativeExpressAdViewDelegate, PlaybackDelegate {
   private var player: RadioPlayer
   private var playImage: UIImage
   private var pauseImage: UIImage
@@ -21,64 +23,83 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADBann
   private var managedObjectContext: NSManagedObjectContext?
   private var wasPlaying: Bool
   weak var buttonDelegate: ButtonActionDelegate?
-  @IBOutlet weak var favouriteButton: FavouriteButton!
-  @IBOutlet weak var adView: UIView!
-  @IBOutlet weak var adViewHeight: NSLayoutConstraint!
-  
-  lazy var adBannerView: GADBannerView = {
-    let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-    adBannerView.rootViewController = self
-    adBannerView.adUnitID = Constants.adUnitID
-    adBannerView.delegate = self
-    
-    return adBannerView
-  }()
 
+  @IBOutlet weak var favouriteButton: FavouriteButton!
+  @IBOutlet weak var statusView: UIView!
+  @IBOutlet weak var adView: GADNativeExpressAdView!
+  @IBOutlet weak var adContainer: UIView!
   @IBOutlet weak var pageControl: UIPageControl!
-  
   @IBOutlet weak var bottomBar: UIView!
   @IBOutlet weak var stationTitle: UILabel!
   @IBOutlet weak var playButton: UIButton!
+  @IBOutlet weak var playbackIndicator: ESTMusicIndicatorView!
+  @IBOutlet weak var playbackImage: UIImageView!
   
   required init(coder aDecoder: NSCoder) {
     player = RadioPlayer()
-    playImage = UIImage(named: "play_button.png")!
-    pauseImage = UIImage(named: "pause_button.png")!
+    playImage = UIImage(named: "play_button")!
+    pauseImage = UIImage(named: "pause_button")!
     infoCenter = MPNowPlayingInfoCenter.default()
     wasPlaying = false
     super.init(coder: aDecoder)!
   }
   
   override func viewDidLoad() {
-    super.viewDidLoad()
-    let request = GADRequest()
-    adBannerView.load(request)
-    adBannerView.load(GADRequest())
+    player.playbackDelegate = self
+    loadAdRequest()
+    playbackIndicator.tintColor = .white
+    startUserActivity()
     managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
     let radioPage = self.childViewControllers[0] as! RadioPageViewController
     radioPage.mainDelegate = self
     buttonDelegate = radioPage
     setRemoteCommandCenter()
     setAvAudioSession()
-    let audioSession = AVAudioSession.sharedInstance()
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(self.playInterrupt),
-                                           name: NSNotification.Name.AVAudioSessionInterruption,
-                                           object: audioSession)
+    addObservers()
+    
+    super.viewDidLoad()
   }
-  
+
   override func viewDidAppear(_ animated: Bool) {
     let userInfo = User.getTimesOpenedAndAskForReview()
+//    if userInfo.0 == 0 {
+    let appearance = SCLAlertView.SCLAppearance(
+      kCircleHeight: CGFloat(70),
+      kCircleIconHeight: CGFloat(50),
+      kTitleTop: CGFloat(40),
+      kWindowWidth: CGFloat(bottomBar.frame.width - 40),
+      kTitleFont: UIFont(name: "HelveticaNeue", size: 26)!,
+      kTextFont: UIFont(name: "HelveticaNeue", size: 17)!,
+      kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+      showCloseButton: false,
+      contentViewColor: Colors.lighterBlue,
+      contentViewBorderColor: Colors.lighterBlue,
+      titleColor: UIColor.white
+    )
+    var colorAsUInt : UInt32 = 0
+    var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+    if Colors.darkerBlue.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+      
+      colorAsUInt += UInt32(red * 255.0) << 16 +
+        UInt32(green * 255.0) << 8 +
+        UInt32(blue * 255.0)
+      
+      colorAsUInt == 0xCC6699 // true
+    }
+    let alert = SCLAlertView(appearance: appearance)
+    alert.addButton("OK", backgroundColor: Colors.darkerBlue, textColor: UIColor.white, showDurationStatus: true) {}
+    let alertView = alert.showInfo(Constants.capabilitiesTitle, subTitle: Constants.capabilitiesText, colorStyle: UInt(colorAsUInt), circleIconImage: UIImage(named: "lightbulb"))
+    
+//    }
     if userInfo.0 % Constants.timesOpened == 0 && userInfo.1 {
       let alert = ReviewPromptController()
       self.present(alert.alertController, animated: true)
-      User.incrementTimesOpened()
-    } else {
-      User.incrementTimesOpened()
+      Logger.logReviewPresented(numberOfTimes: userInfo.0)
     }
+    User.incrementTimesOpened()
   }
 
-  func playInterrupt(notification: NSNotification) {
+  @objc private func playInterrupt(notification: NSNotification) {
     if notification.name == NSNotification.Name.AVAudioSessionInterruption
       && notification.userInfo != nil {
       
@@ -116,6 +137,15 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADBann
     }
   }
   
+  private func loadAdRequest() {
+    adView.rootViewController = self
+    adView.adUnitID = Constants.adUnitID
+    adView.delegate = self
+    let request = GADRequest()
+    request.testDevices = ["a6a1484547eae253da0d4ccb01cdcfca"];
+    adView.load(request)
+  }
+  
   private func setRemoteCommandCenter() {
     let commandCenter = MPRemoteCommandCenter.shared()
     commandCenter.playCommand.isEnabled = true
@@ -130,9 +160,8 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADBann
   }
   
   @IBAction func playStation() {
-    player.play()
-    
     togglePlaybackButton()
+    player.play()
   }
   @objc private func nextStation() {
     if let currentPosition = (player.currentStation?.position) {
@@ -141,7 +170,6 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADBann
       let station = RadioStation.getStationByPosition(position: nextPosition, inManagedContext: managedObjectContext!)
       setStation(station)
       buttonDelegate?.updateCurrentStation(station: station)
-//      player.player.play()
     }
   }
   
@@ -162,6 +190,7 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADBann
     previousStationPosition = currentStationPosition
     currentStationPosition = Int(station.position)
     let image = ImageCache.shared[station.image]
+    playbackImage.image = image
     togglePauseButton()
     let albumArtWork = MPMediaItemArtwork(image: image!.toSquare())
     infoCenter.nowPlayingInfo = [
@@ -198,16 +227,45 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADBann
   
   private func togglePlaybackButton() {
     if player.isPaused() {
-      togglePlayButton()
-      wasPlaying = false
-    } else {
       togglePauseButton()
+      wasPlaying = true
+      playbackIndicator.state = .playing
+    } else {
+      wasPlaying = false
+      togglePlayButton()
+      playbackIndicator.state = .paused
     }
   }
   
+  @objc private func playerItemFailedToPlay() {
+    playbackIndicator.state = .paused
+  }
+  
+  private func addObservers() {
+    let audioSession = AVAudioSession.sharedInstance()
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(self.playInterrupt),
+                                           name: NSNotification.Name.AVAudioSessionInterruption,
+                                           object: audioSession)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(playerItemFailedToPlay),
+                                           name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime,
+                                           object: nil)
+  }
+  
+  private func startUserActivity() {
+    let activity = NSUserActivity(activityType: Constants.activityType)
+    
+    activity.keywords = Set(Constants.searchKeywords)
+    activity.isEligibleForSearch = true
+    activity.title = Constants.activityTitle
+    userActivity = activity
+    userActivity!.becomeCurrent()
+  }
+  
   func change(station: RadioStation) {
-    print(station)
     setStation(station)
+    playbackIndicator.state = .playing
   }
   
   @IBAction func favouritedAction() {
@@ -222,30 +280,21 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADBann
     pageControl.currentPage = pageControl.numberOfPages - pageControl.currentPage - 1
   }
   
-  func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-    print("Banner loaded successfully")
-//    self.adView.addSubview(adBannerView)
-//    adView?.frame = bannerView.frame
-    
-//    print(adView.frame.size.width)
-//    print(adView.frame.size.height)
-//    adView.frame.size.height = adBannerView.frame.size.height
-//    adView.frame.size.width = adBannerView.frame.size.width
-//    print(adView.frame)
-//    print(adView.frame.size.width)
-//    print(adView.frame.size.height)
-//    
-//    adView.addSubview(adBannerView)
-//    let translateTransform = CGAffineTransform(translationX: 0, y: -bannerView.bounds.size.height)
-//    bannerView.transform = translateTransform
-    adViewHeight?.isActive = false
-    self.adView.addSubview(bannerView)
-    
+  func playbackStalled() {
+    togglePlayButton()
+    playbackIndicator.state = .paused
+  }
+  
+  func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {
+//    print("Banner loaded successfully")
+    let tempHeight = adView.frame.size.height
+    adView.frame.size.height = 0
+    nativeExpressAdView.alpha = 1.0
+
     UIView.animate(withDuration: 0.5) {
-      self.adView.frame.size.height = bannerView.frame.size.height
-      self.adView.frame.size.width = bannerView.frame.size.width
-//      bannerView.transform = CGAffineTransform.identity
+      self.adView.frame.size.height = tempHeight
     }
+    adContainer.backgroundColor = Colors.lighterBlue
   }
 }
 

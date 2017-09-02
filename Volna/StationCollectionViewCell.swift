@@ -34,15 +34,15 @@ class StationCollectionViewCell: UICollectionViewCell {
     setImage(station.image)
   }
   
-  
   private func setImage(_ url: String) {
-    DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+//    DispatchQueue.global(qos: .userInitiated).async { [weak self] in
       if let image = ImageCache.shared[url] {
-        DispatchQueue.main.async {
-          self?.imageView.image = image
+//        DispatchQueue.main.async {
+          imageView.image = image
+        return
         }
-      }
-    }
+    print("no")
+//      }
   }
   
   private func parseName(_ name: String) -> String {
