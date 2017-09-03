@@ -79,4 +79,18 @@ public class User: NSManagedObject {
       print(error)
     }
   }
+  
+  class func resetTimesOpenedAndReview() {
+    let context = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+    if let user = (try? context?.fetch(request))??.first as? User {
+      user.askForReview = true
+      user.timesOpened = 1
+    }
+    do {
+      try context?.save()
+    } catch let error {
+      print(error)
+    }
+  }
 }

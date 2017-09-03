@@ -14,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
       GADMobileAds.configure(withApplicationID: Constants.appID)
       FirebaseApp.configure()
+      let defaults = UserDefaults.standard
+      if !defaults.bool(forKey: "launchedAlready") {
+				defaults.setValue(true, forKey: "launchedAlready")
+        User.resetTimesOpenedAndReview()
+      }
       return true
     }
 
@@ -60,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var failureReason = "There was an error creating or loading the application's saved data."
     do {
       // Configure automatic migration.
-      let options = [ NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : false ]
+      let options = [ NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true ]
       try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
     } catch {
       // Report any error we got.

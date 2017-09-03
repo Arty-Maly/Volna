@@ -35,10 +35,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.1</string>
-	<key>FacebookAppID</key>
-	<string>215210955659717</string>
-	<key>FacebookDisplayName</key>
-	<string>RadioScope</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

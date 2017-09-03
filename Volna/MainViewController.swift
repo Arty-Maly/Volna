@@ -9,7 +9,6 @@ import MediaPlayer
 import CoreData
 import GoogleMobileAds
 import ESTMusicIndicator
-import SCLAlertView
 
 class MainViewController: UIViewController, MainViewPageControlDelegate, GADNativeExpressAdViewDelegate, PlaybackDelegate {
   private var player: RadioPlayer
@@ -61,41 +60,7 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    let userInfo = User.getTimesOpenedAndAskForReview()
-//    if userInfo.0 == 0 {
-    let appearance = SCLAlertView.SCLAppearance(
-      kCircleHeight: CGFloat(70),
-      kCircleIconHeight: CGFloat(50),
-      kTitleTop: CGFloat(40),
-      kWindowWidth: CGFloat(bottomBar.frame.width - 40),
-      kTitleFont: UIFont(name: "HelveticaNeue", size: 26)!,
-      kTextFont: UIFont(name: "HelveticaNeue", size: 17)!,
-      kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
-      showCloseButton: false,
-      contentViewColor: Colors.lighterBlue,
-      contentViewBorderColor: Colors.lighterBlue,
-      titleColor: UIColor.white
-    )
-    var colorAsUInt : UInt32 = 0
-    var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
-    if Colors.darkerBlue.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-      
-      colorAsUInt += UInt32(red * 255.0) << 16 +
-        UInt32(green * 255.0) << 8 +
-        UInt32(blue * 255.0)
-      
-      colorAsUInt == 0xCC6699 // true
-    }
-    let alert = SCLAlertView(appearance: appearance)
-    alert.addButton("OK", backgroundColor: Colors.darkerBlue, textColor: UIColor.white, showDurationStatus: true) {}
-    let alertView = alert.showInfo(Constants.capabilitiesTitle, subTitle: Constants.capabilitiesText, colorStyle: UInt(colorAsUInt), circleIconImage: UIImage(named: "lightbulb"))
-    
-//    }
-    if userInfo.0 % Constants.timesOpened == 0 && userInfo.1 {
-      let alert = ReviewPromptController()
-      self.present(alert.alertController, animated: true)
-      Logger.logReviewPresented(numberOfTimes: userInfo.0)
-    }
+    showAlertsIfNeeded()
     User.incrementTimesOpened()
   }
 
@@ -137,12 +102,24 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     }
   }
   
+  private func showAlertsIfNeeded() {
+    let userInfo = User.getTimesOpenedAndAskForReview()
+    if userInfo.0 == 1 {
+      let infoAlert = InfoAlert(alertWidth: bottomBar.frame.size.width - 40)
+      infoAlert.showAlert()
+    }
+    if userInfo.0 % Constants.timesOpened == 0 && userInfo.1 {
+      let reviewPrompt = ReviewPromptController(alertWidth: bottomBar.frame.size.width - 40)
+      reviewPrompt.showAlert()
+      Logger.logReviewPresented(numberOfTimes: userInfo.0)
+    }
+  }
+  
   private func loadAdRequest() {
     adView.rootViewController = self
     adView.adUnitID = Constants.adUnitID
     adView.delegate = self
     let request = GADRequest()
-    request.testDevices = ["a6a1484547eae253da0d4ccb01cdcfca"];
     adView.load(request)
   }
   

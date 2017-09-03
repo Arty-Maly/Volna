@@ -18,9 +18,7 @@
 		8EFA1376D7DBE032AFD25C8C /* Pods_VolnaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2526A7B5837291F45AB73302 /* Pods_VolnaTests.framework */; };
 		AA20F29A1EEE1A5700F2F760 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AA20F2A01EEE2C3500F2F760 /* volna-firebase-crashreporting.json in Resources */ = {isa = PBXBuildFile; fileRef = AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */; };
-		AA4938BF1F40D37100E2AACF /* SVBSoundBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4938BE1F40D37100E2AACF /* SVBSoundBars.swift */; };
 		AA4938C51F47B98200E2AACF /* PlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4938C41F47B98200E2AACF /* PlaybackDelegate.swift */; };
-		AA4A3A831F04AF2F008D49C0 /* RadioPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A821F04AF2F008D49C0 /* RadioPageViewController.swift */; };
 		AA4A3A861F072859008D49C0 /* StationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A851F072859008D49C0 /* StationViewDelegate.swift */; };
 		AA4A3A8B1F0828EC008D49C0 /* MainViewPageControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A8A1F0828EC008D49C0 /* MainViewPageControlDelegate.swift */; };
 		AA4A3A8D1F08629C008D49C0 /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A3A8C1F08629C008D49C0 /* ViewControllerType.swift */; };
@@ -44,6 +42,7 @@
 		AA6F72B11F12BEF400B65A84 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F72B01F12BEF400B65A84 /* MainViewController.swift */; };
 		AA6FB2DC1E3555F600FE99B4 /* StationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */; };
 		AA7863E51F0C0CE700C0960B /* StationCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7863E41F0C0CE700C0960B /* StationCollectionDelegate.swift */; };
+		AA93E2161F5B11710016D197 /* BaseAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA93E2151F5B11710016D197 /* BaseAlert.swift */; };
 		AA953C251F0B23AB00BFE1F4 /* StatefullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA953C241F0B23AB00BFE1F4 /* StatefullButton.swift */; };
 		AA953C271F0C074B00BFE1F4 /* ButtonActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA953C261F0C074B00BFE1F4 /* ButtonActionDelegate.swift */; };
 		AAA663621F09CA8D006D9989 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAA663611F09CA8D006D9989 /* GoogleService-Info.plist */; };
@@ -56,12 +55,13 @@
 		AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */; };
 		AAD40F2C1E2DA9D300FFA58E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F281E2DA9D300FFA58E /* User.swift */; };
 		AAD40F2D1E2DA9D300FFA58E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F291E2DA9D300FFA58E /* User+CoreDataProperties.swift */; };
-		AAD4E2F61F5A707700CCD3E5 /* RadioPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD4E2F51F5A707700CCD3E5 /* RadioPageViewController.swift */; };
 		AAD4E2F81F5A709A00CCD3E5 /* ReviewPromptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD4E2F71F5A709A00CCD3E5 /* ReviewPromptController.swift */; };
 		AAD5B5151F0B079E005B8E64 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5B5141F0B079E005B8E64 /* FavouriteButton.swift */; };
 		AAE01CD11E3E69C500153BA9 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE01CD01E3E69C500153BA9 /* UIImageExtension.swift */; };
 		AAF0BAD21F5A32B600B00CA8 /* InfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0BAD11F5A32B600B00CA8 /* InfoAlert.swift */; };
 		AAF2319C1E2D5EF500564178 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF2319B1E2D5EF500564178 /* SplashViewController.swift */; };
+		AAFCAB0D1F5A753600C2DDCB /* RadioPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD4E2F51F5A707700CCD3E5 /* RadioPageViewController.swift */; };
+		AAFCAB0F1F5A757800C2DDCB /* ButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFCAB0E1F5A757800C2DDCB /* ButtonState.swift */; };
 		C9A0B81456349FA9DE65A4AA /* Pods_Volna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001E909BDAC318FA44846678 /* Pods_Volna.framework */; };
 		D5697DFE385DC8AD5A91A205 /* Pods_VolnaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711387E0380F1D0D9141B3C7 /* Pods_VolnaUITests.framework */; };
 /* End PBXBuildFile section */
@@ -108,9 +108,7 @@
 		A5CEC27A3CA45CEF3551688A /* Pods-Volna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Volna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Volna/Pods-Volna.release.xcconfig"; sourceTree = "<group>"; };
 		AA20F29C1EEE22D000F2F760 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "volna-firebase-crashreporting.json"; sourceTree = SOURCE_ROOT; };
-		AA4938BE1F40D37100E2AACF /* SVBSoundBars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBSoundBars.swift; path = ../SVBSoundBars.swift; sourceTree = "<group>"; };
 		AA4938C41F47B98200E2AACF /* PlaybackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackDelegate.swift; sourceTree = "<group>"; };
-		AA4A3A821F04AF2F008D49C0 /* RadioPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioPageViewController.swift; path = ../RadioPageViewController.swift; sourceTree = "<group>"; };
 		AA4A3A851F072859008D49C0 /* StationViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewDelegate.swift; sourceTree = "<group>"; };
 		AA4A3A8A1F0828EC008D49C0 /* MainViewPageControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewPageControlDelegate.swift; sourceTree = "<group>"; };
 		AA4A3A8C1F08629C008D49C0 /* ViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerType.swift; sourceTree = "<group>"; };
@@ -134,6 +132,7 @@
 		AA6F72B01F12BEF400B65A84 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AA6FB2DB1E3555F600FE99B4 /* StationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionViewCell.swift; sourceTree = "<group>"; };
 		AA7863E41F0C0CE700C0960B /* StationCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCollectionDelegate.swift; sourceTree = "<group>"; };
+		AA93E2151F5B11710016D197 /* BaseAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAlert.swift; sourceTree = "<group>"; };
 		AA953C241F0B23AB00BFE1F4 /* StatefullButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefullButton.swift; sourceTree = "<group>"; };
 		AA953C261F0C074B00BFE1F4 /* ButtonActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonActionDelegate.swift; sourceTree = "<group>"; };
 		AAA663601F09C55B006D9989 /* SchemaV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchemaV2.xcdatamodel; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		AAE01CD01E3E69C500153BA9 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AAF0BAD11F5A32B600B00CA8 /* InfoAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAlert.swift; sourceTree = "<group>"; };
 		AAF2319B1E2D5EF500564178 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		AAFCAB0E1F5A757800C2DDCB /* ButtonState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonState.swift; sourceTree = "<group>"; };
 		D2FA73118DEE68E0DA308B50 /* Pods-VolnaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolnaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VolnaUITests/Pods-VolnaUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,9 +215,9 @@
 		551062681D5E3439008D10F6 /* Volna */ = {
 			isa = PBXGroup;
 			children = (
+				AA93E2151F5B11710016D197 /* BaseAlert.swift */,
 				AAD4E2F71F5A709A00CCD3E5 /* ReviewPromptController.swift */,
 				AAF0BAD11F5A32B600B00CA8 /* InfoAlert.swift */,
-				AAD4E2F51F5A707700CCD3E5 /* RadioPageViewController.swift */,
 				AA7863E41F0C0CE700C0960B /* StationCollectionDelegate.swift */,
 				AA4DC2D91E5747AD000A642E /* Views */,
 				AAD40F2E1E2DAA0900FFA58E /* Core Data */,
@@ -237,6 +237,7 @@
 				AA4A3A891F081C6A008D49C0 /* Delegates */,
 				AAD5B5141F0B079E005B8E64 /* FavouriteButton.swift */,
 				AA953C241F0B23AB00BFE1F4 /* StatefullButton.swift */,
+				AAFCAB0E1F5A757800C2DDCB /* ButtonState.swift */,
 			);
 			path = Volna;
 			sourceTree = "<group>";
@@ -307,7 +308,7 @@
 		AA4A3A841F0724DA008D49C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				AA4A3A821F04AF2F008D49C0 /* RadioPageViewController.swift */,
+				AAD4E2F51F5A707700CCD3E5 /* RadioPageViewController.swift */,
 				AA6F72B01F12BEF400B65A84 /* MainViewController.swift */,
 				AAF2319B1E2D5EF500564178 /* SplashViewController.swift */,
 				5510626B1D5E3439008D10F6 /* StationsViewController.swift */,
@@ -340,7 +341,6 @@
 		AA4DC2D91E5747AD000A642E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AA4938BE1F40D37100E2AACF /* SVBSoundBars.swift */,
 				AA4DC2DA1E574814000A642E /* BarView.swift */,
 				AA4DC2E01E5754A1000A642E /* BottomBar.swift */,
 				AA4DC2E21E5757B1000A642E /* TopBar.swift */,
@@ -679,11 +679,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFCAB0D1F5A753600C2DDCB /* RadioPageViewController.swift in Sources */,
 				AA953C251F0B23AB00BFE1F4 /* StatefullButton.swift in Sources */,
-				AAD4E2F61F5A707700CCD3E5 /* RadioPageViewController.swift in Sources */,
 				AA4A3A861F072859008D49C0 /* StationViewDelegate.swift in Sources */,
 				5510626C1D5E3439008D10F6 /* StationsViewController.swift in Sources */,
 				AABF66CC1F4A3243002AB720 /* UIViewExtension.swift in Sources */,
+				AAFCAB0F1F5A757800C2DDCB /* ButtonState.swift in Sources */,
 				AAD5B5151F0B079E005B8E64 /* FavouriteButton.swift in Sources */,
 				AAF0BAD21F5A32B600B00CA8 /* InfoAlert.swift in Sources */,
 				AA6FB2DC1E3555F600FE99B4 /* StationCollectionViewCell.swift in Sources */,
@@ -692,7 +693,6 @@
 				AA7863E51F0C0CE700C0960B /* StationCollectionDelegate.swift in Sources */,
 				5510626A1D5E3439008D10F6 /* AppDelegate.swift in Sources */,
 				AAD40F2A1E2DA9D300FFA58E /* RadioStation.swift in Sources */,
-				AA4A3A831F04AF2F008D49C0 /* RadioPageViewController.swift in Sources */,
 				AA56777A1D99D77A0084EBCE /* RadioPlayer.swift in Sources */,
 				AA4DC3051E577F55000A642E /* FullResImage.swift in Sources */,
 				AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */,
@@ -701,10 +701,10 @@
 				AA953C271F0C074B00BFE1F4 /* ButtonActionDelegate.swift in Sources */,
 				AA5F21A21F40B8CE00712C4F /* Logger.swift in Sources */,
 				AA4DC30E1E58C2DE000A642E /* RequestMaker.swift in Sources */,
-				AA4938BF1F40D37100E2AACF /* SVBSoundBars.swift in Sources */,
 				AA4DC2DF1E5753AF000A642E /* CALayerExtension.swift in Sources */,
 				AA6F72B11F12BEF400B65A84 /* MainViewController.swift in Sources */,
 				AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */,
+				AA93E2161F5B11710016D197 /* BaseAlert.swift in Sources */,
 				AA4DC3081E577F55000A642E /* Thumbnail+CoreDataProperties.swift in Sources */,
 				AA4DC3061E577F55000A642E /* FullResImage+CoreDataProperties.swift in Sources */,
 				AA4938C51F47B98200E2AACF /* PlaybackDelegate.swift in Sources */,

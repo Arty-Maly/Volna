@@ -28,5 +28,17 @@ struct Colors {
     
     return gl
   }
+  
+  static func getUIntColor() -> UInt {
+    var colorAsUInt : UInt32 = 0
+    var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+    if Colors.darkerBlue.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+      colorAsUInt += UInt32(red * 255.0) << 16 +
+        UInt32(green * 255.0) << 8 +
+        UInt32(blue * 255.0)
+    }
+    
+    return UInt(colorAsUInt)
+  }
 }
 

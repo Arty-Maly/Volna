@@ -8,33 +8,40 @@
 
 import UIKit
 
-class ReviewPromptController {
-  let alertController:  UIAlertController
-  private let oneAction: UIAlertAction
-  private let twoAction: UIAlertAction
-  private let cancelAction: UIAlertAction
+class ReviewPromptController: BaseAlert {
   
-  init() {
-    alertController = UIAlertController(title: Constants.reviewTitle, message: Constants.reviewMessage, preferredStyle: .alert)
-    oneAction = UIAlertAction(title: Constants.agreeToReview, style: .default) { _ in
+  override init(alertWidth: CGFloat) {
+    super.init(alertWidth: alertWidth)
+    addButtons()
+  }
+  
+  func showAlert() {
+    let colorAsUInt = Colors.getUIntColor()
+    alertView.showInfo("",
+                       subTitle: Constants.reviewMessage,
+                       colorStyle: UInt(colorAsUInt),
+                       circleIconImage: UIImage(named: "pencil"))
+  }
+  
+  private func addButtons() {
+    alertView.addButton(Constants.agreeToReview, backgroundColor: Colors.darkerBlue, textColor: UIColor.white, showDurationStatus: true)  { _ in
       User.setAskForReviewToFalse()
       if let url = URL(string: Constants.appLink),
-      UIApplication.shared.canOpenURL(url) {
+        UIApplication.shared.canOpenURL(url) {
         Logger.logAcceptedReview()
         UIApplication.shared.openURL(url)
       }
     }
-    twoAction = UIAlertAction(title: Constants.askLater, style: .default) { _ in
+    
+    alertView.addButton(Constants.askLater, backgroundColor: Colors.darkerBlue, textColor: UIColor.white, showDurationStatus: true)  { _ in
       Logger.logRequestLater()
     }
-    cancelAction = UIAlertAction(title: Constants.doNotAskAgain, style: .cancel) { _ in
+    
+    alertView.addButton(Constants.doNotAskAgain, backgroundColor: Colors.darkerBlue, textColor: UIColor.white, showDurationStatus: true)  { _ in
       User.setAskForReviewToFalse()
       Logger.logRequestNever()
     }
-    
-    alertController.addAction(oneAction)
-    alertController.addAction(twoAction)
-    alertController.addAction(cancelAction)
+
   }
 }
 
