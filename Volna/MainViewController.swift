@@ -242,7 +242,7 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
   
   func change(station: RadioStation) {
     setStation(station)
-    playbackIndicator.state = .playing
+    playbackIndicator.state = .paused
   }
   
   @IBAction func favouritedAction() {
@@ -260,6 +260,10 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
   func playbackStalled() {
     togglePlayButton()
     playbackIndicator.state = .paused
+  }
+  
+  func startPlaybackIndicator() {
+  	playbackIndicator.state = .playing
   }
   
   func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {

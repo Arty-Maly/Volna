@@ -27,8 +27,8 @@ class RadioPlayer: NSObject{
     player = AVPlayer()
     status = RadioPlayerStatus.paused
     super.init()
-
-    player.addObserver(self, forKeyPath: "rate", options: [.new, .old], context: nil)
+		player.addObserver(self, forKeyPath: "rate", options: [.new, .old], context: nil)
+    
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -36,9 +36,13 @@ class RadioPlayer: NSObject{
       return
     }
     
-    if status == .playing && newValue as? Int == 0 {
+    if status == .playing && newValue as? Int == 0 && keyPath == "rate" {
       status = .stalled
       playbackDelegate?.playbackStalled()
+    }
+    
+    if keyPath == "status" && newValue as? Int == 1 {
+      playbackDelegate?.startPlaybackIndicator()
     }
   }
   
@@ -50,7 +54,9 @@ class RadioPlayer: NSObject{
         let stationPlayerItem = AVPlayerItem(url: url)
         DispatchQueue.main.async {
           if self.currentStation! == station {
+            self.player.currentItem?.removeObserver(self, forKeyPath: "status")
             self.player.replaceCurrentItem(with: stationPlayerItem)
+            self.player.currentItem?.addObserver(self, forKeyPath: "status", options: [.new, .old], context: nil)
             self.player.play()
             self.registerBackgroundTask()
           } else {

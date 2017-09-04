@@ -8,4 +8,5 @@
 
 protocol PlaybackDelegate: class {
   func playbackStalled()
+  func startPlaybackIndicator()
 }

@@ -45,12 +45,8 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
       startDragAtLocation(location: gesture.location(in: self.stationCollection), superViewLocation: gesture.location(in: self.stationCollection!.superview))
     case UIGestureRecognizerState.changed:
       updateDragLocation(location: gesture.location(in: gesture.view!), superViewLocation: gesture.location(in: self.stationCollection!.superview))
-//      stationCollection?.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
     case UIGestureRecognizerState.ended:
       endDragAtLocation(location: gesture.location(in: self.stationCollection))
-//      let cell = stationCollection?.cellForItem(at: selectedIndexPath) as! StationCollectionViewCell
-//      cell.hideShadow()
-//      stationCollection?.endInteractiveMovement()
     default:
       stationCollection?.cancelInteractiveMovement()
     }
@@ -108,15 +104,10 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
       cv.moveItem(at: draggingIndexPath!, to: newIndexPath)
       draggingIndexPath = newIndexPath
     }
-    
-//    cv.collectionViewLayout.invalidateLayout()
-    
   }
   
   private func scrollTo(_ rect: CGRect) {
-//    UIView.animate(withDuration: 0.25, delay: 0, options: [], animations: {
       self.stationCollection?.scrollRectToVisible(rect, animated: true)
-//    })
   }
   
   private func startDragAtLocation(location: CGPoint, superViewLocation: CGPoint) {
@@ -146,9 +137,6 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
       self.draggingView?.alpha = 0.95
       self.draggingView?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
     }, completion: nil)
-    //      cell.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//    stationCollection?.beginInteractiveMovementForItem(at: indexPath)
-    
   }
   
   private func updateStationPositions(source: Int, destination: Int) {
@@ -216,10 +204,8 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
 
     let station =  getStation(indexPathItem: indexPath.item)
     cell.prepareCellForDisplay(station)
-//    if let image = ImageCache.shared[station.image] {
-//      cell.imageView.image = image
-//    }
     if currentStation == cell.radioStation {
+      
       cell.backgroundColor = Colors.highlightColor
     }
 
@@ -237,9 +223,15 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     stationCollectionDelegate?.stationClicked(clickedStation: cell.radioStation)
   }
   
+  func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  	cell.backgroundColor = UIColor.white
+  }
+  
+  
   private func clearPreviousCellBackground() {
     if let previousStation = currentStation {
       let previousPosition = type == .main ? previousStation.position : previousStation.favouritePosition
+      
       guard let position = previousPosition else {
         return
       }

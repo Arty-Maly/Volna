@@ -41,8 +41,8 @@
                                             <constraint firstItem="qak-rg-gwF" firstAttribute="width" secondItem="4HP-n8-HqK" secondAttribute="width" id="yF9-bo-tl4"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Все будет Хорошо!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezN-Hk-BTt">
-                                        <rect key="frame" x="102" y="30" width="211" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Все будет хорошо!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezN-Hk-BTt">
+                                        <rect key="frame" x="103.66666666666669" y="30" width="208" height="26"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Station Title"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
