@@ -15,11 +15,7 @@ class FavouriteButton: UIButton {
     displayedState = .inactive
     super.init(coder: aDecoder)!
     self.layer.masksToBounds = true
-  }
-  
-  override init(frame: CGRect) {
-    displayedState = .inactive
-    super.init(frame: frame)
+    isExclusiveTouch = true
   }
   
   override func layoutSubviews() {

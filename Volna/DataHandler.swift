@@ -49,14 +49,7 @@ class DataHandler {
     for station in localStations {
       if var jsonStation = jsonStations[station.name] {
         jsonStation.removeValue(forKey: "position")
-        if jsonStation != station.toHash() || station.thumbnail == nil {
-          managedObjectContext.delete(station)
-          do {
-            try self.managedObjectContext.save()
-          } catch {
-            fatalError("Failure: \(error)")
-          }
-        } else {
+        if jsonStation == station.toHash() && station.thumbnail != nil {
           jsonStations[station.name] = nil
         }
       } else {

@@ -19,15 +19,14 @@ public class RadioStation: NSManagedObject {
     if let station = (try? context.fetch(request))?.first as? RadioStation {
       radioStation = station
     } else if let station = NSEntityDescription.insertNewObject(forEntityName: "RadioStation", into: context) as? RadioStation {
-      station.name = stationInfo["name"]!
-      station.url = stationInfo["url"]!
       station.position = Int16(stationInfo["position"]!)!
-      station.image = stationInfo["image"]!
       radioStation = station
     }
+    radioStation?.name = stationInfo["name"]!
+    radioStation?.url = stationInfo["url"]!
+    radioStation?.image = stationInfo["image"]!
     do {
-      try context.save()      
-    
+      try context.save()
     } catch let error {
       print(error)
     }

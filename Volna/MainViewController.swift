@@ -55,7 +55,6 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     setRemoteCommandCenter()
     setAvAudioSession()
     addObservers()
-    
     super.viewDidLoad()
   }
 
@@ -263,7 +262,9 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
   }
   
   func startPlaybackIndicator() {
-  	playbackIndicator.state = .playing
+    if wasPlaying {
+  		playbackIndicator.state = .playing
+    }
   }
   
   func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {
