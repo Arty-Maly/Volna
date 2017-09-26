@@ -136,6 +136,7 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
   }
   
   @IBAction func playStation() {
+    guard currentStation != nil else { return }
     togglePlaybackButton()
     player.play()
   }
@@ -217,6 +218,19 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     playbackIndicator.state = .paused
   }
   
+  @objc private func handleRouteChange(_ notification: Notification) {
+    guard let userInfo = notification.userInfo,
+      let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+      let reason = AVAudioSessionRouteChangeReason(rawValue:reasonValue) else {
+        return
+    }
+    switch reason {
+    case .oldDeviceUnavailable:
+      wasPlaying = false
+    default: ()
+    }
+  }
+  
   private func addObservers() {
     let audioSession = AVAudioSession.sharedInstance()
     NotificationCenter.default.addObserver(self,
@@ -227,6 +241,10 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
                                            selector: #selector(playerItemFailedToPlay),
                                            name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime,
                                            object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(handleRouteChange),
+                                           name: .AVAudioSessionRouteChange,
+                                           object: AVAudioSession.sharedInstance())
   }
   
   private func startUserActivity() {
