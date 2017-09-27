@@ -290,7 +290,6 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     let tempHeight = adView.frame.size.height
     adView.frame.size.height = 0
     nativeExpressAdView.alpha = 1.0
-
     UIView.animate(withDuration: 0.5) {
       self.adView.frame.size.height = tempHeight
     }

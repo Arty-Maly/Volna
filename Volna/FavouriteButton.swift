@@ -18,6 +18,13 @@ class FavouriteButton: UIButton {
     isExclusiveTouch = true
   }
   
+  override init(frame: CGRect) {
+    displayedState = .inactive
+    super.init(frame: frame)
+    self.layer.masksToBounds = true
+    isExclusiveTouch = true
+  }
+  
   override func layoutSubviews() {
     initImages()
     self.setImage(hearts![displayedState], for: .normal)

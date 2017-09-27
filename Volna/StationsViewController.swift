@@ -37,7 +37,27 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     super.viewDidLoad()
     let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
     self.stationCollection?.addGestureRecognizer(longPressGesture)
+    addObservers()
   }
+  
+  private func addObservers() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(saveState),
+      name: NSNotification.Name.UIApplicationWillResignActive,
+      object: nil)
+  }
+  
+  @objc private func saveState() {
+    draggingView?.removeFromSuperview()
+    stationCollection?.collectionViewLayout.invalidateLayout()
+    if let indexPath = draggingIndexPath {
+      let cell = stationCollection?.cellForItem(at: indexPath)
+      cell?.isHidden = false
+    }
+    saveContext()
+  }
+
   
   func handleLongGesture(gesture: UILongPressGestureRecognizer) {
     switch(gesture.state) {

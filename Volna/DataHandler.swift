@@ -84,8 +84,8 @@ class DataHandler {
       let stationManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
       stationManagedObjectContext.parent = self.managedObjectContext
       if let radioStation = RadioStation.saveStation(stationInfo: station, inManagedContext: stationManagedObjectContext) {
-        DispatchQueue.global(qos: .userInitiated) .async { [weak self] in
-          self?.prepareImageForSaving(radioStationId: radioStation.objectID)
+        DispatchQueue.global(qos: .userInitiated) .async {
+          self.prepareImageForSaving(radioStationId: radioStation.objectID)
         }
       }
     }
