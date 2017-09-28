@@ -1,5 +1,7 @@
 PODS:
   - ESTMusicIndicator (0.1.3)
+  - Firebase (4.2.0):
+    - Firebase/Core (= 4.2.0)
   - Firebase/AdMob (4.2.0):
     - Firebase/Core
     - Google-Mobile-Ads-SDK (= 7.24.0)
@@ -37,13 +39,16 @@ PODS:
   - nanopb/encode (0.3.8)
   - Protobuf (3.4.0)
   - SCLAlertView (0.7.0)
+  - SwiftMonkey (1.0.2)
 
 DEPENDENCIES:
   - ESTMusicIndicator
+  - Firebase
   - Firebase/AdMob
   - Firebase/Core
   - Firebase/Crash
   - SCLAlertView
+  - SwiftMonkey
 
 SPEC CHECKSUMS:
   ESTMusicIndicator: 0b28ed54b5ec2206aa135b2b9db3fe255bb6e6ef
@@ -57,7 +62,8 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+  SwiftMonkey: c73116f558e571f7036cc0186e6a1994e26f78bd
 
-PODFILE CHECKSUM: f4b8b67bbeedc6a10b87a9ae723054e11bb87b85
+PODFILE CHECKSUM: 429d4bb2c07a8024e43cda22bbf3ed54baac9668
 
 COCOAPODS: 1.2.0
