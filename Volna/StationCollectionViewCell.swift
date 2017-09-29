@@ -25,6 +25,7 @@ class StationCollectionViewCell: UICollectionViewCell {
   
   func prepareCellForDisplay(_ station: RadioStation) {
     imageView.image = placeholderImage
+    isHidden = false
     radioStation = station
     stationName.text = parseName(station.name)
     stationName.layer.zPosition = 1
