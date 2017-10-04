@@ -38,6 +38,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.4.0)
+  - Reachability (3.2)
   - SCLAlertView (0.7.0)
   - SwiftMonkey (1.0.2)
 
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - Firebase/AdMob
   - Firebase/Core
   - Firebase/Crash
+  - Reachability
   - SCLAlertView
   - SwiftMonkey
 
@@ -61,9 +63,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SwiftMonkey: c73116f558e571f7036cc0186e6a1994e26f78bd
 
-PODFILE CHECKSUM: 429d4bb2c07a8024e43cda22bbf3ed54baac9668
+PODFILE CHECKSUM: dc990d703092bad9a39d2a7d3a23341cd11946c0
 
 COCOAPODS: 1.2.0

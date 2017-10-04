@@ -27,4 +27,6 @@ target 'Volna' do
   
   pod 'ESTMusicIndicator'
   pod 'SCLAlertView'
+  
+  pod 'Reachability'
 end
