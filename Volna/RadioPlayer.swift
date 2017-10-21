@@ -38,16 +38,29 @@ class RadioPlayer: NSObject {
         guard let newValue = change?[NSKeyValueChangeKey(rawValue: "new")] else {
             return
         }
-        
         if status == .playing && newValue as? Int == 0 && keyPath == "rate" {
             status = .stalled
             playbackDelegate?.playbackStalled()
+            
         }
         
         if keyPath == "status" && newValue as? Int == 1 && status == .preparing {
-            playbackDelegate?.startPlaybackIndicator()
             play()
+            status = .playing
+            playbackDelegate?.startPlaybackIndicator()
         }
+        
+        if keyPath == "status" && newValue as? Int == 2 {
+            status = .stalled
+            playbackDelegate?.playbackStalled()
+            stopPlayback()
+        }
+        
+        if keyPath == "rate" && newValue as? Int == 1 && status == .paused {
+            status = .playing
+            playbackDelegate?.startPlaybackIndicator()
+        }
+        
     }
     
     func setStation(_ station: RadioStation, shouldStartPlayback startPlayback: Bool = true) {
@@ -87,25 +100,29 @@ class RadioPlayer: NSObject {
     
     func togglePlayback() {
         guard let station = currentStation else { return }
-        guard status != .stalled || !isPlayBackBufferFull() || status != .stopped else {
+        if status == .stalled || isPlayBackBufferFull() || status == .stopped {
             setStation(station)
             play()
             return
         }
-        if isPaused() {
-            status = .playing
+        if isPaused() || status == .stopped {
             play()
         } else {
             status = .paused
-            player.pause()
+            pause()
         }
     }
     
     func pause() {
         player.pause()
+        playbackDelegate?.stopPlaybackIndicator()
     }
     
     func play() {
+        guard player.currentItem != nil else {
+            resumePlayAfterInterrupt()
+            return
+        }
         player.play()
     }
 	
@@ -113,8 +130,12 @@ class RadioPlayer: NSObject {
         guard let item = player.currentItem else { return }
         item.cancelPendingSeeks()
         item.asset.cancelLoading()
+        item.removeObserver(self, forKeyPath: "status")
         player.replaceCurrentItem(with: nil)
-        status = .stopped
+        player.pause()
+        if status != .stalled {
+            status = .stopped
+        }
     }
     
     private func registerBackgroundTask() {

@@ -50,6 +50,9 @@
 		AAB79A0A1F184D0C00E8FDBA /* ModelMapping.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = AAB79A091F184D0C00E8FDBA /* ModelMapping.xcmappingmodel */; };
 		AABC38971F185859004B5DB7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABC38961F185859004B5DB7 /* iAd.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		AABF66CC1F4A3243002AB720 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF66CB1F4A3243002AB720 /* UIViewExtension.swift */; };
+		AACC4EC51F886D3100914587 /* ConnectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC4EC41F886D3100914587 /* ConnectionAlert.swift */; };
+		AACC4EC71F88762E00914587 /* ErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC4EC61F88762E00914587 /* ErrorDelegate.swift */; };
+		AACC4EC91F8F07A000914587 /* DataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC4EC81F8F07A000914587 /* DataDelegate.swift */; };
 		AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F131E2DA5B800FFA58E /* Schema.xcdatamodeld */; };
 		AAD40F2A1E2DA9D300FFA58E /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F261E2DA9D300FFA58E /* RadioStation.swift */; };
 		AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */; };
@@ -141,6 +144,9 @@
 		AAB79A091F184D0C00E8FDBA /* ModelMapping.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = ModelMapping.xcmappingmodel; sourceTree = "<group>"; };
 		AABC38961F185859004B5DB7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		AABF66CB1F4A3243002AB720 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		AACC4EC41F886D3100914587 /* ConnectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionAlert.swift; sourceTree = "<group>"; };
+		AACC4EC61F88762E00914587 /* ErrorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDelegate.swift; sourceTree = "<group>"; };
+		AACC4EC81F8F07A000914587 /* DataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDelegate.swift; sourceTree = "<group>"; };
 		AAD40F141E2DA5B800FFA58E /* Schema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schema.xcdatamodel; sourceTree = "<group>"; };
 		AAD40F261E2DA9D300FFA58E /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
 		AAD40F271E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RadioStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -215,8 +221,7 @@
 		551062681D5E3439008D10F6 /* Volna */ = {
 			isa = PBXGroup;
 			children = (
-				AA93E2151F5B11710016D197 /* BaseAlert.swift */,
-				AAD4E2F71F5A709A00CCD3E5 /* ReviewPromptController.swift */,
+				AACC4EC31F886D1100914587 /* alerts */,
 				AAF0BAD11F5A32B600B00CA8 /* InfoAlert.swift */,
 				AA7863E41F0C0CE700C0960B /* StationCollectionDelegate.swift */,
 				AA4DC2D91E5747AD000A642E /* Views */,
@@ -319,6 +324,8 @@
 		AA4A3A891F081C6A008D49C0 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				AACC4EC61F88762E00914587 /* ErrorDelegate.swift */,
+				AACC4EC81F8F07A000914587 /* DataDelegate.swift */,
 				AA4A3A851F072859008D49C0 /* StationViewDelegate.swift */,
 				AA4938C41F47B98200E2AACF /* PlaybackDelegate.swift */,
 				AA4A3A8A1F0828EC008D49C0 /* MainViewPageControlDelegate.swift */,
@@ -356,6 +363,16 @@
 				AA4DC3121E58CB6F000A642E /* DataHandler.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		AACC4EC31F886D1100914587 /* alerts */ = {
+			isa = PBXGroup;
+			children = (
+				AA93E2151F5B11710016D197 /* BaseAlert.swift */,
+				AAD4E2F71F5A709A00CCD3E5 /* ReviewPromptController.swift */,
+				AACC4EC41F886D3100914587 /* ConnectionAlert.swift */,
+			);
+			name = alerts;
 			sourceTree = "<group>";
 		};
 		AAD40F2E1E2DAA0900FFA58E /* Core Data */ = {
@@ -696,12 +713,14 @@
 				AA56777A1D99D77A0084EBCE /* RadioPlayer.swift in Sources */,
 				AA4DC3051E577F55000A642E /* FullResImage.swift in Sources */,
 				AAD40F2B1E2DA9D300FFA58E /* RadioStation+CoreDataProperties.swift in Sources */,
+				AACC4EC91F8F07A000914587 /* DataDelegate.swift in Sources */,
 				AAD40F2C1E2DA9D300FFA58E /* User.swift in Sources */,
 				AAB79A0A1F184D0C00E8FDBA /* ModelMapping.xcmappingmodel in Sources */,
 				AA953C271F0C074B00BFE1F4 /* ButtonActionDelegate.swift in Sources */,
 				AA5F21A21F40B8CE00712C4F /* Logger.swift in Sources */,
 				AA4DC30E1E58C2DE000A642E /* RequestMaker.swift in Sources */,
 				AA4DC2DF1E5753AF000A642E /* CALayerExtension.swift in Sources */,
+				AACC4EC71F88762E00914587 /* ErrorDelegate.swift in Sources */,
 				AA6F72B11F12BEF400B65A84 /* MainViewController.swift in Sources */,
 				AAD40F151E2DA5B800FFA58E /* Schema.xcdatamodeld in Sources */,
 				AA93E2161F5B11710016D197 /* BaseAlert.swift in Sources */,
@@ -716,6 +735,7 @@
 				AA4DC3071E577F55000A642E /* Thumbnail.swift in Sources */,
 				AAD40F2D1E2DA9D300FFA58E /* User+CoreDataProperties.swift in Sources */,
 				AAE01CD11E3E69C500153BA9 /* UIImageExtension.swift in Sources */,
+				AACC4EC51F886D3100914587 /* ConnectionAlert.swift in Sources */,
 				AA4DC30A1E57BEC1000A642E /* StringExtension.swift in Sources */,
 				AAF2319C1E2D5EF500564178 /* SplashViewController.swift in Sources */,
 				AA4A3A8D1F08629C008D49C0 /* ViewControllerType.swift in Sources */,

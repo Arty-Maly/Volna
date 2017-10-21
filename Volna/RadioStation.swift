@@ -48,7 +48,38 @@ public class RadioStation: NSManagedObject {
     class func getStationByPosition(position: Int, inManagedContext context: NSManagedObjectContext) -> RadioStation {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
         request.predicate = NSPredicate(format: "position = %ld", position)
-        let station = (try? context.fetch(request))?.first as! RadioStation
+        guard let station = (try? context.fetch(request))?.first else { return findMissingStation(context, missingPosition: position, predicate: "position") }
+        return station as! RadioStation
+    }
+    
+    private class func findMissingStation(_ context: NSManagedObjectContext, missingPosition position: Int, predicate: String) -> RadioStation {
+        print("yes")
+        Logger.logDuplicatStationsHappened(position, predicate: predicate)
+        var positions: [Int16]
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+        guard let localStations = (try? context.fetch(request)) as? Array<RadioStation>  else {
+            print("error retrieving stations")
+            fatalError("error retrieving stations")
+        }
+        if predicate == "position" {
+            positions = localStations.map { return $0.position }
+        } else {
+            positions = localStations.map { return $0.favouritePosition! }
+        }
+        
+        let duplicates = Array(Set(positions.filter({ i in positions.filter({ $0 == i }).count > 1})))
+        guard duplicates.count > 0, let duplicate = duplicates.first else {
+            Logger.logCouldNotFindDuplicates(position, array: duplicates, predicate: predicate)
+            fatalError()
+        }
+        request.predicate = NSPredicate(format: "\(predicate) = %ld", duplicate)
+        let station = (try? context.fetch(request))?.last as! RadioStation
+        station.position = Int16(position)
+        do {
+            try context.save()
+        } catch let error {
+            fatalError("error saving missing station \(error)")
+        }
         return station
     }
     
@@ -67,17 +98,6 @@ public class RadioStation: NSManagedObject {
         let stations = (try? context.fetch(request)) as! [RadioStation]
         
         return stations
-    }
-    
-    class func getFavouriteStationPosition(station: RadioStation, inManagedContext context: NSManagedObjectContext) -> Int? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
-        let sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
-        request.sortDescriptors = [sortDescriptor]
-        request.predicate = NSPredicate(format: "favourite == %@", NSNumber(value: true))
-        
-        let stations = (try? context.fetch(request)) as! [RadioStation]
-        return stations.index(of: station)
-        
     }
     
     func toHash() -> [String: String] {
@@ -102,9 +122,9 @@ public class RadioStation: NSManagedObject {
     class func getFavouriteStationByPosition(position: Int, inManagedContext: NSManagedObjectContext) -> RadioStation {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
         request.predicate = NSPredicate(format: "favouritePosition = %ld", position)
-        let station = (try? inManagedContext.fetch(request))?.first as! RadioStation
+        guard let station = (try? inManagedContext.fetch(request))?.first else { return findMissingStation(inManagedContext, missingPosition: position, predicate: "favouritePosition") }
         
-        return station
+        return station as! RadioStation
     }
     
     func toggleFavourite(context: NSManagedObjectContext) {

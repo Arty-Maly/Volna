@@ -7,6 +7,7 @@
 //
 
 protocol PlaybackDelegate: class {
-  func playbackStalled()
-  func startPlaybackIndicator()
+    func playbackStalled()
+    func startPlaybackIndicator()
+	func stopPlaybackIndicator()
 }

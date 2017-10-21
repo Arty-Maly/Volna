@@ -42,7 +42,6 @@ class StationCollectionViewCell: UICollectionViewCell {
           imageView.image = image
         return
         }
-    print("no")
 //      }
   }
   

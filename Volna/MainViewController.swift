@@ -138,7 +138,6 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     }
     
     @IBAction func playStation() {
-        guard currentStation != nil else { return }
         togglePlaybackButton()
         player.togglePlayback()
     }
@@ -210,19 +209,19 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     }
     
     private func togglePlaybackButton() {
-        if player.isPaused() {
+        guard let playbackButtonImage = playButton.image(for: .normal) else { return }
+        if playbackButtonImage.isEqual(playImage) {
             togglePauseButton()
-            wasPlaying = true
-            playbackIndicator.state = .playing
         } else {
-            wasPlaying = false
             togglePlayButton()
-            playbackIndicator.state = .paused
+            wasPlaying = false
         }
+        print("ignored")
     }
     
     @objc private func playerItemFailedToPlay() {
-        togglePauseButton()
+        print("player failed to play")
+        togglePlayButton()
         playbackIndicator.state = .paused
     }
     
@@ -236,11 +235,12 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         case .NotReachable:
             playbackStalled()
         default: ()
-        recoverPlayback()
+            recoverPlayback()
         }
     }
     
     private func recoverPlayback() {
+        stopPlaybackIndicator()
         if wasPlaying {
             player.resumePlayAfterInterrupt()
         } else {
@@ -318,16 +318,20 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     }
     
     func playbackStalled() {
-        togglePlayButton()
+//        togglePlayButton()
         player.stopPlayback()
         playbackIndicator.state = .paused
     }
     
     func startPlaybackIndicator() {
-        if wasPlaying {
-            playbackIndicator.state = .playing
-            togglePauseButton()
-        }
+        wasPlaying = true
+        playbackIndicator.state = .playing
+        togglePauseButton()
+    }
+    
+    func stopPlaybackIndicator() {
+        playbackIndicator.state = .paused
+        togglePlayButton()
     }
     
     func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {

@@ -9,20 +9,24 @@
 import Foundation
 
 class RequestMaker {
-  private let url: URL
-  
-  required init(url: URL) {
-    self.url = url
-  }
-  
-  
-  func getStations(completion: @escaping (_ data: Data) -> ()) {
-    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-      if let json = data {
-        completion(json)
-      }
-    }
-    task.resume()
+    private let url: URL
+    let dataDelegate: DataDelegate
     
-  }
+    required init(url: URL, dataDelegate: DataDelegate) {
+        self.url = url
+        self.dataDelegate = dataDelegate
+    }
+    
+    
+    func getStations() {
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            if let json = data {
+                self.dataDelegate.matchLocalData(with: json)
+            } else {
+                self.dataDelegate.error()
+            }
+        }
+        task.resume()
+        
+    }
 }
