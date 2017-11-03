@@ -17,10 +17,19 @@ class RadioPlayer: NSObject {
         case stopped
         case preparing
         
-        mutating func toggleStatus() {
+        mutating func transition() {
             switch self {
+            case .stopped: self = .paused
+            case .paused: self = .preparing
+            case .preparing: self = .playing
             case .playing: self = .paused
-            case .paused: self = .playing
+            default: break
+            }
+        }
+        
+        mutating func transitionFromStalled() {
+            switch self {
+            case .stalled: self = .stopped
             default: break
             }
         }
@@ -28,10 +37,9 @@ class RadioPlayer: NSObject {
     
     override init() {
         player = AVPlayer()
-        status = RadioPlayerStatus.paused
+        status = RadioPlayerStatus.stopped
         super.init()
         player.addObserver(self, forKeyPath: "rate", options: [.new, .old], context: nil)
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -44,9 +52,8 @@ class RadioPlayer: NSObject {
             
         }
         
-        if keyPath == "status" && newValue as? Int == 1 && status == .preparing {
+        if keyPath == "status" && newValue as? Int == 1 && (status == .paused) {
             play()
-            status = .playing
             playbackDelegate?.startPlaybackIndicator()
         }
         
@@ -56,22 +63,23 @@ class RadioPlayer: NSObject {
             stopPlayback()
         }
         
-        if keyPath == "rate" && newValue as? Int == 1 && status == .paused {
-            status = .playing
+        if keyPath == "rate" && newValue as? Int == 1 && status == .playing {
             playbackDelegate?.startPlaybackIndicator()
         }
-        
     }
     
     func setStation(_ station: RadioStation, shouldStartPlayback startPlayback: Bool = true) {
         currentStation = station
-        if startPlayback { status = .preparing }
+        if startPlayback { status = .paused } else { status = .stopped }
+        if status == .playing { status = .paused }
         guard let url = (URL(string: station.url))  else { return }
         DispatchQueue.global(qos: .userInitiated).async {
             let stationPlayerItem = AVPlayerItem(url: url)
             DispatchQueue.main.async {
                 if self.currentStation! == station {
                     self.player.currentItem?.removeObserver(self, forKeyPath: "status")
+                    //if we replace repeadetly the item, the player can get stuck in status unknown setting the item to nil first seems to fix it
+                    self.player.replaceCurrentItem(with: nil)
                     self.player.replaceCurrentItem(with: stationPlayerItem)
                     self.player.currentItem?.addObserver(self, forKeyPath: "status", options: [.new, .old], context: nil)
                     self.registerBackgroundTask()
@@ -108,12 +116,12 @@ class RadioPlayer: NSObject {
         if isPaused() || status == .stopped {
             play()
         } else {
-            status = .paused
             pause()
         }
     }
     
     func pause() {
+        status = .paused
         player.pause()
         playbackDelegate?.stopPlaybackIndicator()
     }
@@ -123,6 +131,7 @@ class RadioPlayer: NSObject {
             resumePlayAfterInterrupt()
             return
         }
+        status = .playing
         player.play()
     }
 	
@@ -133,9 +142,6 @@ class RadioPlayer: NSObject {
         item.removeObserver(self, forKeyPath: "status")
         player.replaceCurrentItem(with: nil)
         player.pause()
-        if status != .stalled {
-            status = .stopped
-        }
     }
     
     private func registerBackgroundTask() {

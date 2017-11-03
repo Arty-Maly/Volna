@@ -11,7 +11,6 @@ import GoogleMobileAds
 import ESTMusicIndicator
 import Reachability
 
-
 class MainViewController: UIViewController, MainViewPageControlDelegate, GADNativeExpressAdViewDelegate, PlaybackDelegate {
     private var player: RadioPlayer
     private var playImage: UIImage
@@ -23,6 +22,7 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     private var currentStation: RadioStation?
     private var managedObjectContext: NSManagedObjectContext?
     private var wasPlaying: Bool
+    private let defaults: UserDefaults
     weak var buttonDelegate: ButtonActionDelegate?
     
     @IBOutlet weak var favouriteButton: FavouriteButton!
@@ -42,12 +42,14 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         pauseImage = UIImage(named: "pause_button")!
         infoCenter = MPNowPlayingInfoCenter.default()
         wasPlaying = false
+        defaults = UserDefaults.standard
         super.init(coder: aDecoder)!
+        player.playbackDelegate = self
     }
     
     override func viewDidLoad() {
-        player.playbackDelegate = self
-        loadAdRequest()
+        setAvAudioSession()
+//        loadAdRequest()
         playbackIndicator.tintColor = .white
         startUserActivity()
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
@@ -55,14 +57,20 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         radioPage.mainDelegate = self
         buttonDelegate = radioPage
         setRemoteCommandCenter()
-        setAvAudioSession()
         addObservers()
+        setTitle()
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         showAlertsIfNeeded()
         User.incrementTimesOpened()
+    }
+    
+    private func setTitle() {
+        if defaults.bool(forKey: Constants.startFromFavourites) {
+            stationTitle.text = Constants.favouriteTitle
+        }
     }
     
     @objc private func playInterrupt(notification: NSNotification) {
@@ -138,8 +146,18 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     }
     
     @IBAction func playStation() {
-        togglePlaybackButton()
-        player.togglePlayback()
+        guard currentStation != nil else { return }
+        guard let playbackButtonImage = playButton.image(for: .normal) else { return }
+        if playbackButtonImage.isEqual(playImage) {
+            print("playeImage")
+            player.play()
+            togglePauseButton()
+        } else {
+            print("else")
+            player.pause()
+            togglePlayButton()
+            wasPlaying = false
+        }
     }
     
     @objc private func nextStation() {
@@ -165,8 +183,8 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     private func setStation(_ station: RadioStation, shouldStartPlayback startPlayback: Bool = true) {
         player.setStation(station, shouldStartPlayback: startPlayback)
         setStationInfo(station)
-        togglePauseButton()
         wasPlaying = true
+        if startPlayback { togglePauseButton() }
     }
     
     private func setStationInfo(_ station: RadioStation) {
@@ -216,7 +234,6 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
             togglePlayButton()
             wasPlaying = false
         }
-        print("ignored")
     }
     
     @objc private func playerItemFailedToPlay() {
@@ -307,13 +324,20 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         }
     }
     
-    func updateControl() {
-        pageControl.currentPage = pageControl.numberOfPages - pageControl.currentPage - 1
-        guard currentStation == nil else { return }
-        if stationTitle.text == Constants.greetingTitle {
-            stationTitle.text = Constants.favouriteTitle
-        } else {
+    func updateControl(_ pageNumber: Int) {
+        pageControl.currentPage = pageNumber
+        guard pageNumber != 0 else {
+            stationTitle.text = Constants.settingsTitle
+            return
+        }
+        guard currentStation == nil else {
+            stationTitle.text = currentStation?.name
+            return
+        }
+        if pageNumber == 1 {
             stationTitle.text = Constants.greetingTitle
+        } else {
+           stationTitle.text = Constants.favouriteTitle
         }
     }
     

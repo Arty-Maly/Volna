@@ -4,8 +4,11 @@ import MediaPlayer
 import CoreData
 import GoogleMobileAds
 
-class StationsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, StationCollectionDelegate {
+class StationsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, StationCollectionDelegate, UISearchBarDelegate {
     private var previousIndexPath: IndexPath?
+    private var searchActive: Bool
+    private var keyboardActive: Bool?
+    private var searchText: String?
     private var managedObjectContext: NSManagedObjectContext?
     private let numberOfItemsPerRow: Int
     private var currentStation: RadioStation?
@@ -14,8 +17,18 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     private var draggingIndexPath: IndexPath?
     private var draggingView: UIView?
     private var dragOffset: CGPoint?
+    private var section = 1
     
-    var type: ViewControllerType?
+    var type: ViewControllerType? {
+        didSet {
+            if type == .main {
+                section = 1
+            } else {
+                section = 0
+            }
+            
+        }
+    }
     @IBOutlet weak var stationCollection: UICollectionView?
     weak var stationViewDelegate: StationViewDelegate?
     weak var stationCollectionDelegate: StationCollectionDelegate?
@@ -30,14 +43,44 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
         default:
             numberOfItemsPerRow = 3
         }
+        searchActive = false
         super.init(coder: aDecoder)!
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
         self.stationCollection?.addGestureRecognizer(longPressGesture)
         addObservers()
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard type == .main else { return 1 }
+        return 2
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            searchActive = false
+            if let text = self.searchText, text.count > 1 {
+                //dissmiss keyboard if we cleared the whole sentence, wait until searchbar becomes first responder a littl bit hacky but no delegate method for the x button tapped
+                searchBar.perform(#selector(self.resignFirstResponder), with: nil, afterDelay: 0.1)
+            }
+        } else {
+            searchActive = true
+        }
+        self.searchText = searchText
+        self.stationCollection?.reloadSections([1])
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        guard let searchTextEmpty  = searchBar.text?.isEmpty else { return }
+        if searchTextEmpty {
+            searchActive = false
+        }
+        self.stationCollection?.reloadSections([1])
     }
     
     private func addObservers() {
@@ -46,6 +89,26 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
             selector: #selector(saveState),
             name: NSNotification.Name.UIApplicationWillResignActive,
             object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillAppear),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDisappeared),
+            name: NSNotification.Name.UIKeyboardDidHide,
+            object: nil)
+    }
+    
+    @objc private func keyboardWillAppear() {
+        keyboardActive = true
+    }
+    
+    @objc private func keyboardDisappeared() {
+        keyboardActive = false
     }
     
     @objc private func saveState() {
@@ -136,6 +199,7 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     private func startDragAtLocation(location: CGPoint, superViewLocation: CGPoint) {
+        guard !searchActive else { return }
         guard let cv = stationCollection else { return }
         guard let indexPath = cv.indexPathForItem(at: location) else { return }
         //    guard cv.dataSource?.collectionView?(cv, canMoveItemAt: indexPath) == true else { return }
@@ -201,7 +265,6 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    
     private func createRange(_ x: Int, _ y: Int) -> CountableClosedRange<Int> {
         guard x > y else {
             return x...y
@@ -209,8 +272,24 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
         return y...x
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        guard section == 0, type == .main  else { return CGSize.zero }
+        
+        return CGSize.init(width: (self.stationCollection?.bounds.size.width)!, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        guard section == 0, type == .main else { return UIEdgeInsets.init(top: 0, left: 0, bottom: 80, right: 0) }
+    
+        return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return getCellCountForType()
+        guard type == .main else { return RadioStation.getFavouritesCount(inManagedContext: managedObjectContext!) }
+        guard section == 1 else { return 0 }
+        guard !searchActive else { return getCellCountForSearch() }
+        
+        return RadioStation.getStationCount(inManagedContext: managedObjectContext!)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -226,21 +305,19 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! StationCollectionViewCell
-        
         let station =  getStation(indexPathItem: indexPath.item)
         cell.prepareCellForDisplay(station)
         if currentStation == cell.radioStation {
-            
+            previousIndexPath = indexPath
             cell.backgroundColor = Colors.highlightColor
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard keyboardActive != true else { return }
         let cell = collectionView.cellForItem(at: indexPath) as! StationCollectionViewCell
         stationViewDelegate?.change(station: cell.radioStation)
-        
         clearPreviousCellBackground()
         previousIndexPath = indexPath
         currentStation = cell.radioStation
@@ -252,28 +329,31 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.backgroundColor = UIColor.white
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if (kind == UICollectionElementKindSectionHeader) {
+            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "ReuseSearchBar", for: indexPath)
+            
+            return headerView
+        }
+        return UICollectionReusableView()
+    }
     
     private func clearPreviousCellBackground() {
-        if let previousStation = currentStation {
-            let previousPosition = type == .main ? previousStation.position : previousStation.favouritePosition
-            
-            guard let position = previousPosition else {
-                return
-            }
-            let previousCell = stationCollection?.cellForItem(at: IndexPath(row: Int(position), section: 0))
-            previousCell?.backgroundColor = UIColor.white
-        }
+        guard let indexPath = previousIndexPath else { return }
+        
+        let previousCell = stationCollection?.cellForItem(at: indexPath)
+        previousCell?.backgroundColor = UIColor.white
     }
-    private func getCellCountForType() -> Int {
-        switch type! {
-        case .main:
-            return RadioStation.getStationCount(inManagedContext: managedObjectContext!)
-        case .favourite:
-            return RadioStation.getFavouritesCount(inManagedContext: managedObjectContext!)
-        }
+    
+    private func getCellCountForSearch() -> Int {
+        guard let text = searchText else { return 0 }
+
+        return RadioStation.getStationCountBySearchText(inManagedContext: managedObjectContext!, searchText: text)
     }
     
     private func getStation(indexPathItem: Int) -> RadioStation {
+        guard !searchActive else { return RadioStation.getStationsBySearchText(inManagedContext: managedObjectContext!, searchText: searchText!)[indexPathItem] }
         switch type! {
         case .main:
             return RadioStation.getStationByPosition(position: (indexPathItem), inManagedContext: managedObjectContext!)
@@ -294,8 +374,6 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    func updateCurrentStation(station: RadioStation) {
-        
-    }
+    func updateCurrentStation(station: RadioStation) {}
 }
 

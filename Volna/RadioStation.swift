@@ -33,6 +33,27 @@ public class RadioStation: NSManagedObject {
         return radioStation
     }
     
+    class func getStationCountBySearchText(inManagedContext context: NSManagedObjectContext, searchText: String) -> Int {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+        do {
+            let count = try context.count(for: request)
+            return count
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+            return 0
+        }
+    }
+    
+    class func getStationsBySearchText(inManagedContext context: NSManagedObjectContext, searchText: String) -> [RadioStation] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+        if let stations = (try? context.fetch(request)) as? [RadioStation] {
+            return stations
+        } else {
+            fatalError()
+        }
+    }
     
     class func getStationCount(inManagedContext context: NSManagedObjectContext) -> Int {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")
@@ -53,7 +74,6 @@ public class RadioStation: NSManagedObject {
     }
     
     private class func findMissingStation(_ context: NSManagedObjectContext, missingPosition position: Int, predicate: String) -> RadioStation {
-        print("yes")
         Logger.logDuplicatStationsHappened(position, predicate: predicate)
         var positions: [Int16]
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RadioStation")

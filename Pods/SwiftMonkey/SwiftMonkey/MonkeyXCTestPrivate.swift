@@ -35,13 +35,12 @@ extension Monkey {
         strong requirements on exactly which ones you need.
     */
     public func addDefaultXCTestPrivateActions() {
-//        addXCTestTapAction(weight: 25)
-//        addXCTestLongPressAction(weight: 25)
-//        addXCTestDragAction(weight: 25)
-        addXCTestLongPressAndDragAction(weight: 1)
-//        addXCTestPinchCloseAction(weight: 1)
-//        addXCTestPinchOpenAction(weight: 1)
-//        addXCTestRotateAction(weight: 1)
+        addXCTestTapAction(weight: 25)
+        addXCTestLongPressAction(weight: 1)
+        addXCTestDragAction(weight: 1)
+        addXCTestPinchCloseAction(weight: 1)
+        addXCTestPinchOpenAction(weight: 1)
+        addXCTestRotateAction(weight: 1)
         //addXCTestOrientationAction(weight: 1) // TODO: Investigate why this does not work.
     }
 
@@ -106,18 +105,6 @@ extension Monkey {
             }
             semaphore.wait()
         }
-    }
-  
-    public func addXCTestLongPressAndDragAction(weight: Double) {
-      addAction(weight: weight) { [weak self] in
-        let point = self!.randomPoint()
-        let end = self!.randomPoint()
-        let semaphore = DispatchSemaphore(value: 0)
-        self!.sharedXCEventGenerator.pressAtPoint(point, forDuration: 1, liftAtPoint: end, velocity: 1000, orientation: orientationValue, name: "Monkey drag" as NSString) {
-          semaphore.signal()
-        }
-        semaphore.wait()
-      }
     }
 
     /**

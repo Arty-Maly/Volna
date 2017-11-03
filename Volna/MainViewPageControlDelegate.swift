@@ -7,5 +7,5 @@
 //
 
 protocol MainViewPageControlDelegate: StationViewDelegate {
-  func updateControl()
+    func updateControl(_ pageNumber: Int)
 }

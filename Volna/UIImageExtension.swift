@@ -8,40 +8,58 @@
 import UIKit
 
 extension UIImage {
-
-  func resizeImage(newWidth: CGFloat) -> UIImage {
-    let scale = newWidth / self.size.width
-    let newHeight = self.size.height * scale
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, 0)
-    self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-    let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return newImage!
-  }
-  
-  
-  func imageWithInsets(insets: UIEdgeInsets) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(
-      CGSize(width: self.size.width + insets.left + insets.right,
-             height: self.size.height + insets.top + insets.bottom), false, 0)
-    let _ = UIGraphicsGetCurrentContext()
-    let origin = CGPoint(x: insets.left, y: insets.top)
-    self.draw(at: origin)
-    let imageWithInsets = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
     
-    return imageWithInsets!
-  }
-  
-  func toSquare() -> UIImage {
-    let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
-    view.image = self
-    view.contentMode = .scaleAspectFit
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
-    view.layer.render(in: UIGraphicsGetCurrentContext()!)
-    let img = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return img!
-  }
-
+    func resizeImage(newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / self.size.width
+        let newHeight = self.size.height * scale
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, 0)
+        self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    
+    func imageWithInsets(insets: UIEdgeInsets) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(
+            CGSize(width: self.size.width + insets.left + insets.right,
+                   height: self.size.height + insets.top + insets.bottom), false, 0)
+        let _ = UIGraphicsGetCurrentContext()
+        let origin = CGPoint(x: insets.left, y: insets.top)
+        self.draw(at: origin)
+        let imageWithInsets = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return imageWithInsets!
+    }
+    
+    func toSquare() -> UIImage {
+        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+        view.image = self
+        view.contentMode = .scaleAspectFit
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
+        
+    func transform(withNewColor color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        
+        let context = UIGraphicsGetCurrentContext()!
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.setBlendMode(.normal)
+        
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        context.clip(to: rect, mask: cgImage!)
+        
+        color.setFill()
+        context.fill(rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }
