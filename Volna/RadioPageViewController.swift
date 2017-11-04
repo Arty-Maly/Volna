@@ -64,11 +64,21 @@ class RadioPageViewController: UIPageViewController, UIPageViewControllerDataSou
                                completion: nil)
         }
     }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        guard let mainController = mainStationController else { return }
+        guard let favController = favouriteStationController else { return }
+        favController.setTransitionViewSize(size)
+        mainController.setTransitionViewSize(size)
+        favController.stationCollection?.reloadData()
+        mainController.stationCollection?.reloadData()
+    }
     
     private func warmUpMainStationController() {
+        //older devices take a long time to instantiate cells on transition between pages
         mainStationController?.viewDidLoad()
         mainStationController?.stationCollection?.setNeedsLayout()
         mainStationController?.stationCollection?.layoutIfNeeded()
+        mainStationController?.viewDidLayoutSubviews()
     }
     
     private func initControllers() {

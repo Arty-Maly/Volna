@@ -10,7 +10,19 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     private var keyboardActive: Bool?
     private var searchText: String?
     private var managedObjectContext: NSManagedObjectContext?
-    private let numberOfItemsPerRow: Int
+    private var numberOfItemsPerRow: CGFloat {
+        get {
+            switch UIDevice.current.userInterfaceIdiom {
+            case .phone:
+                return CGFloat(3)
+            case .pad:
+                guard UIApplication.shared.statusBarOrientation.isPortrait else { return CGFloat(6) }
+                return CGFloat(5)
+            default:
+                return CGFloat(3)
+            }
+        }
+    }
     private var currentStation: RadioStation?
     private let reuseIdentifier = "stationCell"
     private var originalIndexPath: IndexPath?
@@ -18,6 +30,7 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     private var draggingView: UIView?
     private var dragOffset: CGPoint?
     private var section = 1
+    private var viewSize: CGSize?
     
     var type: ViewControllerType? {
         didSet {
@@ -35,14 +48,6 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     required init(coder aDecoder: NSCoder) {
         self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            numberOfItemsPerRow = 3
-        case .pad:
-            numberOfItemsPerRow = 6
-        default:
-            numberOfItemsPerRow = 3
-        }
         searchActive = false
         super.init(coder: aDecoder)!
     }
@@ -293,14 +298,19 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = viewSize?.width ?? collectionView.frame.width
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.minimumLineSpacing = 3
         flowLayout.minimumInteritemSpacing = 3
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
-            + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
-        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
+            + (flowLayout.minimumInteritemSpacing * numberOfItemsPerRow)
+        let size = Int((width - totalSpace) / numberOfItemsPerRow)
         return CGSize(width: size, height: size)
+    }
+    
+    func setTransitionViewSize(_ size: CGSize) {
+        viewSize = size
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

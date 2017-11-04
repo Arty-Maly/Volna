@@ -49,7 +49,6 @@ class RadioPlayer: NSObject {
         if status == .playing && newValue as? Int == 0 && keyPath == "rate" {
             status = .stalled
             playbackDelegate?.playbackStalled()
-            
         }
         
         if keyPath == "status" && newValue as? Int == 1 && (status == .paused) {
@@ -121,7 +120,7 @@ class RadioPlayer: NSObject {
     }
     
     func pause() {
-        status = .paused
+        status = .stopped
         player.pause()
         playbackDelegate?.stopPlaybackIndicator()
     }

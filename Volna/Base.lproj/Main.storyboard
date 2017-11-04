@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7R8-hB-aXW">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -85,14 +85,11 @@
                                     <segue destination="CYO-hy-tVE" kind="embed" identifier="pageSegue" id="oXH-s9-5Jg"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lor-z9-ag2" userLabel="adContainer">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lor-z9-ag2" userLabel="adContainer">
                                 <rect key="frame" x="0.0" y="601" width="414" height="80"/>
                                 <subviews>
                                     <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxj-T3-ipe" userLabel="adView" customClass="GADNativeExpressAdView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="7m6-kc-dhn"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -131,7 +128,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94525176286697388" green="0.94596821069717407" blue="0.94536274671554565" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.27058823529999998" green="0.45098039220000002" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WW2-Yx-Vpt" firstAttribute="width" secondItem="rMY-UR-bUb" secondAttribute="width" id="2Dz-gy-Qdq"/>
                             <constraint firstItem="rVf-aF-gtd" firstAttribute="centerX" secondItem="rMY-UR-bUb" secondAttribute="centerX" id="A3M-xY-7Yx"/>
@@ -277,7 +274,7 @@
                             <tableViewSection headerTitle="Начальная страница" footerTitle="Вместо всех радиостанций, приложение будет открывать раздел любимых станций." id="zVw-By-6U1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Hpr-2z-YAK">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hpr-2z-YAK" id="ng0-O9-Ss2">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
@@ -312,7 +309,7 @@
                             <tableViewSection headerTitle="Связаться с разработчиками" footerTitle="Ваше мнение для нас очень важно. Мы всегда рады услышать от вас." id="1RH-RP-IYh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" id="EmM-t0-lEZ">
-                                        <rect key="frame" x="0.0" y="217" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="216.66666666666669" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EmM-t0-lEZ" id="Hiy-Lh-UGq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>

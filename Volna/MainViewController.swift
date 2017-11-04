@@ -125,6 +125,8 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     }
     
     private func loadAdRequest() {
+        adContainer.frame.size.height = Constants.adContainerHeight
+        adView.frame.size.height = Constants.adContainerHeight
         adView.rootViewController = self
         adView.adUnitID = Constants.adUnitID
         adView.delegate = self
@@ -149,11 +151,9 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         guard currentStation != nil else { return }
         guard let playbackButtonImage = playButton.image(for: .normal) else { return }
         if playbackButtonImage.isEqual(playImage) {
-            print("playeImage")
             player.play()
             togglePauseButton()
         } else {
-            print("else")
             player.pause()
             togglePlayButton()
             wasPlaying = false
@@ -258,8 +258,9 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     
     private func recoverPlayback() {
         stopPlaybackIndicator()
+         NSObject.cancelPreviousPerformRequests(withTarget: self)
         if wasPlaying {
-            player.resumePlayAfterInterrupt()
+            player.play()
         } else {
             return
             //      player.prepareForPlayback()
@@ -345,6 +346,15 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
 //        togglePlayButton()
         player.stopPlayback()
         playbackIndicator.state = .paused
+        print("setting")
+        perform(#selector(setWasPlayingToFalse), with: nil, afterDelay: 60)
+    }
+    
+    @objc private func setWasPlayingToFalse() {
+        if wasPlaying {
+            wasPlaying = false
+            print("switched")
+        }
     }
     
     func startPlaybackIndicator() {
@@ -358,8 +368,13 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         togglePlayButton()
     }
     
+    func nativeExpressAdView(_ nativeExpressAdView: GADNativeExpressAdView, didFailToReceiveAdWithError error: GADRequestError) {
+//        print("Banner load failure")
+    }
+    
     func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {
-        //    print("Banner loaded successfully")
+//        print("Banner loaded successfully")
+        adContainer.isHidden = false
         let tempHeight = adView.frame.size.height
         adView.frame.size.height = 0
         nativeExpressAdView.alpha = 1.0
