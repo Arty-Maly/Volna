@@ -333,6 +333,7 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
         currentStation = cell.radioStation
         cell.backgroundColor = Colors.highlightColor
         stationCollectionDelegate?.stationClicked(clickedStation: cell.radioStation)
+        showReviewIfNeeded()
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -347,6 +348,13 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
             return headerView
         }
         return UICollectionReusableView()
+    }
+    
+    private func showReviewIfNeeded() {
+        let userInfo = User.getTimesOpenedAndAskForReview()
+        guard #available(iOS 10.3, *), userInfo.0 % Constants.timesOpened == 0, userInfo.1 else { return }
+        SKStoreReviewController.requestReview()
+        Logger.logAppleReviewPresented(numberOfTimes: userInfo.0)
     }
     
     private func clearPreviousCellBackground() {

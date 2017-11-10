@@ -11,6 +11,13 @@ import FirebaseAnalytics
 
 class Logger {
     
+    class func logAppleReviewPresented(numberOfTimes: Int32) {
+        Analytics.logEvent("apple_review_presented", parameters: [
+            "name": "Apple Review Presented" as NSObject,
+            "full_text": "Apple Review Attempt Presented and the app was opened \(numberOfTimes) times" as NSObject
+            ])
+    }
+    
     class func logReviewPresented(numberOfTimes: Int32) {
         Analytics.logEvent("review_presented", parameters: [
             "name": "Review Presented" as NSObject,
@@ -25,7 +32,7 @@ class Logger {
             ])
     }
     
-    class func logRequestLater() {
+	class func logRequestLater() {
         Analytics.logEvent("review_later", parameters: [
             "name": "Review Later" as NSObject,
             "full_text": "User pressed review later" as NSObject

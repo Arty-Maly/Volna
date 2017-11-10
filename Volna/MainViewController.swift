@@ -49,7 +49,7 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     
     override func viewDidLoad() {
         setAvAudioSession()
-//        loadAdRequest()
+        loadAdRequest()
         playbackIndicator.tintColor = .white
         startUserActivity()
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
@@ -118,9 +118,13 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
             infoAlert.showAlert()
         }
         if userInfo.0 % Constants.timesOpened == 0 && userInfo.1 {
-            let reviewPrompt = ReviewPromptController(alertWidth: bottomBar.frame.size.width - 40)
-            reviewPrompt.showAlert()
-            Logger.logReviewPresented(numberOfTimes: userInfo.0)
+            if #available(iOS 10.3, *) {
+                return
+            } else {
+                let reviewPrompt = ReviewPromptController(alertWidth: bottomBar.frame.size.width - 40)
+                reviewPrompt.showAlert()
+                Logger.logReviewPresented(numberOfTimes: userInfo.0)
+            }
         }
     }
     
@@ -196,8 +200,9 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         playbackImage.image = image
         let albumArtWork = MPMediaItemArtwork(image: image!.toSquare())
         infoCenter.nowPlayingInfo = [
-            MPMediaItemPropertyArtwork:albumArtWork,
-            MPMediaItemPropertyTitle:station.name]
+            MPMediaItemPropertyArtwork: albumArtWork,
+            MPMediaItemPropertyTitle: station.name
+        ]
         toggleFavouriteButton()
     }
     
@@ -346,14 +351,12 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
 //        togglePlayButton()
         player.stopPlayback()
         playbackIndicator.state = .paused
-        print("setting")
         perform(#selector(setWasPlayingToFalse), with: nil, afterDelay: 60)
     }
     
     @objc private func setWasPlayingToFalse() {
         if wasPlaying {
             wasPlaying = false
-            print("switched")
         }
     }
     
