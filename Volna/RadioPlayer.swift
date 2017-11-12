@@ -46,6 +46,13 @@ class RadioPlayer: NSObject {
         guard let newValue = change?[NSKeyValueChangeKey(rawValue: "new")] else {
             return
         }
+        guard keyPath != "timedMetadata" else {
+            if let metadata = player.currentItem?.timedMetadata?.first {
+                let stationMetadata = StationMetadata(from: metadata)
+                playbackDelegate?.updateStationMetadata(with: stationMetadata)
+            }
+            return
+        }
         if status == .playing && newValue as? Int == 0 && keyPath == "rate" {
             status = .stalled
             playbackDelegate?.playbackStalled()
@@ -77,10 +84,12 @@ class RadioPlayer: NSObject {
             DispatchQueue.main.async {
                 if self.currentStation! == station {
                     self.player.currentItem?.removeObserver(self, forKeyPath: "status")
+                    self.player.currentItem?.removeObserver(self, forKeyPath: "timedMetadata")
                     //if we replace repeadetly the item, the player can get stuck in status unknown setting the item to nil first seems to fix it
                     self.player.replaceCurrentItem(with: nil)
                     self.player.replaceCurrentItem(with: stationPlayerItem)
                     self.player.currentItem?.addObserver(self, forKeyPath: "status", options: [.new, .old], context: nil)
+                    self.player.currentItem?.addObserver(self, forKeyPath: "timedMetadata", options: [.new, .old], context: nil)
                     self.registerBackgroundTask()
                 } else {
                     print("ignored request, current station is different")
@@ -105,6 +114,7 @@ class RadioPlayer: NSObject {
         return playerItem.isPlaybackBufferFull
     }
     
+    @available(*, deprecated, message: "call play/pause functions instead")
     func togglePlayback() {
         guard let station = currentStation else { return }
         if status == .stalled || isPlayBackBufferFull() || status == .stopped {
@@ -130,6 +140,10 @@ class RadioPlayer: NSObject {
             resumePlayAfterInterrupt()
             return
         }
+        guard !isPlayBackBufferFull() else {
+            if let station = currentStation { setStation(station) }
+            return
+        }
         status = .playing
         player.play()
     }
@@ -139,6 +153,7 @@ class RadioPlayer: NSObject {
         item.cancelPendingSeeks()
         item.asset.cancelLoading()
         item.removeObserver(self, forKeyPath: "status")
+        self.player.currentItem?.removeObserver(self, forKeyPath: "timedMetadata")
         player.replaceCurrentItem(with: nil)
         player.pause()
     }

@@ -16,6 +16,7 @@
 		558661491D8340240005285B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661451D833A540005285B /* MediaPlayer.framework */; };
 		5586614A1D83402B0005285B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558661471D833ACD0005285B /* AVFoundation.framework */; };
 		8EFA1376D7DBE032AFD25C8C /* Pods_VolnaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2526A7B5837291F45AB73302 /* Pods_VolnaTests.framework */; };
+		AA0C9FFA1FB5540E00688E4F /* StationMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0C9FF91FB5540E00688E4F /* StationMetadata.swift */; };
 		AA20F29A1EEE1A5700F2F760 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		AA20F2A01EEE2C3500F2F760 /* volna-firebase-crashreporting.json in Resources */ = {isa = PBXBuildFile; fileRef = AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */; };
 		AA3F7C6A1F9D43C000714824 /* UIVIewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3F7C691F9D43C000714824 /* UIVIewControllerExtension.swift */; };
@@ -113,6 +114,7 @@
 		73D25C3D4C24524985841E23 /* Pods-Volna.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Volna.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Volna/Pods-Volna.debug.xcconfig"; sourceTree = "<group>"; };
 		8AFD7E10569DEB8255C89C8A /* Pods-VolnaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolnaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VolnaTests/Pods-VolnaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5CEC27A3CA45CEF3551688A /* Pods-Volna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Volna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Volna/Pods-Volna.release.xcconfig"; sourceTree = "<group>"; };
+		AA0C9FF91FB5540E00688E4F /* StationMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMetadata.swift; sourceTree = "<group>"; };
 		AA20F29C1EEE22D000F2F760 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA20F29F1EEE2C3500F2F760 /* volna-firebase-crashreporting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "volna-firebase-crashreporting.json"; sourceTree = SOURCE_ROOT; };
 		AA3F7C691F9D43C000714824 /* UIVIewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerExtension.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				AA4DC30D1E58C2DE000A642E /* RequestMaker.swift */,
 				AA4DC3121E58CB6F000A642E /* DataHandler.swift */,
+				AA0C9FF91FB5540E00688E4F /* StationMetadata.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				AA4A3A8D1F08629C008D49C0 /* ViewControllerType.swift in Sources */,
 				AA4DC3111E58C868000A642E /* Constants.swift in Sources */,
 				AA4DC3131E58CB6F000A642E /* DataHandler.swift in Sources */,
+				AA0C9FFA1FB5540E00688E4F /* StationMetadata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

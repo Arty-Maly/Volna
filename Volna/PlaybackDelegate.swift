@@ -6,8 +6,9 @@
 //  Copyright © 2017 Artem Malyshev. All rights reserved.
 //
 
-protocol PlaybackDelegate: class {
+protocol PlaybackDelegate {
     func playbackStalled()
     func startPlaybackIndicator()
 	func stopPlaybackIndicator()
+    func updateStationMetadata(with data: StationMetadata)
 }

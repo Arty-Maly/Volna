@@ -30,4 +30,5 @@ target 'Volna' do
   pod 'SCLAlertView'
   
   pod 'Reachability'
+  pod 'MarqueeLabel/Swift'
 end

@@ -10,6 +10,7 @@ import CoreData
 import GoogleMobileAds
 import ESTMusicIndicator
 import Reachability
+import MarqueeLabel
 
 class MainViewController: UIViewController, MainViewPageControlDelegate, GADNativeExpressAdViewDelegate, PlaybackDelegate {
     private var player: RadioPlayer
@@ -35,6 +36,8 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var playbackIndicator: ESTMusicIndicatorView!
     @IBOutlet weak var playbackImage: UIImageView!
+    @IBOutlet weak var artistTitle: MarqueeLabel!
+    @IBOutlet weak var songTitle: MarqueeLabel!
     
     required init(coder aDecoder: NSCoder) {
         player = RadioPlayer()
@@ -59,12 +62,21 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
         setRemoteCommandCenter()
         addObservers()
         setTitle()
+        setUpNowPlayingLabel(songTitle)
+        setUpNowPlayingLabel(artistTitle)
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         showAlertsIfNeeded()
         User.incrementTimesOpened()
+    }
+    
+    private func setUpNowPlayingLabel(_ label: MarqueeLabel) {
+        label.type = .continuous
+        label.speed = .rate(20.0)
+        label.animationCurve = .linear
+        label.fadeLength = 10.0
     }
     
     private func setTitle() {
@@ -318,6 +330,8 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     }
     
     func change(station: RadioStation) {
+        artistTitle.text = ""
+        songTitle.text = ""
         setStation(station)
         playbackIndicator.state = .paused
     }
@@ -369,6 +383,14 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     func stopPlaybackIndicator() {
         playbackIndicator.state = .paused
         togglePlayButton()
+    }
+    
+    func updateStationMetadata(with data: StationMetadata) {
+        guard let artist = data.artist, let title = data.songTitle else { return }
+        infoCenter.nowPlayingInfo?["artist"] = artist
+        infoCenter.nowPlayingInfo?["title"] = title
+        artistTitle.text = artist
+        songTitle.text = title
     }
     
     func nativeExpressAdView(_ nativeExpressAdView: GADNativeExpressAdView, didFailToReceiveAdWithError error: GADRequestError) {

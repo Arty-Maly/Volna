@@ -41,6 +41,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
+  - MarqueeLabel/Swift (3.1.3)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crash
   - Firebase/Messaging
+  - MarqueeLabel/Swift
   - Reachability
   - SCLAlertView
   - SwiftMonkey
@@ -72,12 +74,13 @@ SPEC CHECKSUMS:
   FirebaseMessaging: e25dc87045e76dfe9e920a5741dc3fe7e3ef2268
   Google-Mobile-Ads-SDK: ed8004a7265b424568dc84f3d2bbe3ea3fff958f
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SwiftMonkey: 7aafba2de889229abbf7397496aee699a0d97a6b
 
-PODFILE CHECKSUM: 3c15e91468e251b414142a2b279c04679165669d
+PODFILE CHECKSUM: c2cf77b3597e0086e18aec9b6f351a1f48ed24fd
 
 COCOAPODS: 1.2.0
