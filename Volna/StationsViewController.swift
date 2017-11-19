@@ -334,6 +334,7 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.backgroundColor = Colors.highlightColor
         stationCollectionDelegate?.stationClicked(clickedStation: cell.radioStation)
         showReviewIfNeeded()
+        Logger.logStationClicked(cell.radioStation.name)
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

@@ -46,6 +46,7 @@ class RadioPlayer: NSObject {
         guard let newValue = change?[NSKeyValueChangeKey(rawValue: "new")] else {
             return
         }
+        
         guard keyPath != "timedMetadata" else {
             if let metadata = player.currentItem?.timedMetadata?.first {
                 let stationMetadata = StationMetadata(from: metadata)
@@ -107,11 +108,31 @@ class RadioPlayer: NSObject {
     func isPaused() -> Bool {
         return player.rate == 0
     }
+    //rename this method into what it actually does
     private func isPlayBackBufferFull() -> Bool {
         guard let playerItem = player.currentItem else {
+            return true
+        }
+        
+        return playerItem.isPlaybackBufferFull || isPreloadedDurationTooLong()
+    }
+    
+    private func isPreloadedDurationTooLong() -> Bool {
+        if #available(iOS 10.0, *) {
             return false
         }
-        return playerItem.isPlaybackBufferFull
+        guard let playerItem = player.currentItem else {
+            return true
+        }
+        var timeRangeFull = false
+        if let timeRange = playerItem.loadedTimeRanges.first as? CMTimeRange {
+            let start = timeRange.start
+            let end = timeRange.end
+            let duration = CMTimeGetSeconds(CMTimeAdd(start, end))
+            timeRangeFull = duration > 45 ? true : false
+        }
+        
+        return timeRangeFull
     }
     
     @available(*, deprecated, message: "call play/pause functions instead")
@@ -140,10 +161,12 @@ class RadioPlayer: NSObject {
             resumePlayAfterInterrupt()
             return
         }
+        
         guard !isPlayBackBufferFull() else {
             if let station = currentStation { setStation(station) }
             return
         }
+        
         status = .playing
         player.play()
     }

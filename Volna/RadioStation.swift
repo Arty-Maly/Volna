@@ -84,7 +84,7 @@ public class RadioStation: NSManagedObject {
         if predicate == "position" {
             positions = localStations.map { return $0.position }
         } else {
-            positions = localStations.map { return $0.favouritePosition! }
+            positions = localStations.filter { $0.favouritePosition != nil }.map { return $0.favouritePosition! }
         }
         
         let duplicates = Array(Set(positions.filter({ i in positions.filter({ $0 == i }).count > 1})))

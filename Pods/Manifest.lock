@@ -1,25 +1,25 @@
 PODS:
   - ESTMusicIndicator (0.1.3)
-  - Firebase (4.4.0):
-    - Firebase/Core (= 4.4.0)
-  - Firebase/AdMob (4.4.0):
+  - Firebase (4.5.0):
+    - Firebase/Core (= 4.5.0)
+  - Firebase/AdMob (4.5.0):
     - Firebase/Core
-    - Google-Mobile-Ads-SDK (= 7.24.1)
-  - Firebase/Core (4.4.0):
+    - Google-Mobile-Ads-SDK (= 7.25.0)
+  - Firebase/Core (4.5.0):
     - FirebaseAnalytics (= 4.0.4)
-    - FirebaseCore (= 4.0.9)
-  - Firebase/Crash (4.4.0):
+    - FirebaseCore (= 4.0.10)
+  - Firebase/Crash (4.5.0):
     - Firebase/Core
     - FirebaseCrash (= 2.0.2)
-  - Firebase/Messaging (4.4.0):
+  - Firebase/Messaging (4.5.0):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.5)
+    - FirebaseMessaging (= 2.0.6)
   - FirebaseAnalytics (4.0.4):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.9):
+  - FirebaseCore (4.0.10):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseCrash (2.0.2):
@@ -29,13 +29,13 @@ PODS:
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - Protobuf (~> 3.1)
   - FirebaseInstanceID (2.0.5)
-  - FirebaseMessaging (2.0.5):
+  - FirebaseMessaging (2.0.6):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
-  - Google-Mobile-Ads-SDK (7.24.1)
+  - Google-Mobile-Ads-SDK (7.25.0)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/Logger (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
@@ -66,13 +66,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ESTMusicIndicator: 0b28ed54b5ec2206aa135b2b9db3fe255bb6e6ef
-  Firebase: 3e92884a63e8f76d107c43a67d2ab9071e1eda10
+  Firebase: d83d287bdb6b1c78320561482706d1fcfc8ddfc1
   FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
-  FirebaseCore: ebe73f64302705e693b1de9919a76edbdd17a19d
+  FirebaseCore: da5e8e372cb6046212739a4d81e42d32c22907cc
   FirebaseCrash: cded0fc566c03651aea606a101bc156085f333ca
   FirebaseInstanceID: f2b688c66b972f30d7fa9f5f9f91455454a03b47
-  FirebaseMessaging: e25dc87045e76dfe9e920a5741dc3fe7e3ef2268
-  Google-Mobile-Ads-SDK: ed8004a7265b424568dc84f3d2bbe3ea3fff958f
+  FirebaseMessaging: 75d83375b0f7a9911568d7bdd1a1a8261cbcbdef
+  Google-Mobile-Ads-SDK: 113804f266381a30f982ad3c18063d4e0155414f
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3

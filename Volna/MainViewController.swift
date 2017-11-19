@@ -275,13 +275,14 @@ class MainViewController: UIViewController, MainViewPageControlDelegate, GADNati
     
     private func recoverPlayback() {
         stopPlaybackIndicator()
-         NSObject.cancelPreviousPerformRequests(withTarget: self)
+        player.stopPlayback()
         if wasPlaying {
             player.play()
         } else {
             return
             //      player.prepareForPlayback()
         }
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
     }
     
     @objc private func handleRouteChange(_ notification: Notification) {

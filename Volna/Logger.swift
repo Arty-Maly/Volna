@@ -49,7 +49,7 @@ class Logger {
     class func logDuplicatStationsHappened(_ position: Int, predicate: String) {
         Analytics.logEvent("duplicate_stations", parameters: [
             "name": "Duplicate Stations" as NSObject,
-            "full_text": "User requested to never review app" as NSObject,
+            "full_text": "duplicate station in position" as NSObject,
             "position": position as NSObject,
             "favourite": predicate as NSObject
             ])
@@ -62,6 +62,31 @@ class Logger {
             "position": position as NSObject,
             "favourite": predicate as NSObject,
             "array": array as NSObject
+            ])
+    }
+    
+    class func logMetadata(_ string: String) {
+        Analytics.logEvent("metadata", parameters: [
+            "name": "Metadata received" as NSObject,
+            "full_text": "Metadata string \(string) passed to parser" as NSObject,
+            "string": string as NSObject
+            ])
+    }
+    
+    class func logMetadataError(_ string: String, error: Error) {
+        Analytics.logEvent("metadata_error", parameters: [
+            "name": "Metadata parse errors" as NSObject,
+            "full_text": "Metadata string \(string) could not be parsed, error: \(error.localizedDescription)" as NSObject,
+            "string": string as NSObject,
+            "error": error as NSObject,
+            "error description": error.localizedDescription as NSObject
+            ])
+    }
+    
+    class func logStationClicked(_ station: String) {
+        Analytics.logEvent("station_clicked", parameters: [
+            "name": "\(station)" as NSObject,
+            "full_text": "Station Clicked" as NSObject,
             ])
     }
 }
