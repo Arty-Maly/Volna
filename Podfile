@@ -22,11 +22,11 @@ target 'Volna' do
   end
   
   pod 'Firebase/Core'
-  pod 'Firebase/AdMob'
   pod 'Firebase/Crash'
   pod 'Firebase/Messaging'
   
-  pod 'ESTMusicIndicator'
+  pod 'mopub-ios-sdk'
+  
   pod 'SCLAlertView'
   
   pod 'Reachability'

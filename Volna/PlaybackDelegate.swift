@@ -9,6 +9,6 @@
 protocol PlaybackDelegate {
     func playbackStalled()
     func startPlaybackIndicator()
-	func stopPlaybackIndicator()
+    func stopPlaybackIndicator()
     func updateStationMetadata(with data: StationMetadata)
 }

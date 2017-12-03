@@ -89,21 +89,21 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ESTMusicIndicator/ESTMusicIndicator.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac-Defines-Logger-NSData+zlib/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MarqueeLabel/MarqueeLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView/SCLAlertView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/mopub-ios-sdk/MoPub.framework"
   install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ESTMusicIndicator/ESTMusicIndicator.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac-Defines-Logger-NSData+zlib/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MarqueeLabel/MarqueeLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView/SCLAlertView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/mopub-ios-sdk/MoPub.framework"
   install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

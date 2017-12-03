@@ -22,7 +22,6 @@ class TopBar: BarView {
   }
   
   private func setupLayers() {
-//    self.layer.addBorder(edge: UIRectEdge.bottom, color: Colors.borderColor, thickness: 1)
     let gradient = Colors.topGradient()
     gradient.frame = self.bounds
     self.layer.insertSublayer(gradient, at: UInt32(0))

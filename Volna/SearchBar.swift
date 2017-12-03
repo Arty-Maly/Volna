@@ -28,4 +28,12 @@ class SearchBar: UISearchBar {
         textFieldInsideSearchBar?.attributedPlaceholder = NSAttributedString(string: Constants.searchBarPlaceHolder, attributes: [NSForegroundColorAttributeName: UIColor.white])
         textFieldInsideSearchBar?.textColor = UIColor.white
     }
+    
+    func setupLayers() {
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupLayers()
+    }
 }

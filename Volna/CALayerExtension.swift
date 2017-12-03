@@ -31,6 +31,7 @@ extension CALayer {
     }
     
     border.backgroundColor = color.cgColor;
+    border.needsDisplayOnBoundsChange = true
     self.addSublayer(border)
   }
   

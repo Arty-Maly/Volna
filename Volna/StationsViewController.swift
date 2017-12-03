@@ -2,7 +2,6 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 import CoreData
-import GoogleMobileAds
 
 class StationsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, StationCollectionDelegate, UISearchBarDelegate {
     private var previousIndexPath: IndexPath?
@@ -284,7 +283,7 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        guard section == 0, type == .main else { return UIEdgeInsets.init(top: 0, left: 0, bottom: 80, right: 0) }
+        guard section == 0, type == .main else { return UIEdgeInsets.init(top: 4, left: 4, bottom: 80, right: 4) }
     
         return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     }
@@ -306,7 +305,7 @@ class StationsViewController: UIViewController, UICollectionViewDataSource, UICo
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * numberOfItemsPerRow)
         let size = Int((width - totalSpace) / numberOfItemsPerRow)
-        return CGSize(width: size, height: size)
+        return CGSize(width: size, height: size + 15)
     }
     
     func setTransitionViewSize(_ size: CGSize) {

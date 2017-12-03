@@ -26,7 +26,7 @@ class SplashViewController: UIViewController, ErrorDelegate {
     }
     
     @objc private func segueToMainView() {
-        DispatchQueue.main.async(){
+        DispatchQueue.main.async() {
             self.performSegue(withIdentifier: "transitionToRadio", sender:nil)
         }
     }

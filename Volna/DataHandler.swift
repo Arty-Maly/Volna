@@ -146,7 +146,7 @@ class DataHandler: DataDelegate {
                     self.errorDelegate.recievedError()
                     return
             }
-
+            
             guard let thumbnailData  = UIImagePNGRepresentation(image) else {
                 print("png error")
                 return

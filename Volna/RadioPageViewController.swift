@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 import CoreData
-import GoogleMobileAds
 
 import Foundation
 class RadioPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, StationViewDelegate, ButtonActionDelegate {

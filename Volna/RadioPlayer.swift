@@ -59,8 +59,8 @@ class RadioPlayer: NSObject {
             playbackDelegate?.playbackStalled()
         }
         
-        if keyPath == "status" && newValue as? Int == 1 && (status == .paused) {
-            play()
+        if keyPath == "status" && newValue as? Int == 1 {
+            if (status == .paused) { play() }
             playbackDelegate?.startPlaybackIndicator()
         }
         
@@ -82,6 +82,7 @@ class RadioPlayer: NSObject {
         guard let url = (URL(string: station.url))  else { return }
         DispatchQueue.global(qos: .userInitiated).async {
             let stationPlayerItem = AVPlayerItem(url: url)
+            
             DispatchQueue.main.async {
                 if self.currentStation! == station {
                     self.player.currentItem?.removeObserver(self, forKeyPath: "status")
@@ -92,6 +93,7 @@ class RadioPlayer: NSObject {
                     self.player.currentItem?.addObserver(self, forKeyPath: "status", options: [.new, .old], context: nil)
                     self.player.currentItem?.addObserver(self, forKeyPath: "timedMetadata", options: [.new, .old], context: nil)
                     self.registerBackgroundTask()
+                    
                 } else {
                     print("ignored request, current station is different")
                 }
@@ -166,7 +168,6 @@ class RadioPlayer: NSObject {
             if let station = currentStation { setStation(station) }
             return
         }
-        
         status = .playing
         player.play()
     }

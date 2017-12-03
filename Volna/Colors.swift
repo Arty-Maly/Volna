@@ -12,7 +12,7 @@ struct Colors {
   static let darkerBlue = UIColor(red:0.27, green:0.45, blue:0.53, alpha:1.0)
   static let lighterBlue = UIColor(red:0.38, green:0.65, blue:0.76, alpha:1.0)
   static let highlightColor = UIColor(red:0.84, green:0.86, blue:0.88, alpha:0.85)
-  
+  static let darkerBlueBorderColor = UIColor(red:0.24, green:0.40, blue:0.47, alpha:1.0)
   static func bottomGradient() -> CAGradientLayer {
     return gradient(lighterBlue, darkerBlue)
   }

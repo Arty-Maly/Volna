@@ -1,0 +1,36 @@
+
+/* Class = "UITableViewSection"; footerTitle = "Если Вам понравилось наше приложение оставьте пожалуйста Ваш отзыв. Мы всегда прислушиваемся к мнению наших любимых подписчиков.\nВаши отзывы вдохновляют нас на разработку множества новых полезных и прикольных фишек."; ObjectID = "1RH-RP-IYh"; */
+"1RH-RP-IYh.footerTitle" = "Если Вам понравилось наше приложение оставьте пожалуйста Ваш отзыв. Мы всегда прислушиваемся к мнению наших любимых подписчиков.\nВаши отзывы вдохновляют нас на разработку множества новых полезных и прикольных фишек.";
+
+/* Class = "UITableViewSection"; headerTitle = "Связаться с разработчиками"; ObjectID = "1RH-RP-IYh"; */
+"1RH-RP-IYh.headerTitle" = "Связаться с разработчиками";
+
+/* Class = "UILabel"; text = "Загружаю"; ObjectID = "Jjd-cV-CT3"; */
+"Jjd-cV-CT3.text" = "Загружаю";
+
+/* Class = "UILabel"; text = "Оставить отзыв"; ObjectID = "Mzo-lw-pmN"; */
+"Mzo-lw-pmN.text" = "Оставить отзыв";
+
+/* Class = "UILabel"; text = "Прямой Эфир"; ObjectID = "YLe-1Q-KFa"; */
+"YLe-1Q-KFa.text" = "Прямой Эфир";
+
+/* Class = "UIButton"; normalTitle = "BUTTON"; ObjectID = "ZfX-FI-J5w"; */
+"ZfX-FI-J5w.normalTitle" = "BUTTON";
+
+/* Class = "UILabel"; text = "Все будет хорошо!"; ObjectID = "ezN-Hk-BTt"; */
+"ezN-Hk-BTt.text" = "Все будет хорошо!";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jkh-YK-u5i"; */
+"jkh-YK-u5i.text" = "Label";
+
+/* Class = "UISearchBar"; placeholder = "Поиск"; ObjectID = "keh-Cg-SCB"; */
+"keh-Cg-SCB.placeholder" = "Поиск";
+
+/* Class = "UILabel"; text = "Открывать любимые при запуске"; ObjectID = "sui-EN-K1y"; */
+"sui-EN-K1y.text" = "Открывать любимые при запуске";
+
+/* Class = "UITableViewSection"; footerTitle = "Вкладка «Любимая» станет стартовой и при запуске приложения Вы будете видеть ваши любимые радиостанции"; ObjectID = "zVw-By-6U1"; */
+"zVw-By-6U1.footerTitle" = "Вкладка «Любимая» станет стартовой и при запуске приложения Вы будете видеть ваши любимые радиостанции";
+
+/* Class = "UITableViewSection"; headerTitle = "Начальная страница"; ObjectID = "zVw-By-6U1"; */
+"zVw-By-6U1.headerTitle" = "Начальная страница";

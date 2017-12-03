@@ -89,4 +89,26 @@ class Logger {
             "full_text": "Station Clicked" as NSObject,
             ])
     }
+    
+    class func logAdRetrievalFailure(_ error: Error) {
+        Analytics.logEvent("ad_retrieval_error", parameters: [
+            "name": "Error retrieving ad from Mopub" as NSObject,
+            "full_text": "\(error.localizedDescription)" as NSObject,
+            ])
+    }
+    
+    class func logAdRequestFailure(_ error: Error) {
+        Analytics.logEvent("ad_request_error", parameters: [
+            "name": "Error requesting ad from Mopub" as NSObject,
+            "full_text": "\(error.localizedDescription)" as NSObject,
+            ])
+    }
+    
+    class func logAdConfigCreationFailure() {
+        Analytics.logEvent("ad_config_creation_error", parameters: [
+            "name": "Ad config creation failure" as NSObject,
+            "full_text": "Failed to create ad config" as NSObject,
+            ])
+        
+    }
 }
